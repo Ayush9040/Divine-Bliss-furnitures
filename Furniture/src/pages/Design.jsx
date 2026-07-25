@@ -12,9 +12,11 @@ const Design = () => {
         <div className='pt-15 flex gap-10'>
             <div>
                 <img src={Basin} alt="Image"  className='h-80'/>
+                <h1>Name</h1>
             </div>
             <div>
                 <img src={Basin} alt="images" className='h-80' />
+                <h1>Name</h1>
             </div>
             <div>
                 <img src={Basin} alt="image" className='h-80' />
