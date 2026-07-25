@@ -1,21 +1,2 @@
 @import "tailwindcss";
 
-@theme {
-  --animate-typing: typing 2.5s steps(24 , end) forwards;
-
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-}
-
-/* Helper utilities for the typewriter layout */
-.typewriter-base {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px ;
-  width: 0;
-  text-transform: uppercase;
-}
-

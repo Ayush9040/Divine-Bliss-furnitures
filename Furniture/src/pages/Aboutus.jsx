@@ -1,3 +1,4 @@
+import React from 'react';
 import { Circle, MoveRight } from "lucide-react";
 import Sofa from "../assets/sofa.webp";
 import basin from "../assets/basin.webp";
@@ -11,58 +12,71 @@ import client6 from "../assets/clients-6.webp";
 
 const Aboutus = () => {
   const data = [client1, client2, client3, client4, client5, client6];
+
   return (
-    <div className="w-full px-50 py-55">
-      <div className="w-[80%] flex flex-col">
-        <span className="flex items-center justify-start gap-2 text-[#732c14]">
-          {" "}
-          <Circle size={12} /> SMTH LITTLE ABOUT US
+    <section className="w-full px-6 sm:px-12 md:px-20 lg:px-32 py-16 md:py-25 lg:py-32 bg-[#f0ede8] overflow-hidden">
+      
+      {/* Top Header Section */}
+      <div className="w-full lg:w-[85%] flex flex-col py-30">
+        <span className="flex items-center justify-start gap-2 text-[#732c14] text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <Circle size={10} className="fill-current" /> SMTH LITTLE ABOUT US
         </span>
-        <div className="mt-10 uppercase text-5xl font-normal">
-          Interior Design That Balances Beauty, Comfort, and Purpose in Every
-          Detail
-        </div>
+        <h2 className="mt-6 sm:mt-8 uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-neutral-900">
+          Interior Design That Balances Beauty, Comfort, and Purpose in Every Detail
+        </h2>
       </div>
 
-      <div className="w-full flex mt-10 justify-between">
-        <div className="w-[46%] p-3 y-3 gap-25 flex flex-col">
-          <span className="text-2xl">
-            We believe great design goes <br /> beyond aesthetics.
-          </span>
-          <div>
-            <img src={Sofa} alt="Sofa image" />
+      {/* Main Content Grid */}
+      <div className="w-full flex flex-col lg:flex-row mt-12 lg:mt-20 justify-between gap-12 lg:gap-16">
+        
+        {/* Left Column */}
+        <div className="w-full lg:w-[46%] flex flex-col justify-between space-y-8 lg:space-y-12">
+          <p className="text-xl sm:text-2xl font-light text-neutral-800 leading-snug">
+            We believe great design goes <br className="hidden sm:inline" /> beyond aesthetics.
+          </p>
+          <div className="w-full overflow-hidden rounded-xl shadow-md">
+            <img src={Sofa} alt="Sofa interior" className="w-full h-auto object-cover" />
           </div>
         </div>
-        <div className="w-[46%] z-0 text-xl flex flex-col gap-10">
-          <span>
-            It’s about how a space works, how it feels, and how it supports
-            everyday life. By combining smart planning, high-quality materials,
-            and a deep understanding of light, color, and form, we transform
-            ideas into spaces that are beautiful, practical, and uniquely
-            personal. Our goal is to create interiors that elevate experiences
-            and stand the test of time.
-          </span>
-          <span className="flex items-center justify-start gap-2.5 text-amber-800 text-sm font-semibold">
-            VIEW ALL CASES <MoveRight />{" "}
-          </span>
-          <div className="flex items-center justify-end mt-10">
-            <img src={basin} alt="baisn imae" className="h-80" />
+
+        {/* Right Column */}
+        <div className="w-full lg:w-[46%] text-base sm:text-lg text-neutral-700 flex flex-col gap-8 lg:gap-10">
+          <p className="leading-relaxed">
+            It’s about how a space works, how it feels, and how it supports everyday life. By combining smart planning, high-quality materials, and a deep understanding of light, color, and form, we transform ideas into spaces that are beautiful, practical, and uniquely personal. Our goal is to create interiors that elevate experiences and stand the test of time.
+          </p>
+
+          <div>
+            <a href="#cases" className="inline-flex items-center justify-start gap-2.5 text-[#732c14] text-xs sm:text-sm font-semibold tracking-wider hover:opacity-85 transition-opacity group">
+              VIEW ALL CASES <MoveRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
 
-          <div className="w-60 h-60 translate-0.5  bounceIn 2s ease-in-out;">
-            <img src={floweDesign} alt="Flower Design" />
+          <div className="flex items-center justify-center sm:justify-end mt-4 lg:mt-8">
+            <img src={basin} alt="Basin interior design" className="h-60 sm:h-72 lg:h-80 object-cover rounded-xl shadow-md" />
+          </div>
+
+          {/* Decorative Flower Badge / Accent */}
+          <div className="hidden sm:block w-40 h-40 lg:w-60 lg:h-60 opacity-80 animate-pulse">
+            <img src={floweDesign} alt="Flower Design" className="w-full h-full object-contain" />
           </div>
         </div>
 
       </div>
-      <div className="flex items-center justify-between mt-30">
-        {data.map((e) => (
-          <div>
-            <img src={e} alt="client image" className="h-15  blur-sm hover:blur-none" />
+
+      {/* Client Logos Grid / Row */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center justify-items-center gap-8 sm:gap-12 mt-20 lg:mt-32 pt-12 border-t border-neutral-300/60">
+        {data.map((clientLogo, index) => (
+          <div key={index} className="w-28 sm:w-32 flex items-center justify-center">
+            <img 
+              src={clientLogo} 
+              alt={`Client logo ${index + 1}`} 
+              className="h-10 sm:h-12 w-auto object-contain filter blur-[1px] hover:blur-none transition-all duration-300 opacity-70 hover:opacity-100 cursor-pointer" 
+            />
           </div>
         ))}
       </div>
-    </div>
+
+    </section>
   );
 };
 
