@@ -1,14 +1,14 @@
 import React from 'react';
 import { Circle, MoveRight } from "lucide-react";
-import Sofa from "../assets/sofa.webp";
-import basin from "../assets/basin.webp";
-import floweDesign from "../assets/flowerDesign.webp";
-import client1 from "../assets/clients-1.webp";
-import client2 from "../assets/clients-2.webp";
-import client3 from "../assets/clients-3.webp";
-import client4 from "../assets/clients-4.webp";
-import client5 from "../assets/clients-5.webp";
-import client6 from "../assets/clients-6.webp";
+import Sofa from "../../assets/sofa.webp";
+import basin from "../../assets/basin.webp";
+import floweDesign from "../../assets/flowerDesign.webp";
+import client1 from "../../assets/clients-1.webp";
+import client2 from "../../assets/clients-2.webp";
+import client3 from "../../assets/clients-3.webp";
+import client4 from "../../assets/clients-4.webp";
+import client5 from "../../assets/clients-5.webp";
+import client6 from "../../assets/clients-6.webp";
 
 const Aboutus = () => {
   const data = [client1, client2, client3, client4, client5, client6];

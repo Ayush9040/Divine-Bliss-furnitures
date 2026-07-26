@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect } from "react";
-import Basin from "../assets/basin.webp";
+import Basin from "../../assets/basin.webp";
 import { Circle, MoveLeft, MoveRight } from "lucide-react";
 import gsap from "gsap";
 

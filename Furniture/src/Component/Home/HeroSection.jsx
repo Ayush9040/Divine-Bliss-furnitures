@@ -2,8 +2,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ArrowRight, X } from 'lucide-react';
 import gsap from 'gsap';
-import SofaImage from "../assets/sofaImage.webp";
-import buildingImage from "../assets/building.webp";
+import SofaImage from "../../assets/sofaImage.webp";
+import buildingImage from "../../assets/building.webp";
 
 const HeroSection = () => {
   const containerRef = useRef(null);

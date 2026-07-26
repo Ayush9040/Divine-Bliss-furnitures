@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 
 // Placeholder or imported images matching your design structure
-import interiorImg from '../assets/sofaimage.webp'; // Replace with your service images if needed
-import spaceImg from '../assets/sofaimage.webp';
-import furnitureImg from '../assets/sofaimage.webp';
+import interiorImg from '../../assets/sofaimage.webp'; // Replace with your service images if needed
+import spaceImg from '../../assets/sofaimage.webp';
+import furnitureImg from '../../assets/sofaimage.webp';
 
 const services = [
   {
