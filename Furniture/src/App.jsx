@@ -7,7 +7,7 @@ import Footer from "./Component/Footer"
 import DesignService from './Component/Home/DesignService'
 import PeopleDesign from './Component/Home/PeopleDesign'
 import Home from "./pages/Home"
-
+import Contact from "./pages/Contact"
 const App = () => {
   const routers = createBrowserRouter([
     {
@@ -17,6 +17,13 @@ const App = () => {
         <Navbar/>
         <Home />
         <Footer/>
+      </>
+    },
+    {
+      path:'/contact',
+      element:
+      <>
+        <Contact/>
       </>
     }
   ])
