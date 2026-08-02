@@ -13,11 +13,13 @@ const App = () => {
     {
       path:"/",
       element:
-      <>
-        <Navbar/>
-        <Home />
-        <Footer/>
-      </>
+      <div className="App">
+        <div className="home">
+           <Navbar/>
+             <Home />
+           <Footer/>
+      </div>
+      </div>
     }
   ])
 

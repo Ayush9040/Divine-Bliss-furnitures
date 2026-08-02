@@ -80,7 +80,7 @@
 
 import React from 'react';
 import { ArrowRight, ArrowUp } from 'lucide-react';
-import sofa from '../assets/sofaimage.webp';
+import sofa from '../assets/footer-bg.webp';
 import Logo from '../assets/Logo.webp';
 
 export default function Footer() {

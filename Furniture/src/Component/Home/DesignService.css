@@ -1,0 +1,174 @@
+:root {
+  --card-height: 520px;
+  --header-height: 76px;
+}
+
+.design-services-section {
+  width: 100%;
+  background: #5c2314;
+  color: #fff;
+  padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 4vw, 1.5rem);
+  box-sizing: border-box;
+}
+
+.design-services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2rem);
+  align-items: start;
+}
+
+.design-services-left { padding-right: 0; }
+
+.badge-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.badge-dot { width: 6px; height: 6px; border-radius: 999px; background: #d4af37; flex-shrink: 0; }
+.badge-label { font-size: 0.75rem; text-transform: uppercase; color: #d4d4d4; font-weight: 600; letter-spacing: 0.04em; }
+
+.services-title {
+  font-size: clamp(1.75rem, 6vw, 4rem);
+  line-height: 1.1;
+  font-weight: 300;
+  margin: 0 0 1.25rem 0;
+}
+
+.services-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 28px);
+  border: 1px solid rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---- Right column: the stacking card frame ---- */
+.design-services-right {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cards-wrap {
+  --card-height: 520px;
+  --header-height: 76px;
+  position: relative;
+  width: 100%;
+  height: var(--card-height);
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.service-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: var(--card-height, 520px);
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 5vw, 2.5rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  will-change: transform;
+}
+
+/* Background photo fades in smoothly from the right edge instead of a
+   hard 65%-width cutoff — that hard seam was causing the "checkerboard"
+   split look you saw. */
+.service-card-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.22;
+  -webkit-mask-image: linear-gradient(to left, black 35%, transparent 85%);
+  mask-image: linear-gradient(to left, black 35%, transparent 85%);
+  pointer-events: none;
+}
+
+/* Number sits fixed at the top — this is the only thing visible once a
+   later card slides up and covers everything below the header strip. */
+.service-card-number {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Body block sits in the remaining space, vertically centered so text
+   never gets crushed against the bottom edge of the card. */
+.service-card-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 60ch;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.service-card-title {
+  font-size: clamp(1.15rem, 3.5vw, 1.6rem);
+  font-weight: 700;
+  margin: 0 0 0.85rem 0;
+  letter-spacing: 0.01em;
+}
+
+.service-card-desc {
+  line-height: 1.65;
+  margin: 0 0 1.25rem 0;
+  opacity: 0.85;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+/* ---- Breakpoints ---- */
+@media (min-width: 768px) {
+  .design-services-container { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .design-services-left { grid-column: 1; padding-right: 1rem; }
+  .design-services-right { grid-column: 2; }
+  .cards-wrap { --card-height: 480px; --header-height: 70px; }
+}
+
+@media (min-width: 1024px) {
+  .cards-wrap { --card-height: 540px; --header-height: 76px; }
+}
+
+@media (max-width: 480px) {
+  .cards-wrap { --card-height: 420px; --header-height: 56px; }
+  .service-card-bg-image { opacity: 0.12; }
+  .service-card-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .cards-wrap { --card-height: 460px; --header-height: 62px; }
+  .service-card-bg-image { opacity: 0.15; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card { transition: none !important; }
+}
