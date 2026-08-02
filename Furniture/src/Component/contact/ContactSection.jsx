@@ -4,11 +4,12 @@ import { Circle } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import xLogo from "../../assets/xLogo.svg";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import facebookLogo from "../../assets/facebookLogo.svg";
 import instagramLogo from "../../assets/instagramLogo.svg";
 import LinkdinLogo from "../../assets/LinkdinLogo.svg";
 
-gsap.registerPlugin(useGSAP );
+gsap.registerPlugin(useGSAP ,ScrollTrigger );
 
 const ContactSection = () => {
   const container = useRef();
@@ -29,10 +30,11 @@ const ContactSection = () => {
       ease: "power3.out",
       delay: 0.1, 
     });
+
   }, { scope: container });
 
   return (
-    <div ref={container} className="w-full px-6 md:px-16 lg:px-43 py-16 md:py-24 lg:py-34 bg-[#f0ede8] overflow-hidden">
+    <div ref={container} className=" w-full px-6 md:px-16 lg:px-43 py-16 md:py-24 lg:py-34 bg-[#f0ede8] overflow-hidden">
       <div className="w-full flex">
         <div className="font-bold uppercase flex items-center justify-start gap-2 text-[#732c14] text-xs md:text-sm">
           <Circle size={10} /> Discuss your vision
@@ -102,8 +104,8 @@ const ContactSection = () => {
         </div>
 
       </div>
-      <div className=" mt-20 ">
-        <h1 className="uppercase text-8xl">
+      <div className=" mt-25 flex items-center justify-center ">
+        <h1 className=" text-animi text-5xl md:text-8xl uppercase text-[#843a1d] ">
           minkstudio@mail.com 
         </h1>
       </div>

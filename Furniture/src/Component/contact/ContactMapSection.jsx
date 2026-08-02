@@ -73,7 +73,7 @@ export default function LocationMap() {
 
 
 
-    <div className='h-screen w-full'>
+    <div className=' w-full'>
         <div className="w-full max-w-7xl mx-auto px-6 py-16 -m-30 relative z-10 mb-6">
          <div className="bg-[#EFECE6] border border-[#E2DBD0] p-8 md:p-14 shadow-sm">
           
@@ -89,7 +89,7 @@ export default function LocationMap() {
              Your email address will not be published. Required fields are marked *
            </p>
 
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-8">
+          <form onSubmit={(e) => e.preventDefault()} className=" space-y-8">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                <div className="relative">
                  <input
