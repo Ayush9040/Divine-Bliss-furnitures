@@ -1,2 +1,19 @@
 @import "tailwindcss";
 @import 'leaflet/dist/leaflet.css';
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'TikTok Sans', sans-serif;
+  background-color: rgb(240, 237, 232);
+}
+
+.App {
+  font-family: 'TikTok Sans', sans-serif;
+  background-color: rgb(240, 237, 232);
+}
