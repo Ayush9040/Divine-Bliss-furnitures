@@ -4,49 +4,42 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './DesignService.css';
 
-import interiorImg from '../../assets/sofaImage.webp';
-import spaceImg from '../../assets/LuxeHeight.webp';
-import furnitureImg from '../../assets/urban.webp';
-
 const services = [
   {
-    id: "01",
-    title: "RESIDENTIAL INTERIOR DESIGN",
+    id: '01',
+    title: 'RESIDENTIAL INTERIOR DESIGN',
     description:
-      "We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.",
-    image: interiorImg,
-    bgColor: "#7a3320",
-    textColor: "#ffffff",
-    numberColor: "rgba(255,255,255,0.55)",
+      'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
+    bgColor: '#732c14',
+    textColor: '#ffffff',
+    numberColor: 'rgba(255, 255, 255, 0.85)',
   },
   {
-    id: "02",
-    title: "SPACE PLANNING & LAYOUT",
+    id: '02',
+    title: 'SPACE PLANNING & LAYOUT',
     description:
-      "Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.",
-    image: spaceImg,
-    bgColor: "#e7e1d6",
-    textColor: "#3a2a1f",
-    numberColor: "rgba(58,42,31,0.45)",
+      'Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.',
+    bgColor: '#e2dad0',
+    textColor: '#1c1c1c',
+    numberColor: '#732c14',
   },
   {
-    id: "03",
-    title: "FURNITURE & MATERIAL SELECTION",
+    id: '03',
+    title: 'FURNITURE & MATERIAL SELECTION',
     description:
-      "We curate high-end furniture, textures, and finishes that harmonize with your architectural vision, ensuring enduring elegance and absolute comfort.",
-    image: furnitureImg,
-    bgColor: "#ffffff",
-    textColor: "#1c1c1c",
-    numberColor: "rgba(0,0,0,0.32)",
+      'We curate high-end furniture, textures, and finishes that harmonize with your architectural vision, ensuring enduring elegance and absolute comfort.',
+    bgColor: '#ffffff',
+    textColor: '#1c1c1c',
+    numberColor: '#732c14',
   },
 ];
 
 export default function DesignServicesSection() {
-  const sectionRef = useRef(null);   // now the actual pin target
-  const wrapRef = useRef(null);      // the fixed-height card stack frame
+  const sectionRef = useRef(null);
+  const rightColRef = useRef(null);
   const cardsRef = useRef([]);
-  cardsRef.current = [];
 
+  cardsRef.current = [];
   const addCardRef = (el) => {
     if (el && !cardsRef.current.includes(el)) cardsRef.current.push(el);
   };
@@ -54,51 +47,44 @@ export default function DesignServicesSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const cards = cardsRef.current;
-    if (!sectionRef.current || !wrapRef.current || cards.length < 2) return;
+    if (!sectionRef.current || !rightColRef.current || cards.length < 2) return;
 
     const mm = gsap.matchMedia();
 
-    const buildStack = (pinIt) => {
-      const cardHeight = wrapRef.current.offsetHeight;
-      const headerHeight =
-        parseFloat(getComputedStyle(wrapRef.current).getPropertyValue('--header-height')) || 64;
+    mm.add('(min-width: 768px)', () => {
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const headerHeight = 65; // visible tab strip height (01, 02)
 
+      // Position hidden cards BELOW the entire section so they
+      // appear as full cards coming up from the bottom of the screen
       const hiddenCards = cards.slice(1);
-      gsap.set(hiddenCards, { y: cardHeight });
+      gsap.set(hiddenCards, { y: sectionHeight });
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          // Pin the WHOLE SECTION (left text + right cards together),
-          // not just the right column — this is what keeps the heading
-          // fixed in place instead of scrolling away.
           trigger: sectionRef.current,
           start: 'top top',
-          end: () => `+=${hiddenCards.length * (pinIt ? 500 : 350)}`,
-          scrub: true,
-          pin: pinIt ? sectionRef.current : false,
+          end: () => `+=${hiddenCards.length * 700}`,
+          scrub: 1,
+          pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
       hiddenCards.forEach((card, i) => {
+        // Each card animates to just peek above the previous ones
         tl.to(
           card,
-          { y: headerHeight * (i + 1), ease: 'power2.out', duration: 1 },
-          i === 0 ? 0 : '>-0.1'
+          {
+            y: (i + 1) * headerHeight,
+            ease: 'none',
+            duration: 1,
+          },
+          i === 0 ? 0 : '>+0.15'
         );
       });
 
-      return tl;
-    };
-
-    mm.add('(min-width: 768px)', () => {
-      const tl = buildStack(true);
-      return () => tl.scrollTrigger?.kill();
-    });
-
-    mm.add('(max-width: 767px)', () => {
-      const tl = buildStack(false);
       return () => tl.scrollTrigger?.kill();
     });
 
@@ -114,15 +100,16 @@ export default function DesignServicesSection() {
             <span className="badge-label">Design Solutions</span>
           </div>
           <h2 className="services-title">
-            DESIGN SERVICES<br /> <span>TAILORED TO YOUR</span><br /> SPACE
+            DESIGN SERVICES<br /> TAILORED TO YOUR<br /> SPACE
           </h2>
           <a href="#all-services" className="services-cta">
-            View All Services <ArrowRight />
+            <span>VIEW ALL SERVICES</span>
+            <ArrowRight size={18} />
           </a>
         </div>
 
-        <div className="design-services-right">
-          <div ref={wrapRef} className="cards-wrap">
+        <div ref={rightColRef} className="design-services-right">
+          <div className="cards-wrap">
             {services.map((service, idx) => (
               <article
                 key={service.id}
@@ -134,7 +121,31 @@ export default function DesignServicesSection() {
                   zIndex: 10 + idx * 10,
                 }}
               >
-                <img src={service.image} alt="" className="service-card-bg-image" />
+                {/* Architectural Blueprint Vector Wireframe Background */}
+                <svg
+                  className="service-card-blueprint"
+                  viewBox="0 0 800 600"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M150 180 L400 60 L650 180 L650 500 L400 380 L150 500 Z"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeDasharray="4 4"
+                  />
+                  <path
+                    d="M400 60 L400 380 M150 180 L400 380 M650 180 L400 380"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M250 230 L550 230 M250 430 L550 430 M320 120 L320 460 M480 120 L480 460"
+                    stroke="currentColor"
+                    strokeWidth="0.8"
+                    strokeDasharray="2 2"
+                  />
+                </svg>
 
                 <span className="service-card-number" style={{ color: service.numberColor }}>
                   {service.id}
@@ -144,7 +155,8 @@ export default function DesignServicesSection() {
                   <h3 className="service-card-title">{service.title}</h3>
                   <p className="service-card-desc">{service.description}</p>
                   <a className="service-card-link" href="#more-about">
-                    MORE ABOUT US <ArrowRight size={16} />
+                    <span>MORE ABOUT US</span>
+                    <ArrowRight size={16} />
                   </a>
                 </div>
               </article>

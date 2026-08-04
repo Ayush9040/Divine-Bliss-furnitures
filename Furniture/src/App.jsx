@@ -1,37 +1,31 @@
-import { createBrowserRouter , RouterProvider} from "react-router-dom"
-import Navbar from "./Component/Navbar"
-import HeroSection from "./Component/Home/HeroSection"
-import Aboutus from "./Component/Home/Aboutus"
-import Design from "./Component/Home/Design"
-import Footer from "./Component/Footer"
-import DesignService from './Component/Home/DesignService'
-import PeopleDesign from './Component/Home/PeopleDesign'
-import Home from "./pages/Home"
-import Contact from "./pages/Contact"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./Component/Layout";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Services from "./pages/Services";
+
 const App = () => {
   const routers = createBrowserRouter([
     {
-      path:"/",
-      element:
-      <>
-        <Navbar/>
-        <Home />
-        <Footer/>
-      </>
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+        {
+          path: "/services",
+          element: <Services />,
+        },
+      ],
     },
-    {
-      path:'/contact',
-      element:
-      <>
-        <Contact/>
-      </>
-    }
-  ])
+  ]);
 
-  return (
-    <RouterProvider router={routers}>
-    </RouterProvider>
-  )
-}
+  return <RouterProvider router={routers} />;
+};
 
-export default App
+export default App;

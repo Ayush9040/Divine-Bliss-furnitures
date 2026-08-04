@@ -1,0 +1,224 @@
+/* ── Design Process Section Styles ── */
+.design-process-section {
+  width: 100%;
+  background-color: #f3efe6;
+  position: relative;
+  color: #1a1a1a;
+  box-sizing: border-box;
+  padding: 5rem 0;
+}
+
+@media (min-width: 1024px) {
+  .design-process-section {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.design-process-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .design-process-container {
+    padding: 0 3.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.design-process-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .design-process-wrapper {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4.5rem;
+  }
+}
+
+/* ── Left Column ── */
+.process-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 5;
+}
+
+.process-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #732c14;
+}
+
+.process-tag-bullet {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid #732c14;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.process-title {
+  font-size: 2.75rem;
+  line-height: 1.1;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .process-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .process-title {
+    font-size: 4rem;
+  }
+}
+
+.process-cta-wrap {
+  margin-top: 0.5rem;
+}
+
+.process-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 2.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  text-decoration: none;
+  color: #732c14;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.35s ease;
+}
+
+.process-cta:hover {
+  background-color: #732c14;
+  color: #ffffff;
+  border-color: #732c14;
+}
+
+.process-cta-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s ease;
+}
+
+.process-cta:hover .process-cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ── Right Column (Cards Window & Track) ── */
+.process-right-window {
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .process-right-window {
+    height: 72vh;
+    overflow: hidden;
+  }
+}
+
+.process-right-track {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem 2.5rem;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .process-right-track {
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-right-track {
+    padding: 1rem 0;
+  }
+}
+
+.process-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+}
+
+.process-number {
+  font-size: 6.5rem;
+  line-height: 1;
+  font-weight: 300;
+  color: rgba(180, 160, 140, 0.32);
+  margin-bottom: -2.25rem;
+  margin-left: -0.25rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .process-number {
+    font-size: 7.5rem;
+    margin-bottom: -2.75rem;
+  }
+}
+
+.process-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0 0 0.85rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1280px) {
+  .process-card-title {
+    font-size: 1.35rem;
+  }
+}
+
+.process-card-desc {
+  font-size: 0.925rem;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
+}
