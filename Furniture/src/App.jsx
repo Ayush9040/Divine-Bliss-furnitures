@@ -7,7 +7,10 @@ import Footer from "./Component/Footer"
 import DesignService from './Component/Home/DesignService'
 import PeopleDesign from './Component/Home/PeopleDesign'
 import Home from "./pages/Home"
-import Contact from "./pages/Contact"
+import Contact from './pages/Contact'
+import AboutUs from "./pages/AboutUs"
+
+
 const App = () => {
   const routers = createBrowserRouter([
     {
@@ -24,6 +27,13 @@ const App = () => {
       element:
       <>
         <Contact/>
+      </>
+    },
+    {
+      path:'/aboutUs',
+      element:
+      <>
+      <AboutUs/>
       </>
     }
   ])
