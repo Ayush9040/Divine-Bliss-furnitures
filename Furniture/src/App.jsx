@@ -3,6 +3,7 @@ import Layout from "./Component/Layout";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -20,6 +21,10 @@ const App = () => {
         {
           path: "/services",
           element: <Services />,
+        },
+        {
+          path: "/about",
+          element: <AboutUs />,
         },
       ],
     },
