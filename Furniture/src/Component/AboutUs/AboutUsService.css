@@ -1,0 +1,230 @@
+.accordion-section {
+  background-color: #732c14;
+  padding: 4rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.text-section{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.main-text{
+  text-transform: uppercase;
+  color: white;
+  font-weight: 200;
+  font-size: 8rem;
+  display: flex;
+  align-items: center ;
+  justify-items: center;
+  gap: 2rem;
+}
+
+.small-text{
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+}
+.circle-animation{
+  height: 5.5rem;
+  width: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:2px solid #ffffff;
+  border-radius:50%;
+  color: white;
+  transition: background-color 0.3s ease; 
+}
+.circle-animation:hover{
+  height: 4 rem;
+  width: 4 rem;
+  background-color: #c4b5a5;
+  border: none;
+  color: #732c14;
+}
+.accordion-container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  height: 550px;
+  gap: 16px;
+}
+
+.accordion-panel {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: #5a2210;
+}
+
+/* When a panel is active, it expands smoothly */
+.accordion-panel.active {
+  flex: 2.8;
+}
+
+.panel-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.panel-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.accordion-panel:not(.active) .panel-image-wrapper img {
+  filter: brightness(0.85);
+}
+
+/* Content box inside the panel */
+.panel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(115, 44, 20, 0.92);
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.accordion-panel.active .panel-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.content-inner {
+  max-width: 420px;
+  color: #ffffff;
+}
+
+.panel-icon {
+  margin-bottom: 2rem;
+}
+
+.icon-box {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+
+.icon-box::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.panel-title {
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.panel-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  transition: opacity 0.2s ease;
+}
+
+.panel-link:hover {
+  opacity: 0.75;
+}
+
+
+/* text animation */
+
+.marquee-container {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+  font-family: sans-serif;
+}
+
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  /* width: max-content; */
+  will-change: transform;
+}
+
+.marquee-item {
+  font-size: 7vw;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #c4b5a5; /* Muted brownish-gray font tone */
+  letter-spacing: 2px;
+  padding: 0 0;
+}
+
+.marquee-separator {
+  font-size: 7vw;
+  font-weight: 300;
+  color: #c4b5a5;
+  padding: 0 10px;
+}
+
+/* Responsive layout adjustments for mobile screens */
+@media (max-width: 900px) {
+  .accordion-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .accordion-panel {
+    height: 350px;
+    flex: none !important;
+  }
+
+  .panel-content {
+    padding: 2rem;
+  }
+}

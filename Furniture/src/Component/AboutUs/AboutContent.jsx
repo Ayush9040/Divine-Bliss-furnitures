@@ -6,7 +6,30 @@ import "./AboutContent.css";
 import gsap from 'gsap'
 const Aboutus = () => {
 
- 
+  const marqueeRef = useRef(null);
+
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    const inner = marquee.querySelector('.marquee-inner');
+    
+    // Duplicate the inner content to ensure a seamless infinite loop width
+    const innerContent = inner.innerHTML;
+    inner.innerHTML += innerContent;
+
+    const totalWidth = inner.scrollWidth / 2;
+
+    // GSAP infinite horizontal translation
+    const tween = gsap.to(inner, {
+      x: `-=${totalWidth}`,
+      duration: 20,
+      ease: 'none',
+      repeat: -1,
+    });
+
+    return () => {
+      tween.kill();
+    };
+  }, []);
 
   return (
     <section className="about-section">
@@ -64,6 +87,14 @@ const Aboutus = () => {
         
 
         {/* animation text */}
+        <div className="marquee-container" ref={marqueeRef}>
+      <div className="marquee-inner">
+        <span className="marquee-item">IZATION</span>
+        <span className="marquee-separator">//</span>
+        <span className="marquee-item">CONCEPT DEVELOPMENT</span>
+        <span className="marquee-separator">//</span>
+      </div>
+    </div>
     </section>
   );
 };

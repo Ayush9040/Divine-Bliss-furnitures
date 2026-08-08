@@ -1,0 +1,143 @@
+.awards-section {
+  background-color: #f4f0ec;
+  padding: 8rem 12rem;
+  font-family: inherit;
+  color: #1a1a1a;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.awards-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.awards-header-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.awards-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid #a34725;
+  display: inline-block;
+}
+
+.awards-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #a34725;
+}
+
+.awards-title {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 4rem;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.award-row {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  align-items: center;
+  padding-top: 1.8rem ;
+  padding-bottom: 1.8rem ;
+  padding-left: 2rem;
+  padding-right: 8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.2s ease;
+}
+
+.award-row:hover{
+    background-color: #e7e3e3;
+}
+
+.award-row:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.award-year {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #111111;
+  letter-spacing: -0.01em;
+}
+
+.award-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #111111;
+}
+
+.award-category {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333333;
+  text-align: right;
+}
+
+/* counter animation */
+
+.counter-section {
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 4rem 2rem;
+  background-color: #f4f0ec;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stat-card {
+  padding: 1.5rem;
+}
+
+.stat-number {
+  /* font-size: clamp(3rem, 5vw, 4.5rem); */
+font-size: clamp(4.5rem, 8vw, 7rem);
+  font-weight: 300;
+  color: #732c14;
+  line-height: 1;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #333333;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Responsive layout adjustments for smaller screens */
+@media (max-width: 900px) {
+  .award-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.75rem 0;
+  }
+
+  .award-category {
+    text-align: left;
+    color: #666666;
+    font-size: 0.9rem;
+  }
+}
