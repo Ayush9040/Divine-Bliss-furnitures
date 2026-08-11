@@ -1,0 +1,256 @@
+/* ==========================================================================
+   ContactSection.css
+   Breakpoints: sm 640px | md 768px | lg 1024px | xl 1280px
+   ========================================================================== */
+
+.contact-section {
+  width: 100%;
+  padding: 4rem 1.5rem; /* py-16 px-6 */
+  background-color: #f0ede8;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .contact-section {
+    padding-top: 6rem; /* md:py-24 */
+    padding-bottom: 6rem;
+    padding-left: 4rem; /* md:px-16 */
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-section {
+    padding-top: 8.5rem; /* lg:py-34 */
+    padding-bottom: 8.5rem;
+    padding-left: 10.75rem; /* lg:px-43 */
+    padding-right: 10.75rem;
+  }
+}
+
+.contact-eyebrow-row {
+  width: 100%;
+  display: flex;
+}
+
+.contact-eyebrow {
+  font-weight: 700; /* font-bold */
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem; /* gap-2 */
+  color: #732c14;
+  font-size: 0.75rem; /* text-xs */
+}
+
+@media (min-width: 768px) {
+  .contact-eyebrow {
+    font-size: 0.875rem; /* md:text-sm */
+  }
+}
+
+.contact-columns {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1.5rem; /* mt-6 */
+  line-height: 1.25; /* leading-tight */
+  gap: 3rem; /* gap-12 */
+}
+
+@media (min-width: 1024px) {
+  .contact-columns {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.contact-col-left {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 1.875rem; /* text-3xl */
+}
+
+@media (min-width: 768px) {
+  .contact-col-left {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-col-left {
+    width: 50%;
+    font-size: 3rem; /* lg:text-5xl */
+  }
+}
+
+.contact-col-left h1 {
+  margin: 0;
+  font-weight: inherit;
+}
+
+.contact-col-right {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .contact-col-right {
+    width: 50%;
+  }
+}
+
+.contact-intro {
+  font-size: 1rem; /* text-base */
+  color: #1f2937; /* text-gray-800 */
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-intro {
+    font-size: 1.125rem; /* md:text-lg */
+  }
+}
+
+.contact-intro-break {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .contact-intro-break {
+    display: block; /* sm:block */
+  }
+}
+
+/* Address / Phone row */
+.contact-info-row {
+  margin-top: 2rem; /* mt-8 */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 768px) {
+  .contact-info-row {
+    margin-top: 2.5rem; /* md:mt-10 */
+  }
+}
+
+@media (min-width: 640px) {
+  .contact-info-row {
+    flex-direction: row;
+    gap: 5rem; /* sm:gap-20 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-info-row {
+    gap: 7.5rem; /* lg:gap-30 */
+  }
+}
+
+/* Mail / social row */
+.contact-mail-row {
+  margin-top: 2rem; /* mt-8 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 768px) {
+  .contact-mail-row {
+    margin-top: 2.5rem; /* md:mt-10 */
+  }
+}
+
+@media (min-width: 640px) {
+  .contact-mail-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5rem; /* sm:gap-20 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-mail-row {
+    gap: 7.5rem; /* lg:gap-30 */
+  }
+}
+
+.contact-label {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 700; /* font-bold */
+  letter-spacing: 0.1em; /* tracking-widest */
+  color: #8c4a32;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem; /* mb-2 */
+}
+
+.contact-address {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625; /* leading-relaxed */
+  color: #374151; /* text-gray-700 */
+  margin: 0;
+}
+
+.contact-phone {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #374151; /* text-gray-700 */
+  margin: 0;
+}
+
+.contact-email {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #374151; /* text-gray-700 */
+  margin: 0;
+}
+
+.contact-social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem; /* gap-4 */
+}
+
+@media (min-width: 640px) {
+  .contact-social {
+    justify-content: center;
+    padding-left: 1rem; /* sm:pl-4 */
+  }
+}
+
+.contact-social img {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.contact-social img:hover {
+  opacity: 0.75;
+}
+
+/* Giant email banner */
+.contact-email-banner {
+  margin-top: 6.25rem; /* mt-25 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-email-banner h1 {
+  font-size: 3rem; /* text-5xl */
+  text-transform: uppercase;
+  color: #843a1d;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-email-banner h1 {
+    font-size: 6rem; /* md:text-8xl */
+  }
+}

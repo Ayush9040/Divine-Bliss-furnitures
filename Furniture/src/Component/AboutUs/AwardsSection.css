@@ -1,0 +1,149 @@
+/* ==========================================================================
+   AwardsSection.css
+   ========================================================================== */
+
+.awards-section {
+  width: 100%;
+  background-color: #f0ede8;
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .awards-section {
+    padding: 5rem 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .awards-section {
+    padding: 6rem 8rem;
+  }
+}
+
+.awards-header {
+  margin-bottom: 2.5rem;
+}
+
+.awards-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #732c14;
+  margin-bottom: 1rem;
+}
+
+.awards-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #171717;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .awards-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Awards list
+   ========================================================================== */
+.awards-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.award-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.12);
+}
+
+.award-year {
+  font-size: 0.875rem;
+  color: #262626;
+}
+
+.award-name {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #171717;
+}
+
+.award-note {
+  font-size: 0.875rem;
+  color: #737373;
+}
+
+@media (min-width: 768px) {
+  .award-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .award-year {
+    flex: 0 0 4rem;
+  }
+
+  .award-name {
+    flex: 1 1 auto;
+  }
+
+  .award-note {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+}
+
+/* Stats counters
+   ========================================================================== */
+.awards-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 4rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (min-width: 768px) {
+  .awards-stats {
+    gap: 5rem;
+  }
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 116px;
+  font-weight: 300;
+  color: rgb(115, 44, 20);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .stat-value {
+    font-size: 96px;
+  }
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  /* letter-spacing: 0.05em; */
+  text-transform: uppercase;
+  color: #000;
+  /* max-width: 10rem; */
+}

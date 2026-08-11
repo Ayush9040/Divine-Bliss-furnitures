@@ -184,6 +184,7 @@
   display: inline-block;
   transform: translateY(110%); /* Positions letters beneath mask boundary initially */
   will-change: transform;
+  color: #000;
 }
 
 /* Bottom Bar */

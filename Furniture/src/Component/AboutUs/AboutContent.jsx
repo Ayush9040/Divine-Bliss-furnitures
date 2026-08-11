@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Circle, MoveRight } from "lucide-react";
 import Sofa from "../../assets/sofa.webp";
 import AboutContent from "../../assets/AboutContent.webp";
 import "./AboutContent.css";
-import gsap from 'gsap'
 const Aboutus = () => {
 
  

@@ -1,34 +1,57 @@
+import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import "./ContactHero.css";
 
 const ContactHero = () => {
+  const container = useRef();
+
+  // Fade + slide-up reveal on page load, matching the reveal style
+  // used across the rest of the Contacts page (power3.out, staggered).
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(".page-hero-title", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+      }).from(
+        ".page-hero-breadcrumb",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.6" // overlap slightly with the title animation
+      );
+    },
+    { scope: container }
+  );
+
   return (
     <div
-      className="page-hero relative w-full min-h-[45vh] md:min-h-[55vh] bg-cover bg-center text-white"
+      ref={container}
+      className="page-hero"
       style={{
         backgroundImage: `url('https://wgl-dsites.net/mink/wp-content/uploads/2026/02/pt-contacts.webp')`,
       }}
     >
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="page-hero-overlay" />
 
-      <main className="relative z-10 px-7 max-w-8xl pt-32 pb-16 md:pt-40 md:pb-20 mx-auto flex items-center md:justify-between justify-center flex-col md:flex-row gap-6">
+      <main className="page-hero-main">
         <div>
-          <h1 className="text-4xl md:text-6xl tracking-wide uppercase">
-            Contacts
-          </h1>
+          <h1 className="page-hero-title">Contacts</h1>
         </div>
 
-        <div className="flex items-center text-sm font-medium tracking-widest text-gray-200">
-          <Link
-            to="/"
-            className="hover:text-white transition-colors hover:underline underline-offset-4"
-          >
+        <div className="page-hero-breadcrumb">
+          <Link to="/" className="page-hero-breadcrumb-link">
             HOME
           </Link>
-          <ArrowRight className="w-4 h-4 mx-3 text-gray-400" />
-          <span className="text-white underline underline-offset-4">
-            CONTACTS
-          </span>
+          <ArrowRight className="page-hero-breadcrumb-arrow" />
+          <span className="page-hero-breadcrumb-current">CONTACTS</span>
         </div>
       </main>
     </div>

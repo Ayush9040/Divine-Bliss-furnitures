@@ -1,0 +1,39 @@
+/* ==========================================================================
+   ServicesTicker.css
+   ========================================================================== */
+
+.ticker-outer {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f0ede8;
+  padding: 1rem 0 3rem;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.ticker-item {
+  font-family: inherit;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgba(115, 44, 20, 0.14); /* faint brand-brown, matches screenshot */
+  font-weight: 400; /* FIX: was rendering too heavy vs the thin look on the live site */
+  letter-spacing: 0.04em;
+  padding-right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .ticker-item {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ticker-item {
+    font-size: 96px;
+  }
+}

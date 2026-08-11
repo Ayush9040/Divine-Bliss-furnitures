@@ -7,7 +7,11 @@ const TRANSPARENT_NAV_ROUTES = ['/contact', '/services'];
 
 const Layout = () => {
   const { pathname } = useLocation();
-  const variant = TRANSPARENT_NAV_ROUTES.includes(pathname) ? 'transparent' : 'solid';
+  const variant = pathname === '/'
+    ? 'home'
+    : TRANSPARENT_NAV_ROUTES.includes(pathname)
+      ? 'transparent'
+      : 'solid';
 
   return (
     <>

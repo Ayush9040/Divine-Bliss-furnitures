@@ -1,12 +1,20 @@
 import React from 'react'
-import AboutHero from '../Component/AboutUs/AboutHeroSection'
-import AboutContent from '../Component/AboutUs/AboutContent'
+import AboutHeroSection from '../Component/AboutUs/AboutHeroSection'
+import Aboutus from '../Component/AboutUs/AboutContent'
+import ServicesTicker from '../Component/AboutUs/ServicesTicker'
+import ServicesBanner from '../Component/AboutUs/ServicesBanner'
+import ServiceCards from '../Component/AboutUs/ServiceCards'
+import AwardsSection from '../Component/AboutUs/AwardsSection'
 
 const AboutUs = () => {
   return (
     <>
-    <AboutHero/>
-    <AboutContent/>
+    <AboutHeroSection />
+      <Aboutus />
+      <ServicesTicker />
+      <ServicesBanner />
+      <ServiceCards />
+      <AwardsSection />
     </>
   )
 }

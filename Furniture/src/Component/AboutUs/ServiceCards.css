@@ -1,0 +1,164 @@
+/* ==========================================================================
+   ServiceCards.css — rewritten
+
+   PREVIOUS BUG: animating both the card's flex-basis AND the panel's
+   width/flex-basis at the same time caused a content-box overflow
+   (padding was added on top of a percentage width), which pushed the
+   panel outside its parent and made it render as a detached floating
+   box with a shadow, while the other two images collapsed to 0 width.
+
+   FIX: only the card's flex-grow animates now. The image is an
+   absolutely-positioned full-bleed background inside the card (so it
+   never fights the panel for space), and the accent panel is a
+   fixed-width overlay that slides in from the right edge of the active
+   card. Nothing ever collapses to zero, so nothing can overflow.
+   ========================================================================== */
+
+.service-cards-row,
+.service-cards-row * {
+  box-sizing: border-box;
+}
+
+.service-cards-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 20rem;
+}
+
+.service-card-image {
+  width: 100%;
+  height: 16rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.service-card-panel {
+  position: relative;
+  background-color: #a8532f; /* accent terracotta */
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.service-card-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card-title {
+  font-size: 1.375rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.service-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.service-card-link-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.service-card-link:hover .service-card-link-icon {
+  transform: translateX(0.25rem);
+}
+
+/* Desktop: horizontal row, accent panel overlays the active card
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .service-cards-row {
+    flex-direction: row;
+    height: 28rem;
+    overflow: hidden;
+  }
+
+  .service-card {
+    flex: 1 1 0%;
+    min-height: 0;
+    height: 100%;
+    /* Only this property animates now — nothing else needs to move,
+       so there's nothing left to overflow or collapse unexpectedly. */
+    transition: flex-grow 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .service-card--active {
+    flex-grow: 2.4;
+  }
+
+  .service-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Fixed-width overlay pinned to the right edge of the card.
+     It slides/fades in — it never resizes, so it can't overflow. */
+  .service-card-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20rem;
+    max-width: 70%;
+    justify-content: center;
+    padding: 2.5rem;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease;
+  }
+
+  .service-card--active .service-card-panel {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .service-card-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Below 1024px: no hover accordion — every card is fully expanded,
+   image stacked above its own panel, matching the mobile screenshots.
+   ========================================================================== */
+@media (max-width: 1023.98px) {
+  .service-card-panel {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+.service-card {
+    border: 0;
+}

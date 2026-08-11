@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag, Search, ChevronRight } from 'lucide-react';
 import Logo from '../assets/Logo.webp';
-import WhiteLogo from '../assets/w-Logo.webp';
+import WhiteLogo from '../assets/w-logo.webp';
 import './Navbar.css';
 const navLinks = [
   { name: 'HOME', href: '/' },
@@ -44,11 +44,11 @@ const navLinks = [
   },
   {
     name: 'BLOG',
-    href: '#',
+    href: '#blog',
     hasDropdown: true,
     dropdownItems: ['Blog Grid', 'Blog List', 'Blog Single'],
   },
-  { name: 'SHOP', href: '#' },
+  { name: 'SHOP', href: '#shop' },
   { name: 'CONTACTS', href: '/contact' },
 ];
 
@@ -70,7 +70,7 @@ const Navbar = ({ variant = 'solid' }) => {
     const prevScrollY = prevScrollYRef.current;
 
     // Check hero section height for solid/transparent styling
-    const hero = document.querySelector('.page-hero');
+    const hero = document.querySelector('.page-hero, .mink-hero');
     if (!hero) {
       setIsScrolledPastHero(true);
     } else {
@@ -165,7 +165,7 @@ const Navbar = ({ variant = 'solid' }) => {
 
   return (
     <header
-      className={`navbar-header ${showSolid ? 'navbar-solid' : 'navbar-transparent'}${
+      className={`navbar-header ${showSolid ? 'navbar-solid' : 'navbar-transparent'}${variant === 'home' ? ' navbar-home' : ''}${isScrolledPastHero ? ' navbar-scrolled' : ''}${
         !isVisible && !isOpen ? ' navbar-hidden' : ''
       }${isOpen ? ' navbar-menu-open' : ''}`}
     >

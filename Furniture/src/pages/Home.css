@@ -1,0 +1,214 @@
+.mink-home {
+  --paper: #f1eee9;
+  --ink: #181818;
+  --rust: #7f2e13;
+  --card-rust: #a3482b;
+  background: var(--paper);
+  color: var(--ink);
+  overflow: clip;
+}
+
+.mink-home *, .mink-home *::before, .mink-home *::after { box-sizing: border-box; }
+.mink-home h1, .mink-home h2, .mink-home h3, .mink-home p { margin: 0; }
+.mink-shell { width: min(1170px, calc(100% - 60px)); margin-inline: auto; }
+.mink-wide-shell { width: min(1365px, calc(100% - 60px)); margin-inline: auto; }
+
+.mink-hero {
+  position: relative;
+  height: 585px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.mink-hero-sketch {
+  position: absolute;
+  inset: 0 -2% -9% 31%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+  opacity: .62;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.mink-hero-copy { position: relative; z-index: 1; padding-top: 154px; }
+.mink-hero-title { font-size: clamp(74px, 7.82vw, 112.5px); font-weight: 300; line-height: 1; letter-spacing: -.047em; text-transform: uppercase; }
+.mink-hero-title > span { display: block; white-space: nowrap; }
+.mink-letter-mask { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.mink-letter { display: inline-block; will-change: transform; }
+
+.mink-hero-info {
+  height: 72px;
+  margin-top: 42px;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr .65fr;
+  align-items: center;
+  background: #e1ddd7;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 1.32;
+  font-weight: 700;
+}
+
+.mink-hero-info a, .mink-text-link, .mink-service-copy a { color: var(--rust); text-decoration: none; display: inline-flex; align-items: center; justify-content: flex-end; gap: 14px; text-transform: uppercase; font-weight: 700; }
+.mink-hero-info a svg, .mink-text-link svg, .mink-service-copy a svg { transition: transform .3s ease; }
+.mink-hero-info a:hover svg, .mink-text-link:hover svg, .mink-service-copy a:hover svg { transform: translateX(6px); }
+
+.mink-hero-image { height: 720px; overflow: hidden; background: #c0aea1; }
+.mink-hero-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.mink-about { padding: 139px 0 154px; }
+.mink-section-heading { max-width: 810px; }
+.mink-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--rust); font-size: 13px; font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
+.mink-eyebrow i { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
+.mink-section-heading h2 { margin-top: 31px; font-size: 48px; line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-about-grid { display: grid; grid-template-columns: 500px 570px; gap: 100px; margin-top: 41px; }
+.mink-about-column { min-width: 0; }
+.mink-about-lead { width: 380px; font-size: 24px; line-height: 36px; font-weight: 400; }
+.mink-about-chair { display: block; width: 500px; height: 576px; margin: 164px 0 0 -25px; object-fit: fill; will-change: transform; }
+.mink-about-copy > p { width: 570px; font-size: 18px; line-height: 34px; color: #444; }
+.mink-text-link { justify-content: flex-start; height: 44px; margin-top: 16px; font-size: 13px; }
+.mink-about-collage { position: relative; height: 355px; margin-top: 171px; }
+.mink-about-collage img { position: absolute; display: block; object-fit: cover; }
+.mink-about-collage img:first-child { z-index: 2; width: 265px; height: 212px; left: 7.5px; top: 143px; object-fit: fill; will-change: transform; }
+.mink-about-collage img:last-child { width: 410px; height: 331px; right: -10px; top: 0; object-fit: fill; will-change: transform; }
+
+.mink-client-strip { height: 248px; overflow: hidden; }
+.mink-client-track { display: flex; align-items: center; width: 100%; height: 114px; }
+.mink-client-item { flex: 0 0 calc(100% / 6); height: 114px; display: flex; align-items: center; justify-content: center; }
+.mink-client-item img { display: block; width: auto; height: auto; object-fit: contain; opacity: .5; filter: grayscale(1); }
+.mink-client-item:nth-child(1) img { width: 130px; }
+.mink-client-item:nth-child(2) img { width: 50px; }
+.mink-client-item:nth-child(3) img { width: 68px; }
+.mink-client-item:nth-child(4) img { width: 36px; }
+.mink-client-item:nth-child(5) img { width: 138px; }
+.mink-client-item:nth-child(6) img { width: 121px; }
+
+.mink-services { position: relative; padding-bottom: max(0px, calc(572px - 50vh)); background: var(--rust); }
+.mink-services-pin { height: 100vh; min-height: 680px; background: var(--rust); overflow: visible; }
+.mink-services-layout { height: 100%; display: grid; grid-template-columns: 40% 60%; gap: 28px; align-items: center; }
+.mink-services-intro { color: white; align-self: center; }
+.mink-eyebrow-light { color: white; }
+.mink-services-intro h2 { margin: 31px 0 42px; font-size: clamp(42px, 3.35vw, 48px); line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-outline-button { width: 245px; height: 61px; border: 1px solid rgba(255,255,255,.35); color: white; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; font-weight: 700; text-decoration: none; text-transform: uppercase; transition: background .25s,color .25s; }
+.mink-outline-button:hover { background: white; color: var(--rust); }
+.mink-service-stack { position: relative; height: 500px; }
+.mink-service-card { position: absolute; inset: 0; overflow: hidden; padding: 38px; box-shadow: 0 8px 25px rgba(50,10,0,.08); }
+.mink-service-card--rust { color: white; background: var(--card-rust); }
+.mink-service-card--stone { color: var(--ink); background: #e4e1db; }
+.mink-service-card--white { color: var(--ink); background: white; }
+.mink-service-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mink-service-number, .mink-service-copy { position: relative; z-index: 1; }
+.mink-service-number { font-size: 20px; line-height: 1; }
+.mink-service-copy { max-width: 570px; margin-top: 145px; }
+.mink-service-copy h3 { font-size: 31px; line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-service-copy p { margin-top: 23px; font-size: 16px; line-height: 1.85; font-weight: 500; }
+.mink-service-copy a { justify-content: flex-start; margin-top: 26px; color: inherit; font-size: 13px; }
+
+.mink-projects { padding: 130px 30px 100px; }
+.mink-projects-title { font-size: clamp(64px, 6.7vw, 96px); line-height: 1; font-weight: 300; text-align: center; text-transform: uppercase; white-space: nowrap; letter-spacing: -.04em; }
+.mink-project-window { overflow: hidden; margin-top: 65px; }
+.mink-project-track { display: flex; gap: 42px; transform: translateX(var(--project-desktop)); transition: transform .75s cubic-bezier(.16,1,.3,1); }
+.mink-project { flex: 0 0 calc((100% - 84px) / 3); min-width: 0; }
+.mink-project-image { height: 307px; overflow: hidden; }
+.mink-project-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); }
+.mink-project:hover img { transform: scale(1.035); }
+.mink-project h3 { margin-top: 24px; font-size: 24px; font-weight: 400; text-transform: uppercase; }
+.mink-project p { display: flex; align-items: center; gap: 9px; margin-top: 5px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #777; }
+.mink-project p i { width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; }
+.mink-project-controls { display: flex; justify-content: center; gap: 24px; margin-top: 50px; }
+.mink-project-controls button { width: 54px; height: 54px; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
+.mink-project-controls svg { width: 30px; height: 30px; stroke-width: 1.25; }
+
+.mink-team { padding: 95px 0 160px; }
+.mink-team-heading { max-width: 800px; }
+.mink-team-list { margin-top: 70px; border-top: 1px solid #d4cfc8; }
+.mink-team-member { position: relative; min-height: 137px; border-bottom: 1px solid #d4cfc8; display: flex; align-items: center; justify-content: space-between; }
+.mink-team-name { position: relative; display: flex; align-items: center; gap: 22px; min-width: 0; }
+.mink-team-name h3 { font-size: clamp(42px, 4.45vw, 64px); line-height: 1.2; font-weight: 300; color: rgba(115,44,20,.2); text-transform: uppercase; transition: color .3s ease,transform .3s ease; white-space: nowrap; }
+.mink-team-member.is-active h3 { color: var(--rust); transform: translateX(2px); }
+.mink-team-name > span { font-size: 17px; }
+.mink-team-name p { font-size: 13px; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+.mink-team-name img { position: absolute; z-index: 3; left: min(41vw, 500px); width: 216px; height: 278px; object-fit: cover; opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; transition: opacity .3s ease,transform .45s cubic-bezier(.16,1,.3,1); }
+.mink-team-member.is-active .mink-team-name img { opacity: 1; transform: translateY(0) scale(1); }
+.mink-team-member > a { width: 155px; height: 61px; display: grid; place-items: center; border: 1px solid #d4cfc8; color: var(--rust); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; background: transparent; transition: background .25s,color .25s,border-color .25s; }
+.mink-team-member.is-active > a { background: white; border-color: white; }
+
+@media (max-width: 1100px) {
+  .mink-shell { width: min(100% - 48px, 960px); }
+  .mink-wide-shell { width: calc(100% - 48px); }
+  .mink-service-copy { margin-top: 120px; }
+  .mink-service-copy h3 { font-size: 27px; }
+  .mink-team-name img { left: 45vw; }
+}
+
+@media (max-width: 1023px) {
+  .mink-about { padding-bottom: 50px; }
+  .mink-about-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; }
+  .mink-about-lead { width: 100%; max-width: 410px; }
+  .mink-about-copy > p { width: 100%; font-size: 18px; line-height: 34px; }
+  .mink-about-chair,
+  .mink-about-collage { display: none; }
+  .mink-text-link { margin-top: 16px; }
+}
+
+@media (max-width: 900px) {
+  .mink-shell, .mink-wide-shell { width: calc(100% - 30px); }
+  .mink-hero { height: 438px; }
+  .mink-hero-sketch { inset: 58px -24% -7% 5%; background-position: center bottom; opacity: .5; }
+  .mink-hero-copy { padding-top: 98px; }
+  .mink-hero-title { font-size: clamp(39px, 10.4vw, 64px); line-height: 1.05; letter-spacing: -.045em; }
+  .mink-hero-title > span { white-space: normal; }
+  .mink-hero-title > span:first-child { display: inline; }
+  .mink-hero-info { position: absolute; top: 217px; left: 0; right: 0; height: 163px; margin: 0; padding: 20px; grid-template-columns: 1fr; gap: 14px; font-size: 12px; }
+  .mink-hero-info a { justify-content: flex-start; }
+  .mink-hero-image { height: 253px; }
+  .mink-about { padding: 72px 0 40px; }
+  .mink-section-heading h2 { margin-top: 27px; font-size: clamp(31px, 7vw, 44px); line-height: 1.22; }
+  .mink-about-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; }
+  .mink-about-lead { font-size: 24px; }
+  .mink-about-copy > p { font-size: 18px; line-height: 34px; }
+  .mink-client-strip { height: 154px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; scroll-snap-type: x mandatory; }
+  .mink-client-strip::-webkit-scrollbar { display: none; }
+  .mink-client-item { flex-basis: 50%; scroll-snap-align: start; }
+  .mink-services { padding: 70px 0 55px; }
+  .mink-services-pin { height: auto; min-height: 0; overflow: visible; }
+  .mink-services-layout { display: block; }
+  .mink-services-intro h2 { font-size: clamp(38px, 9vw, 52px); }
+  .mink-service-stack { height: auto; margin-top: 65px; display: grid; gap: 22px; }
+  .mink-service-card { position: relative; inset: auto; min-height: 430px; padding: 28px; }
+  .mink-service-copy { margin-top: 115px; }
+  .mink-service-copy h3 { font-size: 26px; }
+  .mink-projects { padding: 85px 15px 65px; }
+  .mink-projects-title { font-size: clamp(43px, 10vw, 72px); white-space: normal; }
+  .mink-project-track { gap: 24px; transform: translateX(var(--project-tablet)); }
+  .mink-project { flex-basis: calc((100% - 24px) / 2); }
+  .mink-project-image { height: 300px; }
+  .mink-team { padding: 70px 0 100px; }
+  .mink-team-member { min-height: 118px; }
+  .mink-team-name { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+  .mink-team-name h3 { grid-column: 1 / -1; font-size: clamp(32px, 6.5vw, 52px); }
+  .mink-team-name img { display: none; }
+}
+
+@media (max-width: 600px) {
+  .mink-hero-title { font-size: 39px; }
+  .mink-section-heading h2 { font-size: 29px; }
+  .mink-about-copy > p { font-size: 16px; line-height: 30px; }
+  .mink-project-track { transform: translateX(var(--project-mobile)); }
+  .mink-project { flex-basis: 100%; }
+  .mink-project-image { height: 265px; }
+  .mink-team-list { margin-top: 45px; }
+  .mink-team-member { min-height: 145px; align-items: flex-start; padding: 25px 0; }
+  .mink-team-name { display: block; padding-right: 10px; }
+  .mink-team-name h3 { white-space: normal; font-size: 31px; }
+  .mink-team-name > span { display: inline-block; margin-top: 10px; margin-right: 8px; }
+  .mink-team-name p { display: inline; white-space: normal; font-size: 11px; }
+  .mink-team-member > a { width: 105px; height: 48px; flex: 0 0 auto; margin-top: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mink-letter, [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .mink-project-track { transition: none; }
+}

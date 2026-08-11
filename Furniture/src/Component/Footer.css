@@ -1,0 +1,68 @@
+.mink-footer {
+  position: relative;
+  min-height: 610px;
+  padding: 40px 30px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: 'TikTok Sans', sans-serif;
+}
+
+.mink-footer *, .mink-footer *::before, .mink-footer *::after { box-sizing: border-box; }
+.mink-footer p { margin: 0; }
+
+.mink-footer-panel {
+  width: 100%;
+  min-height: 475px;
+  padding: 105px 95px 90px;
+  display: grid;
+  grid-template-columns: 1.2fr .95fr .78fr;
+  background: rgba(38, 38, 36, .53);
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(21px);
+}
+
+.mink-footer-brand,
+.mink-footer-contact,
+.mink-footer-social {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mink-footer-contact,
+.mink-footer-social {
+  border-left: 1px solid rgba(255,255,255,.17);
+  padding-left: 30px;
+}
+
+.mink-footer-brand img { width: 105px; height: auto; }
+.mink-footer-brand > p { max-width: 395px; font-size: 16px; line-height: 1.95; font-weight: 500; }
+.mink-footer-contact > div { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.mink-footer-contact p, .mink-footer-contact a, .mink-footer-social a, .mink-footer-social button { color: white; font-size: 15px; line-height: 1.9; font-weight: 500; text-decoration: none; }
+.mink-footer-social nav { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.mink-footer-social a { transition: opacity .25s ease; }
+.mink-footer-social a:hover { opacity: .65; }
+.mink-footer-social button { width: 100%; padding: 0 0 13px; border: 0; border-bottom: 1px solid rgba(255,255,255,.25); background: transparent; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.mink-footer-top { position: absolute; right: 30px; bottom: 40px; width: 49px; height: 49px; border: 0; display: grid; place-items: center; color: #9c492e; background: white; cursor: pointer; }
+.mink-footer-top svg { width: 23px; stroke-width: 1.5; }
+
+@media (max-width: 900px) {
+  .mink-footer { min-height: 0; padding: 20px 15px; }
+  .mink-footer-panel { min-height: 0; padding: 60px 45px; grid-template-columns: 1fr 1fr; gap: 55px 0; }
+  .mink-footer-brand { min-height: 240px; padding-right: 30px; }
+  .mink-footer-contact { min-height: 240px; }
+  .mink-footer-social { grid-column: 1 / -1; min-height: 190px; padding-top: 45px; padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.17); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .mink-footer-top { right: 15px; bottom: 20px; }
+}
+
+@media (max-width: 600px) {
+  .mink-footer-panel { display: block; padding: 45px 28px 75px; }
+  .mink-footer-brand, .mink-footer-contact, .mink-footer-social { min-height: 0; }
+  .mink-footer-brand > p { margin-top: 55px; }
+  .mink-footer-contact, .mink-footer-social { margin-top: 45px; padding: 40px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.17); }
+  .mink-footer-contact > p { margin-top: 40px; }
+  .mink-footer-social { display: block; }
+  .mink-footer-social button { margin-top: 40px; }
+}
