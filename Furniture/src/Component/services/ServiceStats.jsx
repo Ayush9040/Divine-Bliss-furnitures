@@ -1,118 +1,63 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../../assets/service_sec3_bg.webp';
+import { useEffect, useRef, useState } from 'react';
+import counterImage from '../../assets/services-reference/counter-bg.webp';
+import counterCircle from '../../assets/services-reference/counter-circle.webp';
 import './ServiceStats.css';
 
 const stats = [
-  { target: 340, suffix: '+', label: 'UNIQUE HOUSES BUILT' },
-  { target: 67, suffix: 'K', label: 'DESIGNED SQUARE METERS' },
-  { target: 25, suffix: '', label: 'SKILLED DESIGNERS' },
+  [340, '+', 'Unique Houses Built'],
+  [67, 'K', 'Designed Square Meters'],
+  [25, '', 'Skilled Designers'],
 ];
 
-const ServiceStats = () => {
-  const sectionRef = useRef(null);
-  const numRefs = useRef([]);
-
-  numRefs.current = [];
-  const addToRefs = (el) => {
-    if (el && !numRefs.current.includes(el)) {
-      numRefs.current.push(el);
-    }
-  };
+function useAnimatedCounters(ref) {
+  const [values, setValues] = useState([100, 10, 10]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValues(stats.map(([target]) => target));
+      return undefined;
+    }
 
-    const ctx = gsap.context(() => {
-      // Counter animation for numbers
-      stats.forEach((stat, idx) => {
-        const el = numRefs.current[idx];
-        if (!el) return;
+    let frame;
+    let started = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || started) return;
+      started = true;
+      const start = performance.now();
+      const from = [100, 10, 10];
+      const animate = (now) => {
+        const progress = Math.min((now - start) / 1700, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValues(stats.map(([target], index) => Math.round(from[index] + (target - from[index]) * eased)));
+        if (progress < 1) frame = requestAnimationFrame(animate);
+      };
+      frame = requestAnimationFrame(animate);
+      observer.disconnect();
+    }, { threshold: .28 });
 
-        const counter = { value: 0 };
+    if (ref.current) observer.observe(ref.current);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, [ref]);
 
-        gsap.to(counter, {
-          value: stat.target,
-          duration: 2.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-          onUpdate: () => {
-            el.innerText = `${Math.floor(counter.value)}${stat.suffix}`;
-          },
-        });
-      });
+  return values;
+}
 
-      // Fade-in and slide-up transition
-      gsap.from('.service-stat-item', {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        stagger: 0.25,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+export default function ServiceStats() {
+  const sectionRef = useRef(null);
+  const values = useAnimatedCounters(sectionRef);
 
   return (
-    <section
-      ref={sectionRef}
-      className="service-stats-section"
-      style={{ backgroundImage: `url(${bgImage})` }}
-    >
-      <div className="service-stats-overlay" />
-
-      {/* Geometric Ellipse Arch Overlay Lines */}
-      <svg
-        className="service-stats-svg-overlay"
-        viewBox="0 0 1440 600"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-      >
-        <ellipse
-          cx="480"
-          cy="300"
-          rx="450"
-          ry="270"
-          stroke="white"
-          strokeWidth="1.2"
-        />
-        <ellipse
-          cx="960"
-          cy="300"
-          rx="450"
-          ry="270"
-          stroke="white"
-          strokeWidth="1.2"
-        />
-      </svg>
-
-      <div className="service-stats-container">
-        <div className="service-stats-grid">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="service-stat-item">
-              <span ref={addToRefs} className="service-stat-number">
-                0{stat.suffix}
-              </span>
-              <p className="service-stat-label">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+    <section ref={sectionRef} className="service-stats-section" style={{ backgroundImage: `url(${counterImage})` }}>
+      <div className="service-stats-shade" />
+      <div className="service-stats-inner">
+        {stats.map(([target, suffix, label], index) => (
+          <article className="service-stat services-reveal" style={{ '--reveal-delay': `${index * 100}ms` }} key={target}>
+            <img src={counterCircle} alt="" aria-hidden="true" />
+            <p className="service-stat-number">{values[index]}{suffix}</p>
+            <h2>{label}</h2>
+          </article>
+        ))}
       </div>
     </section>
   );
-};
-
-export default ServiceStats;
+}

@@ -1,70 +1,110 @@
-import React from "react";
-import { Circle, MoveRight } from "lucide-react";
-import Sofa from "../../assets/sofa.webp";
-import AboutContent from "../../assets/AboutContent.webp";
-import "./AboutContent.css";
-const Aboutus = () => {
+import { useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import leftImage from '../../assets/about-reference/about-left.webp';
+import rightImage from '../../assets/about-reference/about-right.webp';
+import './AboutContent.css';
 
- 
+gsap.registerPlugin(ScrollTrigger);
+
+const heading = 'Interior Design That Balances Beauty, Comfort, and Purpose in Every Detail';
+
+function AnimatedHeading() {
+  return heading.split(' ').map((word, wordIndex) => (
+    <span className="about-story-heading__word" key={`${word}-${wordIndex}`}>
+      {word.split('').map((letter, letterIndex) => (
+        <span className="about-story-heading__letter" key={`${letter}-${letterIndex}`}>
+          {letter}
+        </span>
+      ))}
+      {wordIndex < heading.split(' ').length - 1 && ' '}
+    </span>
+  ));
+}
+
+export default function AboutContent() {
+  const sectionRef = useRef(null);
+
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.from('.about-story-heading__eyebrow', {
+      autoAlpha: 0,
+      y: 16,
+      duration: 0.65,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.about-story-heading', start: 'top 84%' },
+    });
+
+    gsap.from('.about-story-heading__letter', {
+      autoAlpha: 0,
+      yPercent: 115,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.018,
+      scrollTrigger: { trigger: '.about-story-heading__title', start: 'top 86%' },
+    });
+
+    gsap.from('.about-story__reveal', {
+      autoAlpha: 0,
+      y: 34,
+      duration: 0.85,
+      ease: 'power3.out',
+      stagger: 0.11,
+      scrollTrigger: { trigger: '.about-story-editorial', start: 'top 82%' },
+    });
+
+    gsap.from('.about-story__image', {
+      autoAlpha: 0,
+      y: 46,
+      duration: 1,
+      ease: 'power3.out',
+      stagger: 0.14,
+      scrollTrigger: { trigger: '.about-story__left-image', start: 'top 88%' },
+    });
+  }, { scope: sectionRef });
 
   return (
-    <section className="about-section">
-      {/* Top Header Section */}
-      <div className="about-header-wrapper">
-        <span className="about-subtitle">
-          <Circle size={10} /> SMTH LITTLE ABOUT US
-        </span>
-        <h2 className="about-title">
-          Interior Design That Balances <br /> Beauty, Comfort, and Purpose in{" "}
-          <br /> Every Detail
-        </h2>
+    <section ref={sectionRef} className="about-story">
+      <div className="about-story-heading">
+        <div className="about-story-heading__inner">
+          <span className="about-story-heading__eyebrow">
+            <i aria-hidden="true" /> Smth Little About Us
+          </span>
+          <h2 className="about-story-heading__title"><AnimatedHeading /></h2>
+        </div>
       </div>
 
-      {/* Main Content Grid */}
-      <div className="about-main-grid">
-        {/* Left Column */}
-        <div className="about-left-col">
-          <p className="about-tagline">
-            We believe great design goes <br className="desktop-break" /> beyond
-            aesthetics.
-          </p>
-          <div className="about-image-wrapper">
-            <img src={Sofa} alt="Sofa interior" className="about-img" />
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="about-right-col">
-          <p className="about-description">
-            It’s about how a space works, how it feels, and how it supports
-            everyday life. By combining smart planning, high-quality materials,
-            and a deep understanding of light, color, and form, we transform
-            ideas into spaces that are beautiful, practical, and uniquely
-            personal. Our goal is to create interiors that elevate experiences
-            and stand the test of time.
-          </p>
-
-          <div>
-            <a href="#cases" className="about-link group">
-              VIEW ALL CASES <MoveRight className="about-link-icon" />
-            </a>
-          </div>
-
-          <div className="about-basin-wrapper">
+      <div className="about-story-editorial">
+        <div className="about-story-editorial__inner">
+          <div className="about-story__column about-story__column--left">
+            <p className="about-story__lead about-story__reveal">
+              We believe great design goes beyond aesthetics.
+            </p>
             <img
-              src={AboutContent}
-              alt="Basin interior design"
-              className="about-basin-img"
+              className="about-story__image about-story__left-image"
+              src={leftImage}
+              alt="Calm contemporary living room"
+            />
+          </div>
+
+          <div className="about-story__column about-story__column--right">
+            <p className="about-story__copy about-story__reveal">
+              It’s about how a space works, how it feels, and how it supports everyday life. By combining smart planning, high-quality materials, and a deep understanding of light, color, and form, we transform ideas into spaces that are beautiful, practical, and uniquely personal. Our goal is to create interiors that elevate experiences and stand the test of time.
+            </p>
+            <a className="about-story__link about-story__reveal" href="/#projects">
+              View All Cases <ArrowRight aria-hidden="true" />
+            </a>
+            <img
+              className="about-story__image about-story__right-image"
+              src={rightImage}
+              alt="Interior designers collaborating at a desk"
             />
           </div>
         </div>
-
       </div>
-        
-
-        {/* animation text */}
     </section>
   );
-};
-
-export default Aboutus;
+}

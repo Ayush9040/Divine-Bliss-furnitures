@@ -42,7 +42,7 @@
   margin-top: 42px;
   padding: 0 30px;
   display: grid;
-  grid-template-columns: 1.15fr 1fr .65fr;
+  grid-template-columns: 3.15fr 1fr;
   align-items: center;
   background: #e1ddd7;
   text-transform: uppercase;
@@ -115,11 +115,53 @@
 .mink-project-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); }
 .mink-project:hover img { transform: scale(1.035); }
 .mink-project h3 { margin-top: 24px; font-size: 24px; font-weight: 400; text-transform: uppercase; }
-.mink-project p { display: flex; align-items: center; gap: 9px; margin-top: 5px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #777; }
+.mink-project p { display: flex; align-items: self-start; flex-direction: column; gap: 9px; margin-top: 5px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #777; }
 .mink-project p i { width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; }
 .mink-project-controls { display: flex; justify-content: center; gap: 24px; margin-top: 50px; }
 .mink-project-controls button { width: 54px; height: 54px; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
 .mink-project-controls svg { width: 30px; height: 30px; stroke-width: 1.25; }
+
+.mink-architecture-heading,
+.mink-architecture-frame { width: min(1170px, calc(100% - 60px)); margin-inline: auto; }
+.mink-architecture-heading { padding: 140px 0 40px; }
+.mink-architecture-eyebrow { font-size: 14px; line-height: 17.5px; font-weight: 600; }
+.mink-architecture-heading h2 { max-width: 700px; margin-top: 31px; font-size: 48px; line-height: 60px; font-weight: 400; letter-spacing: -1.92px; text-transform: uppercase; }
+.mink-architecture-accordion { display: flex; width: calc(50vw + 585px); height: 700px; }
+.mink-architecture-panel { position: relative; flex: 1 1 0; min-width: 0; height: 100%; overflow: hidden; color: white; cursor: pointer; outline: none; transition: flex-grow .5s ease; }
+.mink-architecture-panel.is-active { flex-grow: 2.21; }
+.mink-architecture-image,
+.mink-architecture-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mink-architecture-image { display: block; object-fit: cover; object-position: left center; }
+.mink-architecture-overlay { background: rgba(24,24,24,.7); pointer-events: none; transition: background-color .5s ease; }
+.mink-architecture-panel:first-child.is-active .mink-architecture-overlay { background: rgba(24,24,24,.5); }
+.mink-architecture-panel-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; padding: 36px 90px 40px 40px; overflow: hidden; }
+.mink-architecture-number { flex: 0 0 auto; font-size: 20px; line-height: 25px; font-weight: 400; letter-spacing: -.4px; }
+.mink-architecture-copy { width: 520px; margin-top: auto; opacity: 0; transition: opacity .5s ease; }
+.mink-architecture-panel.is-active .mink-architecture-copy { opacity: 1; transition-delay: .12s; }
+.mink-architecture-copy h3 { font-size: 40px; line-height: 56px; font-weight: 400; letter-spacing: -1.6px; text-transform: uppercase; }
+.mink-architecture-copy p { width: 450px; margin-top: 21px; padding-bottom: 16px; font-size: 20px; line-height: 34px; font-weight: 400; letter-spacing: -.4px; }
+.mink-architecture-copy a { width: 181px; height: 60px; margin-top: 26px; display: inline-flex; align-items: center; justify-content: center; background: white; color: var(--rust); font-size: 14px; line-height: 24px; font-weight: 600; text-decoration: none; text-transform: uppercase; transition: background .25s ease,color .25s ease; }
+.mink-architecture-copy a:hover { background: var(--rust); color: white; }
+.mink-architecture-panel:focus-visible { box-shadow: inset 0 0 0 2px white; }
+
+.mink-testimonials { padding: 130px 0 125px; }
+.mink-testimonials-heading { text-align: center; }
+.mink-testimonials-heading h2 { margin-top: 18px; font-size: clamp(52px, 6.7vw, 96px); line-height: 1; font-weight: 300; letter-spacing: -.06em; text-transform: uppercase; }
+.mink-testimonials-window { width: min(1235px, 100%); margin: 70px auto 0; padding: 0 15px; overflow: hidden; }
+.mink-testimonials-track { display: flex; gap: 30px; transform: translate3d(var(--testimonial-desktop), 0, 0); transition: transform .72s cubic-bezier(.16,1,.3,1); will-change: transform; }
+.mink-testimonials-track.is-instant { transition: none; }
+.mink-testimonial-card { flex: 0 0 calc((100% - 90px) / 4); min-width: 0; min-height: 398px; padding: 32px 40px 40px; display: flex; flex-direction: column; justify-content: space-between; background: white; }
+.mink-testimonial-card blockquote { margin: 0; color: var(--ink); font-size: 18px; line-height: 1.778; font-weight: 400; letter-spacing: -.02em; }
+.mink-testimonial-author { min-height: 78px; display: flex; align-items: center; gap: 18px; }
+.mink-testimonial-author img { flex: 0 0 auto; width: 64px; height: 64px; display: block; border-radius: 50%; object-fit: cover; }
+.mink-testimonial-author h3 { font-size: 18px; line-height: 1.5; font-weight: 500; letter-spacing: -.02em; text-transform: uppercase; }
+.mink-testimonial-author p { margin-top: 4px; color: rgba(24,24,24,.4); font-size: 14px; line-height: 1.25; font-weight: 500; }
+.mink-testimonial-controls { margin-top: 26px; display: flex; justify-content: center; gap: 14px; }
+.mink-testimonial-controls button { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
+.mink-testimonial-controls svg { width: 25px; height: 25px; stroke-width: 1.25; transition: transform .25s ease; }
+.mink-testimonial-controls button:first-child:hover svg { transform: translateX(-4px); }
+.mink-testimonial-controls button:last-child:hover svg { transform: translateX(4px); }
+.mink-testimonial-controls button:focus-visible { outline: 1px solid var(--rust); outline-offset: 2px; }
 
 .mink-team { padding: 95px 0 160px; }
 .mink-team-heading { max-width: 800px; }
@@ -141,6 +183,25 @@
   .mink-service-copy { margin-top: 120px; }
   .mink-service-copy h3 { font-size: 27px; }
   .mink-team-name img { left: 45vw; }
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+  .mink-architecture-heading,
+  .mink-architecture-frame { width: min(994px, calc(100% - 60px)); }
+  .mink-architecture-heading { padding: 80px 0 30px; }
+  .mink-architecture-heading h2 { font-size: 36px; line-height: 45px; letter-spacing: -1.44px; }
+  .mink-architecture-accordion { width: calc(100% + 103px); height: 500px; }
+  .mink-architecture-panel-inner { padding: 27px 80px 30px 30px; }
+  .mink-architecture-copy { width: 480px; }
+  .mink-architecture-copy h3 { font-size: 32px; line-height: 44.8px; letter-spacing: -1.28px; }
+  .mink-architecture-copy p { width: 480px; }
+  .mink-architecture-copy a { width: 164px; height: 52px; font-size: 13px; line-height: 22px; }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .mink-architecture-heading,
+  .mink-architecture-frame { width: calc(100% - 60px); }
+  .mink-architecture-accordion { width: calc(100% + 37.5px); }
 }
 
 @media (max-width: 1023px) {
@@ -185,6 +246,11 @@
   .mink-project-track { gap: 24px; transform: translateX(var(--project-tablet)); }
   .mink-project { flex-basis: calc((100% - 24px) / 2); }
   .mink-project-image { height: 300px; }
+  .mink-testimonials { padding: 90px 0 95px; }
+  .mink-testimonials-window { margin-top: 58px; }
+  .mink-testimonials-track { transform: translate3d(var(--testimonial-tablet), 0, 0); }
+  .mink-testimonial-card { flex-basis: calc((100% - 30px) / 2); min-height: 300px; padding: 28px 30px 30px; }
+  .mink-testimonial-card blockquote { font-size: 17px; line-height: 1.7; }
   .mink-team { padding: 70px 0 100px; }
   .mink-team-member { min-height: 118px; }
   .mink-team-name { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
@@ -199,6 +265,19 @@
   .mink-project-track { transform: translateX(var(--project-mobile)); }
   .mink-project { flex-basis: 100%; }
   .mink-project-image { height: 265px; }
+  .mink-testimonials { padding: 72px 0 80px; }
+  .mink-testimonials-heading { width: calc(100% - 30px); }
+  .mink-testimonials-heading h2 { margin-top: 18px; font-size: 40px; line-height: 1; letter-spacing: -.06em; white-space: nowrap; }
+  .mink-testimonials-window { width: 100%; margin: 48px 0 0; padding: 0 15px; }
+  .mink-testimonials-track { transform: translate3d(var(--testimonial-mobile), 0, 0); }
+  .mink-testimonial-card { flex-basis: 100%; min-height: 205px; padding: 18px 20px 20px; }
+  .mink-testimonial-card blockquote { font-size: 16px; line-height: 1.778; letter-spacing: -.02em; }
+  .mink-testimonial-author { min-height: 64px; gap: 18px; }
+  .mink-testimonial-author h3 { font-size: 16px; line-height: 1.45; }
+  .mink-testimonial-author p { margin-top: 2px; font-size: 13px; }
+  .mink-testimonial-controls { margin-top: 14px; gap: 14px; }
+  .mink-testimonial-controls button { width: 36px; height: 36px; }
+  .mink-testimonial-controls svg { width: 23px; height: 23px; }
   .mink-team-list { margin-top: 45px; }
   .mink-team-member { min-height: 145px; align-items: flex-start; padding: 25px 0; }
   .mink-team-name { display: block; padding-right: 10px; }
@@ -208,7 +287,26 @@
   .mink-team-member > a { width: 105px; height: 48px; flex: 0 0 auto; margin-top: 10px; }
 }
 
+@media (max-width: 767px) {
+  .mink-architecture-heading,
+  .mink-architecture-frame { width: calc(100% - 30px); }
+  .mink-architecture-heading { padding: 70px 0 30px; }
+  .mink-architecture-heading h2 { max-width: 345px; margin-top: 31px; font-size: 28px; line-height: 35px; letter-spacing: -1.12px; }
+  .mink-architecture-accordion { width: 100%; height: 700px; flex-direction: column; }
+  .mink-architecture-panel { flex-grow: 1; width: 100%; height: auto; }
+  .mink-architecture-panel.is-active { flex-grow: 3; }
+  .mink-architecture-panel-inner { padding: 18px 20px 20px; }
+  .mink-architecture-copy { width: 305px; max-width: 100%; }
+  .mink-architecture-copy h3 { font-size: 28px; line-height: 39.2px; letter-spacing: -1.12px; }
+  .mink-architecture-copy p { width: 305px; max-width: 100%; margin-top: 10px; font-size: 18px; line-height: 30.6px; letter-spacing: -.36px; }
+  .mink-architecture-copy a { width: 164px; height: 52px; margin-top: 5px; font-size: 13px; line-height: 22px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mink-letter, [data-reveal] { opacity: 1 !important; transform: none !important; }
   .mink-project-track { transition: none; }
+  .mink-architecture-panel,
+  .mink-architecture-copy { transition: none; }
+  .mink-testimonials-track,
+  .mink-testimonial-controls svg { transition: none; }
 }

@@ -1,48 +1,36 @@
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import "./ServicesTicker.css";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import './ServicesTicker.css';
 
-const TICKER_TEXT = "Concept Development // Architectural Design // 3D Visualization //";
+const tickerText = 'Concept Development // Architectural Design // 3D Visualization // ';
 
-const ServicesTicker = () => {
-  const trackRef = useRef();
-  const container = useRef();
+export default function ServicesTicker() {
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
 
-  useGSAP(
-    () => {
-      // FIX: kill any tween already running on this element first.
-      // React can invoke effects twice (StrictMode / fast refresh), which
-      // was stacking two tweens on the same element and making the loop
-      // look roughly 2x faster than intended.
-      gsap.killTweensOf(trackRef.current);
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      gsap.to(trackRef.current, {
-        xPercent: -50,
-        duration: 160, // FIX: was 30 — much too fast for a background ticker
-        ease: "none",
-        repeat: -1,
-        force3D: true, // smoother, GPU-composited motion
-      });
-    },
-    { scope: container }
-  );
+    gsap.to(trackRef.current, {
+      xPercent: -50,
+      duration: 125,
+      repeat: -1,
+      ease: 'none',
+      force3D: true,
+    });
+  }, { scope: sectionRef });
+
+  const sequence = Array.from({ length: 4 }, (_, index) => (
+    <span key={index}>{tickerText}</span>
+  ));
 
   return (
-    <div ref={container} className="ticker-outer">
-      <div ref={trackRef} className="ticker-track">
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        {/* duplicate set — required for the seamless -50% loop */}
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
-        <span className="ticker-item">{TICKER_TEXT} </span>
+    <section ref={sectionRef} className="about-ticker" aria-hidden="true">
+      <div ref={trackRef} className="about-ticker__track">
+        <div className="about-ticker__group">{sequence}</div>
+        <div className="about-ticker__group">{sequence}</div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default ServicesTicker;
+}

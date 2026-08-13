@@ -1,83 +1,56 @@
-import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import "./ServicesBanner.css";
+import { useRef } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import './ServicesBanner.css';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-const ServicesBanner = () => {
-  const container = useRef();
+const title = 'Our Services';
 
-  useGSAP(
-    () => {
-      // Guard against a duplicate timeline firing on strict-mode double
-      // effects — same class of bug that made the ticker feel doubled up.
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === container.current) st.kill();
-      });
+export default function ServicesBanner() {
+  const bannerRef = useRef(null);
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 75%",
-        },
-        defaults: { ease: "power2.out" },
-      });
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      tl.from(".services-banner-eyebrow", {
-        opacity: 0,
-        y: 20,
-        duration: 0.7,
-      })
-        .from(
-          ".services-banner-title",
-          {
-            opacity: 0,
-            y: 30,
-            duration: 1,
-          },
-          "-=0.35"
-        )
-        .from(
-          ".services-banner-circle",
-          {
-            opacity: 0,
-            scale: 0.5,
-            duration: 0.7,
-          },
-          "-=0.5"
-        )
-        // The strike-through line draws left-to-right across the title —
-        // slowed down and eased in/out so it reads as a deliberate stroke
-        // rather than a snap.
-        .fromTo(
-          ".services-banner-strike",
-          { scaleX: 0 },
-          { scaleX: 1, duration: 1.1, ease: "power2.inOut", transformOrigin: "left center" },
-          "-=0.25"
-        );
-    },
-    { scope: container }
-  );
+    const timeline = gsap.timeline({
+      scrollTrigger: { trigger: bannerRef.current, start: 'top 76%' },
+      defaults: { ease: 'power3.out' },
+    });
+
+    timeline
+      .from('.about-services-banner__eyebrow', { autoAlpha: 0, y: 14, duration: 0.6 })
+      .from('.about-services-banner__letter', {
+        autoAlpha: 0,
+        yPercent: 115,
+        rotateX: -30,
+        duration: 0.75,
+        stagger: 0.045,
+      }, '-=.3')
+      .from('.about-services-banner__button', {
+        autoAlpha: 0,
+        scale: .65,
+        duration: .65,
+      }, '-=.42');
+  }, { scope: bannerRef });
 
   return (
-    <div ref={container} className="services-banner">
-      <span className="services-banner-eyebrow">From Concept to Completion</span>
-
-      <div className="services-banner-title-wrap">
-        <h2 className="services-banner-title">
-          Our Services
-          {/* <span className="services-banner-strike" aria-hidden="true" /> */}
+    <div ref={bannerRef} className="about-services-banner">
+      <span className="about-services-banner__eyebrow">From Concept to Completion</span>
+      <div className="about-services-banner__row">
+        <h2 id="about-services-title" className="about-services-banner__title" aria-label={title}>
+          {title.split('').map((letter, index) => (
+            <span className="about-services-banner__letter" key={`${letter}-${index}`}>
+              {letter === ' ' ? '\u00a0' : letter}
+            </span>
+          ))}
         </h2>
-
-        <a href="#services" className="services-banner-circle" aria-label="View services">
-          <ArrowUpRight />
+        <a className="about-services-banner__button" href="/services" aria-label="View our services">
+          <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </div>
   );
-};
-
-export default ServicesBanner;
+}

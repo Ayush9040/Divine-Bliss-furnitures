@@ -1,89 +1,69 @@
-import { useRef, useState } from "react";
-import { ArrowRight, Lamp, Sofa as SofaIcon, LayoutGrid } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import "./ServiceCards.css";
-import ser_1 from '../../assets/service_1.webp';
-import ser_2 from '../../assets/service_2.webp';
-import ser_3 from '../../assets/service_3.webp';
+import { useRef, useState } from 'react';
+import { ArrowRight, LampDesk, Sofa, LayoutGrid } from 'lucide-react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import serviceOne from '../../assets/about-reference/service-01.webp';
+import serviceTwo from '../../assets/about-reference/service-02.webp';
+import serviceThree from '../../assets/about-reference/service-03.webp';
+import './ServiceCards.css';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-const CARDS = [
-  {
-    id: "furniture",
-    icon: <Lamp className="service-card-icon" />,
-    title: "Furniture Selection",
-    description:
-      "Regular stretching supports better posture, prevents injuries, and improves recovery after physical activity.",
-    image: ser_1,
-  },
-  {
-    id: "style",
-    icon: <SofaIcon className="service-card-icon" />,
-    title: "Choose Your Style",
-    description:
-      "Regular stretching supports better posture, prevents injuries, and improves recovery after physical activity.",
-    image: ser_2,
-  },
-  {
-    id: "collection",
-    icon: <LayoutGrid className="service-card-icon" />,
-    title: "Explore Collection",
-    description:
-      "Regular stretching supports better posture, prevents injuries, and improves recovery after physical activity.",
-    image: ser_3,
-  },
+const cards = [
+  { id: 'furniture', title: 'Furniture Selection', image: serviceOne, Icon: LampDesk },
+  { id: 'style', title: 'Choose Your Style', image: serviceTwo, Icon: Sofa },
+  { id: 'collection', title: 'Explore Collection', image: serviceThree, Icon: LayoutGrid },
 ];
 
-const ServiceCards = () => {
-  const container = useRef();
-  // "style" is open by default, matching the live screenshot
-  const [activeId, setActiveId] = useState("style");
+export default function ServiceCards() {
+  const cardsRef = useRef(null);
+  const [activeId, setActiveId] = useState('furniture');
 
-  useGSAP(
-    () => {
-      gsap.from(".service-card", {
-        y: 50,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-        },
-      });
-    },
-    { scope: container }
-  );
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.from('.about-service-card', {
+      autoAlpha: 0,
+      y: 38,
+      duration: .85,
+      stagger: .1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: cardsRef.current, start: 'top 84%' },
+    });
+  }, { scope: cardsRef });
+
+  const activate = (id) => setActiveId(id);
 
   return (
-    <div ref={container} className="service-cards-row">
-      {CARDS.map((card) => {
-        const isActive = activeId === card.id;
-        return (
-          <div
-            key={card.id}
-            className={`service-card ${isActive ? "service-card--active" : ""}`}
-            onMouseEnter={() => setActiveId(card.id)}
-          >
-            <div className="service-card-image" style={{ backgroundImage: `url(${card.image})` }} />
-
-            <div className="service-card-panel">
-              {card.icon}
-              <h3 className="service-card-title">{card.title}</h3>
-              <p className="service-card-desc">{card.description}</p>
-              <a href="#read-more" className="service-card-link">
-                Read More <ArrowRight className="service-card-link-icon" />
-              </a>
+    <div ref={cardsRef} className="about-service-cards">
+      {cards.map(({ id, title, image, Icon }) => (
+        <article
+          className={`about-service-card ${activeId === id ? 'is-active' : ''}`}
+          key={id}
+          tabIndex={0}
+          aria-expanded={activeId === id}
+          onMouseEnter={() => activate(id)}
+          onFocus={() => activate(id)}
+          onClick={() => activate(id)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              activate(id);
+            }
+          }}
+        >
+          <img className="about-service-card__image" src={image} alt="" aria-hidden="true" />
+          <div className="about-service-card__content">
+            <div className="about-service-card__content-inner">
+              <Icon className="about-service-card__icon" aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>Regular stretching supports better posture, prevents injuries, and improves recovery after physical activity.</p>
+              <a href="/services">Read More <ArrowRight aria-hidden="true" /></a>
             </div>
           </div>
-        );
-      })}
+        </article>
+      ))}
     </div>
   );
-};
-
-export default ServiceCards;
+}

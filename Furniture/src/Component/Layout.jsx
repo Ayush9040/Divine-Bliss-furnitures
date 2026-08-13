@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const TRANSPARENT_NAV_ROUTES = ['/contact', '/services'];
+const TRANSPARENT_NAV_ROUTES = ['/about', '/contact', '/services'];
 
 const Layout = () => {
   const { pathname } = useLocation();

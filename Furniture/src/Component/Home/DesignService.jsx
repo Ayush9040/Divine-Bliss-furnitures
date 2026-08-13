@@ -8,8 +8,7 @@ const services = [
   {
     id: '01',
     title: 'RESIDENTIAL INTERIOR DESIGN',
-    description:
-      'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
+    description: 'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
     bgColor: '#732c14',
     textColor: '#ffffff',
     numberColor: 'rgba(255, 255, 255, 0.85)',
@@ -17,8 +16,7 @@ const services = [
   {
     id: '02',
     title: 'SPACE PLANNING & LAYOUT',
-    description:
-      'Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.',
+    description: 'Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.',
     bgColor: '#e2dad0',
     textColor: '#1c1c1c',
     numberColor: '#732c14',
@@ -26,8 +24,7 @@ const services = [
   {
     id: '03',
     title: 'FURNITURE & MATERIAL SELECTION',
-    description:
-      'We curate high-end furniture, textures, and finishes that harmonize with your architectural vision, ensuring enduring elegance and absolute comfort.',
+    description: 'We curate high-end furniture, textures, and finishes that harmonize with your architectural vision, ensuring enduring elegance and absolute comfort.',
     bgColor: '#ffffff',
     textColor: '#1c1c1c',
     numberColor: '#732c14',
@@ -50,13 +47,9 @@ export default function DesignServicesSection() {
     if (!sectionRef.current || !rightColRef.current || cards.length < 2) return;
 
     const mm = gsap.matchMedia();
-
     mm.add('(min-width: 768px)', () => {
       const sectionHeight = sectionRef.current.offsetHeight;
-      const headerHeight = 65; // visible tab strip height (01, 02)
-
-      // Position hidden cards BELOW the entire section so they
-      // appear as full cards coming up from the bottom of the screen
+      const headerHeight = 65;
       const hiddenCards = cards.slice(1);
       gsap.set(hiddenCards, { y: sectionHeight });
 
@@ -73,16 +66,7 @@ export default function DesignServicesSection() {
       });
 
       hiddenCards.forEach((card, i) => {
-        // Each card animates to just peek above the previous ones
-        tl.to(
-          card,
-          {
-            y: (i + 1) * headerHeight,
-            ease: 'none',
-            duration: 1,
-          },
-          i === 0 ? 0 : '>+0.15'
-        );
+        tl.to(card, { y: (i + 1) * headerHeight, ease: 'none', duration: 1 }, i === 0 ? 0 : '>+0.15');
       });
 
       return () => tl.scrollTrigger?.kill();
@@ -99,9 +83,7 @@ export default function DesignServicesSection() {
             <span className="badge-dot" />
             <span className="badge-label">Design Solutions</span>
           </div>
-          <h2 className="services-title">
-            DESIGN SERVICES<br /> TAILORED TO YOUR<br /> SPACE
-          </h2>
+          <h2 className="services-title">DESIGN SERVICES<br /> TAILORED TO YOUR<br /> SPACE</h2>
           <a href="#all-services" className="services-cta">
             <span>VIEW ALL SERVICES</span>
             <ArrowRight size={18} />
@@ -115,42 +97,14 @@ export default function DesignServicesSection() {
                 key={service.id}
                 ref={addCardRef}
                 className="service-card"
-                style={{
-                  backgroundColor: service.bgColor,
-                  color: service.textColor,
-                  zIndex: 10 + idx * 10,
-                }}
+                style={{ backgroundColor: service.bgColor, color: service.textColor, zIndex: 10 + idx * 10 }}
               >
-                {/* Architectural Blueprint Vector Wireframe Background */}
-                <svg
-                  className="service-card-blueprint"
-                  viewBox="0 0 800 600"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M150 180 L400 60 L650 180 L650 500 L400 380 L150 500 Z"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeDasharray="4 4"
-                  />
-                  <path
-                    d="M400 60 L400 380 M150 180 L400 380 M650 180 L400 380"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                  <path
-                    d="M250 230 L550 230 M250 430 L550 430 M320 120 L320 460 M480 120 L480 460"
-                    stroke="currentColor"
-                    strokeWidth="0.8"
-                    strokeDasharray="2 2"
-                  />
+                <svg className="service-card-blueprint" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M150 180 L400 60 L650 180 L650 500 L400 380 L150 500 Z" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 4" />
+                  <path d="M400 60 L400 380 M150 180 L400 380 M650 180 L400 380" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M250 230 L550 230 M250 430 L550 430 M320 120 L320 460 M480 120 L480 460" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 2" />
                 </svg>
-
-                <span className="service-card-number" style={{ color: service.numberColor }}>
-                  {service.id}
-                </span>
-
+                <span className="service-card-number" style={{ color: service.numberColor }}>{service.id}</span>
                 <div className="service-card-body">
                   <h3 className="service-card-title">{service.title}</h3>
                   <p className="service-card-desc">{service.description}</p>

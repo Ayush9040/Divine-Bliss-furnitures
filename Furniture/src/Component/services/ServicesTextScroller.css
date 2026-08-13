@@ -1,57 +1,34 @@
 .services-scroller-section {
-  width: 100%;
+  height: 236px;
+  padding-top: 140px;
+  box-sizing: border-box;
   overflow: hidden;
-  padding: 48px 0;
-  background: transparent;
-  position: relative;
+  background: #f0ede8;
 }
-
 .services-scroller-track {
+  width: max-content;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.text-editor_wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  white-space: nowrap;
+  animation: servicesMarquee 43s linear infinite;
   will-change: transform;
 }
-
-.text-editor_wrapper span {
-  font-family: "TikTok Sans", sans-serif;
-  font-weight: 300;
+.services-scroller-group { display: flex; flex-shrink: 0; }
+.services-scroller-group span {
+  padding: 0 30px;
+  color: rgba(120, 53, 30, .09);
   font-size: 96px;
   line-height: 96px;
-  color: rgba(115, 45, 20, 0.15);
-  letter-spacing: 0.02em;
+  font-weight: 300;
+  white-space: nowrap;
   text-transform: uppercase;
-  padding: 0 28px;
-  display: inline-block;
 }
+@keyframes servicesMarquee { to { transform: translateX(-50%); } }
 
-/* Row 1 scrolls left */
-.scroller-row-1 {
-  animation: scrollLeft 30s linear infinite;
+@media (max-width: 1024px) {
+  .services-scroller-section { height: 132px; padding-top: 72px; }
+  .services-scroller-group span { padding: 0 22px; font-size: 60px; line-height: 60px; }
 }
-
-
-@keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+@media (max-width: 600px) {
+  .services-scroller-section { height: 96px; padding-top: 56px; }
+  .services-scroller-group span { padding: 0 13px; font-size: 40px; line-height: 40px; }
 }
-
-@keyframes scrollRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+@media (prefers-reduced-motion: reduce) { .services-scroller-track { animation-play-state: paused; } }

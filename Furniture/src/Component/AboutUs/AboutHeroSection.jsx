@@ -1,62 +1,43 @@
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import "./AboutHero.css";
+import { useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import heroImage from '../../assets/about-reference/about-hero.webp';
+import './AboutHero.css';
 
-const AboutHeroSection = () => {
-  const container = useRef();
+export default function AboutHeroSection() {
+  const heroRef = useRef(null);
 
-  // Fade + slide-up reveal on load — matches the entrance style used
-  // across the rest of the page (power3.out).
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  useGSAP(() => {
+    const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      tl.from(".hero-title", {
-        y: 40,
-        opacity: 0,
+    timeline
+      .from('.about-page-hero__title', {
+        autoAlpha: 0,
+        y: 34,
         duration: 1,
-      }).from(
-        ".breadcrumb-container",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-        },
-        "-=0.6" // slight overlap with the title animation
-      );
-    },
-    { scope: container }
-  );
+      })
+      .from('.about-page-hero__breadcrumbs', {
+        autoAlpha: 0,
+        y: 18,
+        duration: 0.75,
+      }, '-=0.58');
+  }, { scope: heroRef });
 
   return (
-    <div
-      ref={container}
-      className="about-hero-container"
-      style={{
-        backgroundImage: `url('https://wgl-dsites.net/mink/wp-content/uploads/2026/02/pt-about.webp')`,
-      }}
+    <section
+      ref={heroRef}
+      className="about-page-hero page-hero"
+      style={{ backgroundImage: `linear-gradient(rgba(20, 20, 20, .34), rgba(20, 20, 20, .34)), url(${heroImage})` }}
     >
-      {/* Dark overlay for text legibility */}
-      <div className="hero-overlay" />
-
-      {/* Main Hero Content */}
-      <main className="hero-main">
-        <div>
-          <h1 className="hero-title">About Us</h1>
-        </div>
-
-        <div className="breadcrumb-container">
-          <a href="#home" className="breadcrumb-link">
-            HOME
-          </a>
-          <ArrowRight className="breadcrumb-arrow" />
-          <span className="breadcrumb-current">ABOUT US</span>
-        </div>
-      </main>
-    </div>
+      <div className="about-page-hero__inner">
+        <h1 className="about-page-hero__title">About Us</h1>
+        <nav className="about-page-hero__breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <ArrowRight aria-hidden="true" />
+          <span>About Us</span>
+        </nav>
+      </div>
+    </section>
   );
-};
-
-export default AboutHeroSection;
+}

@@ -1,106 +1,91 @@
-/* ── Service Hero Component Styles ── */
 .service-hero {
   position: relative;
-  width: 100%;
-  min-height: 45vh;
-  font-family: "TikTok Sans", sans-serif;
-  background-size: cover;
+  height: 400px;
+  padding: 120px 0 20px;
+  box-sizing: border-box;
   background-position: center;
-  color: #ffffff;
-}
-
-@media (min-width: 768px) {
-  .service-hero {
-    min-height: 68vh;
-  }
-}
-
-.service-hero-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.service-hero-container {
-  position: relative;
-  z-index: 10;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  max-width: 90rem;
-  padding-top: 8rem;
-  padding-bottom: 4rem;
-  margin-left: auto;
-  margin-right: auto;
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
-@media (min-width: 768px) {
-  .service-hero-container {
-    padding-top: 10rem;
-    padding-bottom: 5rem;
-    justify-content: space-between;
-    flex-direction: row;
-  }
+.service-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 8, 6, .24);
+}
+
+.service-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 60px);
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .service-hero-title {
-  font-size: 64px;
-  line-height: 2.5rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 300;
   margin: 0;
-}
-
-@media (min-width: 768px) {
-  .service-hero-title {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
+  margin-left: -3.84px;
+  font-size: 64px;
+  line-height: 80px;
+  font-weight: 300;
+  letter-spacing: -3.84px;
+  text-transform: uppercase;
 }
 
 .service-hero-breadcrumb {
   display: flex;
   align-items: center;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: #e5e7eb;
-}
-
-.service-hero-link {
+  gap: 12px;
+  color: #fff;
+  padding-bottom: 25px;
   font-size: 14px;
+  line-height: 30px;
   font-weight: 600;
-  color: #e5e7eb;
-  text-decoration: none;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  text-transform: uppercase;
 }
 
-.service-hero-link:hover {
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.service-hero-breadcrumb a,
+.service-hero-breadcrumb span { color: inherit; }
+.service-hero-breadcrumb a { text-decoration: none; }
+.service-hero-breadcrumb span { border-bottom: 1px solid currentColor; }
+.service-hero-breadcrumb svg { width: 21px; height: 12px; fill: currentColor; }
+
+@media (max-width: 1024px) {
+  .service-hero { height: 184px; }
+  .service-hero-inner {
+    width: calc(100% - 60px);
+    height: 44px;
+    align-items: flex-end;
+  }
+  .service-hero-title { font-size: 42px; line-height: 44px; }
+  .service-hero-breadcrumb { padding-bottom: 0; font-size: 13px; line-height: 26px; }
 }
 
-.service-hero-arrow {
-  width: 1rem;
-  height: 1rem;
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-  color: #9ca3af;
-}
-
-.service-hero-current {
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-size: 14px;
-  font-weight: 600;
+@media (max-width: 600px) {
+  .service-hero {
+    height: 226px;
+    padding: 100px 0 40px;
+    background-position: center;
+  }
+  .service-hero-inner {
+    width: calc(100% - 30px);
+    height: 86px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .service-hero-title {
+    padding-bottom: 10px;
+    font-size: 42px;
+    line-height: 44px;
+    letter-spacing: -2.52px;
+  }
+  .service-hero-breadcrumb { height: 32px; padding-top: 6px; box-sizing: border-box; }
 }

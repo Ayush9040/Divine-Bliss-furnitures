@@ -1,39 +1,54 @@
-/* ==========================================================================
-   ServicesTicker.css
-   ========================================================================== */
-
-.ticker-outer {
+.about-ticker {
+  position: relative;
+  z-index: 1;
   width: 100%;
+  height: 229px;
+  margin-top: -26px;
   overflow: hidden;
-  background-color: #f0ede8;
-  padding: 1rem 0 3rem;
+  background: #f0ede8;
 }
 
-.ticker-track {
-  display: flex;
+.about-ticker__track,
+.about-ticker__group {
   width: max-content;
+  display: flex;
+  flex: 0 0 auto;
   white-space: nowrap;
+}
+
+.about-ticker__track {
   will-change: transform;
 }
 
-.ticker-item {
-  font-family: inherit;
-  font-size: 2rem;
+.about-ticker__group span {
+  color: rgba(115, 44, 20, .1);
+  font-size: 96px;
+  line-height: 96px;
+  font-weight: 300;
+  letter-spacing: -.04em;
   text-transform: uppercase;
-  color: rgba(115, 44, 20, 0.14); /* faint brand-brown, matches screenshot */
-  font-weight: 400; /* FIX: was rendering too heavy vs the thin look on the live site */
-  letter-spacing: 0.04em;
-  padding-right: 0.75rem;
 }
 
-@media (min-width: 768px) {
-  .ticker-item {
-    font-size: 3rem;
+@media (max-width: 1024px) {
+  .about-ticker {
+    height: 132px;
+    margin-top: -16px;
+  }
+
+  .about-ticker__group span {
+    font-size: 52px;
+    line-height: 52px;
   }
 }
 
-@media (min-width: 1024px) {
-  .ticker-item {
-    font-size: 96px;
+@media (max-width: 600px) {
+  .about-ticker {
+    height: 106px;
+    margin-top: 60px;
+  }
+
+  .about-ticker__group span {
+    font-size: 36px;
+    line-height: 36px;
   }
 }

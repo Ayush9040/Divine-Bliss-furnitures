@@ -1,96 +1,135 @@
-/* ==========================================================================
-   ServicesBanner.css
-   ========================================================================== */
-
-.services-banner {
+.about-services {
   width: 100%;
-  background-color: #7a3e24;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 820px;
+  background: #732c14;
+  overflow: hidden;
+}
+
+.about-services-banner,
+.about-services-banner * {
+  box-sizing: border-box;
+}
+
+.about-services-banner {
+  height: 386.6px;
+  padding-top: 148px;
+  color: #fff;
   text-align: center;
-  padding: 3rem 1.5rem;
 }
 
-@media (min-width: 768px) {
-  .services-banner {
-    padding: 4rem 2rem;
-  }
-}
-
-.services-banner-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+.about-services-banner__eyebrow {
+  height: 16.8px;
+  padding-bottom: 11px;
+  display: block;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 600;
+  letter-spacing: -.04em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
 }
 
-.services-banner-title-wrap {
+.about-services-banner__row {
+  height: 140.8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 40px;
 }
 
-.services-banner-title {
-  position: relative;
-  display: inline-block;
-  font-size: 2.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+.about-services-banner__title {
   margin: 0;
+  color: #fff;
+  font-size: 136.5px;
+  line-height: 140.8px;
+  font-weight: 300;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
 }
 
-@media (min-width: 640px) {
-  .services-banner-title {
-    font-size: 4rem;
+.about-services-banner__letter {
+  display: inline-block;
+  transform-origin: center bottom;
+}
+
+.about-services-banner__button {
+  width: 94px;
+  height: 94px;
+  border: 1px solid rgba(255, 255, 255, .75);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  flex: 0 0 auto;
+  transition: color .3s ease, background .3s ease, transform .3s ease;
+}
+
+.about-services-banner__button svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.3;
+}
+
+.about-services-banner__button:hover {
+  color: #732c14;
+  background: #fff;
+  transform: rotate(7deg);
+}
+
+@media (max-width: 1024px) {
+  .about-services {
+    height: 1081px;
+  }
+
+  .about-services-banner {
+    height: 251.4px;
+    padding-top: 90px;
+  }
+
+  .about-services-banner__row {
+    height: 83.6px;
+    gap: 32px;
+  }
+
+  .about-services-banner__title {
+    font-size: 82.5px;
+    line-height: 83.6px;
+    letter-spacing: -.055em;
+  }
+
+  .about-services-banner__button {
+    width: 82px;
+    height: 82px;
   }
 }
 
-@media (min-width: 1024px) {
-  .services-banner-title {
-    font-size: 5.5rem;
+@media (max-width: 600px) {
+  .about-services {
+    height: 2062.2px;
   }
-}
 
-/* The horizontal strike-through line drawn across the heading */
-.services-banner-strike {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff;
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
-.services-banner-circle {
-  flex-shrink: 0;
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-@media (min-width: 768px) {
-  .services-banner-circle {
-    width: 4rem;
-    height: 4rem;
+  .about-services-banner {
+    height: 199.8px;
+    padding-top: 80px;
   }
-}
 
-.services-banner-circle:hover {
-  background-color: #ffffff;
-  color: #7a3e24;
+  .about-services-banner__row {
+    height: 52px;
+    gap: 20px;
+  }
+
+  .about-services-banner__title {
+    font-size: 36px;
+    line-height: 37.4px;
+    letter-spacing: -.055em;
+  }
+
+  .about-services-banner__button {
+    width: 52px;
+    height: 52px;
+  }
+
+  .about-services-banner__button svg {
+    width: 21px;
+    height: 21px;
+  }
 }

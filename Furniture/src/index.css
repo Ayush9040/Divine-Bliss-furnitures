@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import 'leaflet/dist/leaflet.css';
 
 html, body, #root {
   margin: 0;
@@ -21,6 +20,20 @@ body {
 
 button, input, textarea, select { font: inherit; }
 img { max-width: 100%; }
+
+.services-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity .8s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms),
+    transform .8s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms);
+}
+
+.services-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .services-reveal { opacity: 1; transform: none; transition: none; }
+}
 
 .App {
   font-family: 'TikTok Sans', sans-serif;

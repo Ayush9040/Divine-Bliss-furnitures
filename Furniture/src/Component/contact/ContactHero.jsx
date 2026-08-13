@@ -1,61 +1,41 @@
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import "./ContactHero.css";
+import { useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import contactHero from '../../assets/home-reference/contact-hero.webp';
+import './ContactHero.css';
 
-const ContactHero = () => {
-  const container = useRef();
+export default function ContactHero() {
+  const container = useRef(null);
 
-  // Fade + slide-up reveal on page load, matching the reveal style
-  // used across the rest of the Contacts page (power3.out, staggered).
   useGSAP(
     () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      tl.from(".page-hero-title", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-      }).from(
-        ".page-hero-breadcrumb",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-        },
-        "-=0.6" // overlap slightly with the title animation
-      );
+      timeline
+        .from('.page-hero-title', { y: 44, opacity: 0, duration: 0.9 })
+        .from('.page-hero-breadcrumb', { y: 24, opacity: 0, duration: 0.75 }, '-=0.55');
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
-    <div
+    <section
       ref={container}
       className="page-hero"
-      style={{
-        backgroundImage: `url('https://wgl-dsites.net/mink/wp-content/uploads/2026/02/pt-contacts.webp')`,
-      }}
+      aria-labelledby="contact-page-title"
+      style={{ backgroundImage: `url(${contactHero})` }}
     >
       <div className="page-hero-overlay" />
-
-      <main className="page-hero-main">
-        <div>
-          <h1 className="page-hero-title">Contacts</h1>
-        </div>
-
-        <div className="page-hero-breadcrumb">
-          <Link to="/" className="page-hero-breadcrumb-link">
-            HOME
-          </Link>
-          <ArrowRight className="page-hero-breadcrumb-arrow" />
-          <span className="page-hero-breadcrumb-current">CONTACTS</span>
-        </div>
-      </main>
-    </div>
+      <div className="page-hero-main">
+        <h1 id="contact-page-title" className="page-hero-title">Contacts</h1>
+        <nav className="page-hero-breadcrumb" aria-label="Breadcrumb">
+          <Link to="/" className="page-hero-breadcrumb-link">Home</Link>
+          <ArrowRight className="page-hero-breadcrumb-arrow" aria-hidden="true" />
+          <span className="page-hero-breadcrumb-current" aria-current="page">Contacts</span>
+        </nav>
+      </div>
+    </section>
   );
-};
-
-export default ContactHero;
+}

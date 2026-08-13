@@ -1,103 +1,97 @@
-import { useRef } from "react";
-import { Circle } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import "./AwardsSection.css";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import './AwardsSection.css';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-const AWARDS = [
-  { year: "2019", name: "Pritzker Architecture Prize", note: "Project of the Year" },
-  { year: "2019", name: "World Architecture Festival (WAF) Awards", note: "Gold Award Winner" },
-  { year: "2022", name: "Hospitality Design Awards", note: "Best in Category" },
-  { year: "2023", name: "DNA Paris Design Awards", note: "Honorable Mention" },
-  { year: "2026", name: "SBID International Design Awards", note: "Project of the Year" },
+const awards = [
+  ['2019', 'Pritzker Architecture Prize', 'Project of the Year'],
+  ['2019', 'World Architecture Festival (WAF) Awards', 'Gold Award Winner'],
+  ['2022', 'Hospitality Design Awards', 'Best in Category'],
+  ['2023', 'DNA Paris Design Awards', 'Honorable Mention'],
+  ['2026', 'SBID International Design Awards', 'Project of the Year'],
 ];
 
-const STATS = [
-  { value: 340, suffix: "+", label: "Unique Houses Built" },
-  { value: 67, suffix: "K", label: "Designed Square Meters" },
-  { value: 25, suffix: "", label: "Skilled Designers" },
+const stats = [
+  [340, '+', 'Unique Houses Built'],
+  [67, 'K', 'Designed Square Meters'],
+  [25, '', 'Skilled Designers'],
 ];
 
-const AwardsSection = () => {
-  const container = useRef();
+export default function AwardsSection() {
+  const sectionRef = useRef(null);
 
-  useGSAP(
-    () => {
-      // Guard against duplicate triggers stacking on remount
-      ScrollTrigger.getAll().forEach((st) => {
-        if (container.current.contains(st.trigger)) st.kill();
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sectionRef.current.querySelectorAll('.about-stat__value').forEach((element) => {
+        element.textContent = `${element.dataset.value}${element.dataset.suffix}`;
       });
+      return;
+    }
 
-      // Award rows stagger in as they scroll into view
-      gsap.from(".award-row", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.15, // was 0.12 — slightly slower cadence between rows
-        scrollTrigger: {
-          trigger: ".awards-list",
-          start: "top 85%",
+    gsap.from('.about-awards__heading', {
+      autoAlpha: 0,
+      y: 28,
+      duration: .8,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.about-awards__heading', start: 'top 85%' },
+    });
+
+    gsap.from('.about-award', {
+      autoAlpha: 0,
+      y: 24,
+      duration: .72,
+      stagger: .1,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.about-awards__list', start: 'top 86%' },
+    });
+
+    sectionRef.current.querySelectorAll('.about-stat__value').forEach((element) => {
+      const counter = { value: 0 };
+      const end = Number(element.dataset.value);
+      const suffix = element.dataset.suffix;
+
+      gsap.to(counter, {
+        value: end,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: element, start: 'top 92%' },
+        onUpdate: () => {
+          element.textContent = `${Math.round(counter.value)}${suffix}`;
         },
       });
-
-      // Stat numbers count up from 0
-      document.querySelectorAll(".stat-value").forEach((el) => {
-        const target = Number(el.dataset.value);
-        const suffix = el.dataset.suffix || "";
-        const counter = { val: 0 };
-
-        gsap.to(counter, {
-          val: target,
-          duration: 2.2, // was 1.6 — reads as a smoother, less rushed count
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-          },
-          onUpdate: () => {
-            el.textContent = Math.round(counter.val) + suffix;
-          },
-        });
-      });
-    },
-    { scope: container }
-  );
+    });
+  }, { scope: sectionRef });
 
   return (
-    <div ref={container} className="awards-section">
-      <div className="awards-header">
-        <span className="awards-eyebrow">
-          <Circle size={10} /> Design Process
-        </span>
-        <h2 className="awards-title">Our Awards and Recognitions</h2>
+    <section ref={sectionRef} className="about-awards">
+      <div className="about-awards__body">
+        <div className="about-awards__heading">
+          <span className="about-awards__eyebrow"><i aria-hidden="true" /> Design Process</span>
+          <h2>Our Awards and Recognitions</h2>
+        </div>
+
+        <div className="about-awards__list">
+          {awards.map(([year, title, note]) => (
+            <article className="about-award" key={`${year}-${title}`}>
+              <span className="about-award__year">{year}</span>
+              <h3>{title}</h3>
+              <p>{note}</p>
+            </article>
+          ))}
+        </div>
       </div>
 
-      <div className="awards-list">
-        {AWARDS.map((award, i) => (
-          <div className="award-row" key={i}>
-            <span className="award-year">{award.year}</span>
-            <span className="award-name">{award.name}</span>
-            <span className="award-note">{award.note}</span>
-          </div>
+      <div className="about-stats">
+        {stats.map(([value, suffix, label]) => (
+          <article className="about-stat" key={label}>
+            <div className="about-stat__value" data-value={value} data-suffix={suffix}>0{suffix}</div>
+            <div className="about-stat__label">{label}</div>
+          </article>
         ))}
       </div>
-
-      <div className="awards-stats">
-        {STATS.map((stat, i) => (
-          <div className="stat-item" key={i}>
-            <div className="stat-value" data-value={stat.value} data-suffix={stat.suffix}>
-              0{stat.suffix}
-            </div>
-            <div className="stat-label">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
+    </section>
   );
-};
-
-export default AwardsSection;
+}

@@ -1,164 +1,236 @@
-/* ==========================================================================
-   ServiceCards.css — rewritten
-
-   PREVIOUS BUG: animating both the card's flex-basis AND the panel's
-   width/flex-basis at the same time caused a content-box overflow
-   (padding was added on top of a percentage width), which pushed the
-   panel outside its parent and made it render as a detached floating
-   box with a shadow, while the other two images collapsed to 0 width.
-
-   FIX: only the card's flex-grow animates now. The image is an
-   absolutely-positioned full-bleed background inside the card (so it
-   never fights the panel for space), and the accent panel is a
-   fixed-width overlay that slides in from the right edge of the active
-   card. Nothing ever collapses to zero, so nothing can overflow.
-   ========================================================================== */
-
-.service-cards-row,
-.service-cards-row * {
+.about-service-cards,
+.about-service-cards * {
   box-sizing: border-box;
 }
 
-.service-cards-row {
+.about-service-cards {
   width: 100%;
+  height: 433.4px;
   display: flex;
-  flex-direction: column;
-}
-
-.service-card {
-  position: relative;
   overflow: hidden;
-  min-height: 20rem;
 }
 
-.service-card-image {
-  width: 100%;
-  height: 16rem;
-  background-size: cover;
-  background-position: center;
-}
-
-.service-card-panel {
+.about-service-card {
   position: relative;
-  background-color: #a8532f; /* accent terracotta */
-  color: #ffffff;
-  padding: 2rem 1.5rem;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex: 0 0 25%;
+  color: #fff;
+  overflow: visible;
+  outline: none;
+  transition: width .62s cubic-bezier(.65, 0, .35, 1), flex-basis .62s cubic-bezier(.65, 0, .35, 1);
+}
+
+.about-service-card.is-active {
+  width: 50%;
+  flex-basis: 50%;
+}
+
+.about-service-card__image,
+.about-service-card__content {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-service-card:not(.is-active) .about-service-card__image {
+  width: 100%;
+}
+
+.about-service-card__image {
+  flex: 0 0 auto;
+  display: block;
+}
+
+.about-service-card__content {
+  flex: 0 0 50%;
+  color: #fff;
+  background: #944529;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: opacity .42s ease .12s, transform .52s cubic-bezier(.22, 1, .36, 1) .08s;
+}
+
+.about-service-card.is-active .about-service-card__content {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.about-service-card__content-inner {
+  height: 100%;
+  padding: 34.8px 39.5px;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
 }
 
-.service-card-icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-bottom: 0.5rem;
+.about-service-card__icon {
+  width: 50px;
+  height: 50px;
+  stroke-width: 1.15;
 }
 
-.service-card-title {
-  font-size: 1.375rem;
-  font-weight: 500;
+.about-service-card h3 {
+  margin: 50px 0 0;
+  min-height: 76.8px;
+  color: #fff;
+  font-size: 32px;
+  line-height: 38.4px;
+  font-weight: 400;
+  letter-spacing: -.04em;
   text-transform: uppercase;
-  margin: 0;
 }
 
-.service-card-desc {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
+.about-service-card p {
+  margin: 19px 0 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
 }
 
-.service-card-link {
+.about-service-card a {
+  height: 33px;
+  margin-top: 15px;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
+  gap: 13px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 24px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #ffffff;
   text-decoration: none;
-  margin-top: 0.5rem;
+  text-transform: uppercase;
 }
 
-.service-card-link-icon {
-  width: 1rem;
-  height: 1rem;
-  transition: transform 0.2s ease;
+.about-service-card a svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 1.4;
+  transition: transform .25s ease;
 }
 
-.service-card-link:hover .service-card-link-icon {
-  transform: translateX(0.25rem);
+.about-service-card a:hover svg {
+  transform: translateX(5px);
 }
 
-/* Desktop: horizontal row, accent panel overlays the active card
-   ========================================================================== */
-@media (min-width: 1024px) {
-  .service-cards-row {
-    flex-direction: row;
-    height: 28rem;
+@media (max-width: 1024px) and (min-width: 601px) {
+  .about-service-cards {
+    height: 829.6px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 414.8px;
+  }
+
+  .about-service-card,
+  .about-service-card.is-active {
+    width: 100%;
+    height: 414.8px;
+    flex: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
   }
 
-  .service-card {
-    flex: 1 1 0%;
-    min-height: 0;
-    height: 100%;
-    /* Only this property animates now — nothing else needs to move,
-       so there's nothing left to overflow or collapse unexpectedly. */
-    transition: flex-grow 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  .about-service-card:first-child {
+    grid-column: span 2;
   }
 
-  .service-card--active {
-    flex-grow: 2.4;
+  .about-service-card:nth-child(2) {
+    grid-column: 3;
   }
 
-  .service-card-image {
-    position: absolute;
-    inset: 0;
+  .about-service-card:nth-child(3) {
+    grid-column: 1 / span 2;
+  }
+
+  .about-service-card:not(.is-active):not(:nth-child(3)) {
+    display: block;
+  }
+
+  .about-service-card:not(.is-active):not(:nth-child(3)) .about-service-card__content {
+    display: none;
+  }
+
+  .about-service-card__image,
+  .about-service-card:not(.is-active) .about-service-card__image,
+  .about-service-card__content {
     width: 100%;
     height: 100%;
   }
 
-  /* Fixed-width overlay pinned to the right edge of the card.
-     It slides/fades in — it never resizes, so it can't overflow. */
-  .service-card-panel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 20rem;
-    max-width: 70%;
-    justify-content: center;
-    padding: 2.5rem;
-    transform: translateX(100%);
+  .about-service-card__content {
     opacity: 0;
-    pointer-events: none;
-    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease;
+    transform: none;
   }
 
-  .service-card--active .service-card-panel {
-    transform: translateX(0);
+  .about-service-card.is-active .about-service-card__content,
+  .about-service-card:nth-child(3) .about-service-card__content {
     opacity: 1;
+  }
+
+  .about-service-card__content-inner {
+    padding: 30px;
+  }
+
+  .about-service-card h3 {
+    margin-top: 45px;
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-service-cards {
+    height: 1862.4px;
+    display: block;
+  }
+
+  .about-service-card,
+  .about-service-card.is-active {
+    width: 100%;
+    height: 620.8px;
+    display: block;
+    overflow: hidden;
+  }
+
+  .about-service-card__image,
+  .about-service-card:not(.is-active) .about-service-card__image {
+    width: 100%;
+    height: 300px;
+  }
+
+  .about-service-card__content,
+  .about-service-card.is-active .about-service-card__content {
+    width: 100%;
+    height: 320.8px;
+    opacity: 1;
+    transform: none;
     pointer-events: auto;
   }
 
-  .service-card-title {
-    font-size: 1.5rem;
+  .about-service-card__content-inner {
+    padding: 20px 15px 30px;
   }
-}
 
-/* Below 1024px: no hover accordion — every card is fully expanded,
-   image stacked above its own panel, matching the mobile screenshots.
-   ========================================================================== */
-@media (max-width: 1023.98px) {
-  .service-card-panel {
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+  .about-service-card__icon {
+    width: 50px;
+    height: 50px;
   }
-}
 
-.service-card {
-    border: 0;
+  .about-service-card h3 {
+    min-height: 28.8px;
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 28.8px;
+  }
+
+  .about-service-card p {
+    margin-top: 17px;
+  }
+
+  .about-service-card a {
+    margin-top: 15px;
+  }
 }

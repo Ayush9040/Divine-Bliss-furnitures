@@ -1,22 +1,21 @@
-import React from 'react'
-import AboutHeroSection from '../Component/AboutUs/AboutHeroSection'
-import Aboutus from '../Component/AboutUs/AboutContent'
-import ServicesTicker from '../Component/AboutUs/ServicesTicker'
-import ServicesBanner from '../Component/AboutUs/ServicesBanner'
-import ServiceCards from '../Component/AboutUs/ServiceCards'
-import AwardsSection from '../Component/AboutUs/AwardsSection'
+import AboutHeroSection from '../Component/AboutUs/AboutHeroSection';
+import AboutContent from '../Component/AboutUs/AboutContent';
+import ServicesTicker from '../Component/AboutUs/ServicesTicker';
+import ServicesBanner from '../Component/AboutUs/ServicesBanner';
+import ServiceCards from '../Component/AboutUs/ServiceCards';
+import AwardsSection from '../Component/AboutUs/AwardsSection';
 
-const AboutUs = () => {
+export default function AboutUs() {
   return (
-    <>
-    <AboutHeroSection />
-      <Aboutus />
+    <main className="about-page">
+      <AboutHeroSection />
+      <AboutContent />
       <ServicesTicker />
-      <ServicesBanner />
-      <ServiceCards />
+      <section className="about-services" aria-labelledby="about-services-title">
+        <ServicesBanner />
+        <ServiceCards />
+      </section>
       <AwardsSection />
-    </>
-  )
+    </main>
+  );
 }
-
-export default AboutUs

@@ -1,61 +1,29 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag, Search, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import Logo from '../assets/Logo.webp';
 import WhiteLogo from '../assets/w-logo.webp';
 import './Navbar.css';
 const navLinks = [
   { name: 'HOME', href: '/' },
+  { name: 'OUR STORY', href: '/about' },
+  { name: 'COLLECTIONS', href: '/#projects' },
   {
-    name: 'PAGES',
-    href: '#',
+    name: 'THE ATELIER',
+    href: '/about',
     hasDropdown: true,
     dropdownItems: [
-      'About Us',
-      'Services',
-      'Our Team',
-      'Single Team',
-      'Philosophy',
-      'History',
-      "FAQ's",
-      'Typography',
-      'Elements',
-      'Mega Menu Page',
-      'Coming Soon',
-      'Page 404',
+      { name: 'Craftsmanship', href: '/#craftsmanship' },
+      { name: 'Materials', href: '/services' },
+      { name: 'Bespoke', href: '/contact' },
     ],
   },
-  {
-    name: 'PORTFOLIO',
-    href: '#',
-    hasDropdown: true,
-    dropdownItems: [
-      {
-        label: 'Grid',
-        children: ['Grid 1', 'Grid 2', 'Grid 3'],
-      },
-      {
-        label: 'Masonry',
-        children: ['Masonry 1', 'Masonry 2', 'Masonry 3'],
-      },
-      { label: 'Portfolio Single' },
-      { label: 'Portfolio Gallery' },
-    ],
-  },
-  {
-    name: 'BLOG',
-    href: '#blog',
-    hasDropdown: true,
-    dropdownItems: ['Blog Grid', 'Blog List', 'Blog Single'],
-  },
-  { name: 'SHOP', href: '#shop' },
-  { name: 'CONTACTS', href: '/contact' },
+  { name: 'CONTACT US', href: '/contact' },
 ];
 
 const Navbar = ({ variant = 'solid' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -63,7 +31,7 @@ const Navbar = ({ variant = 'solid' }) => {
   const location = useLocation();
 
   const isOverlayPage = variant === 'transparent';
-  const showSolid = !isOverlayPage || isScrolledPastHero || isOpen;
+  const showSolid = !isOverlayPage || isScrolledPastHero;
 
   const checkScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
@@ -112,55 +80,16 @@ const Navbar = ({ variant = 'solid' }) => {
   }, [location.pathname, checkScroll]);
 
   const isActive = (href) => {
-    if (href === '/') return location.pathname === '/';
-    if (href.startsWith('/')) return location.pathname === href;
+    const [pathname, hash] = href.split('#');
+    if (href === '/') return location.pathname === '/' && !location.hash;
+    if (hash) return location.pathname === pathname && location.hash === `#${hash}`;
+    if (pathname.startsWith('/')) return location.pathname === pathname;
     return false;
   };
 
   const closeMobile = () => {
     setIsOpen(false);
     setMobileExpanded(null);
-  };
-
-  const renderDropdownItem = (item, idx) => {
-    if (typeof item === 'string') {
-      return (
-        <a key={idx} href="#" className="dropdown-item">
-          {item}
-        </a>
-      );
-    }
-
-    if (item.children) {
-      return (
-        <div
-          key={idx}
-          className="dropdown-item-group"
-          onMouseEnter={() => setActiveSubmenu(item.label)}
-          onMouseLeave={() => setActiveSubmenu(null)}
-        >
-          <a href="#" className="dropdown-item has-submenu">
-            {item.label}
-            <ChevronRight size={14} className="submenu-arrow" />
-          </a>
-          {activeSubmenu === item.label && (
-            <div className="submenu">
-              {item.children.map((child, childIdx) => (
-                <a key={childIdx} href="#" className="dropdown-item">
-                  {child}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    return (
-      <a key={idx} href="#" className="dropdown-item">
-        {item.label}
-      </a>
-    );
   };
 
   return (
@@ -172,7 +101,7 @@ const Navbar = ({ variant = 'solid' }) => {
       <div className="navbar-container">
         <div className="navbar-wrapper">
           <Link to="/" className="navbar-logo" onClick={closeMobile}>
-            <img src={showSolid ? Logo : WhiteLogo} alt="Mink Studio Logo" />
+            <img src={isOpen ? WhiteLogo : showSolid ? Logo : WhiteLogo} alt="Mink Studio Logo" />
           </Link>
 
           <nav className="navbar-nav">
@@ -185,14 +114,19 @@ const Navbar = ({ variant = 'solid' }) => {
                   onMouseLeave={() => {
                     if (link.hasDropdown) {
                       setActiveDropdown(null);
-                      setActiveSubmenu(null);
+                    }
+                  }}
+                  onFocus={() => link.hasDropdown && setActiveDropdown(link.name)}
+                  onBlur={(event) => {
+                    if (link.hasDropdown && !event.currentTarget.contains(event.relatedTarget)) {
+                      setActiveDropdown(null);
                     }
                   }}
                 >
                   {link.href.startsWith('/') ? (
                     <Link
                       to={link.href}
-                      className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+                      className={`nav-link ${!link.hasDropdown && isActive(link.href) ? 'active' : ''}`}
                     >
                       <span className="circle-icon" />
                       {link.name}
@@ -206,7 +140,16 @@ const Navbar = ({ variant = 'solid' }) => {
 
                   {link.hasDropdown && activeDropdown === link.name && (
                     <div className="dropdown-menu">
-                      {link.dropdownItems.map((item, idx) => renderDropdownItem(item, idx))}
+                      {link.dropdownItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className="dropdown-item"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </li>
@@ -215,12 +158,6 @@ const Navbar = ({ variant = 'solid' }) => {
           </nav>
 
           <div className="navbar-actions">
-            <button type="button" className="icon-button" aria-label="Cart">
-              <ShoppingBag size={20} />
-            </button>
-            <button type="button" className="icon-button" aria-label="Search">
-              <Search size={20} />
-            </button>
             <Link to="/contact" className="cta-button">
               GET IN TOUCH
             </Link>
@@ -240,20 +177,12 @@ const Navbar = ({ variant = 'solid' }) => {
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
         {navLinks.map((link) => (
           <div key={link.name} className="mobile-nav-group">
-            {link.href.startsWith('/') ? (
-              <Link
-                to={link.href}
-                className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
-                onClick={closeMobile}
-              >
-                <span className="circle-icon" />
-                {link.name}
-              </Link>
-            ) : link.hasDropdown ? (
+            {link.hasDropdown ? (
               <>
                 <button
                   type="button"
                   className="mobile-dropdown-trigger"
+                  aria-expanded={mobileExpanded === link.name}
                   onClick={() =>
                     setMobileExpanded(mobileExpanded === link.name ? null : link.name)
                   }
@@ -269,17 +198,28 @@ const Navbar = ({ variant = 'solid' }) => {
                 </button>
                 {mobileExpanded === link.name && (
                   <div className="mobile-submenu">
-                    {link.dropdownItems.map((item, idx) => {
-                      const label = typeof item === 'string' ? item : item.label;
-                      return (
-                        <a key={idx} href="#" className="mobile-submenu-item" onClick={closeMobile}>
-                          {label}
-                        </a>
-                      );
-                    })}
+                    {link.dropdownItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className="mobile-submenu-item"
+                        onClick={closeMobile}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </>
+            ) : link.href.startsWith('/') ? (
+              <Link
+                to={link.href}
+                className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+                onClick={closeMobile}
+              >
+                <span className="circle-icon" />
+                {link.name}
+              </Link>
             ) : (
               <a href={link.href} className="nav-link" onClick={closeMobile}>
                 <span className="circle-icon" />

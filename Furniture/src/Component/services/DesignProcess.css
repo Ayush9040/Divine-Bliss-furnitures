@@ -1,224 +1,132 @@
-/* ── Design Process Section Styles ── */
 .design-process-section {
-  width: 100%;
-  background-color: #f3efe6;
-  position: relative;
-  color: #1a1a1a;
+  min-height: 848px;
+  padding: 126px 0 144px;
   box-sizing: border-box;
-  padding: 5rem 0;
+  background: #f0ede8;
 }
 
-@media (min-width: 1024px) {
-  .design-process-section {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 0;
-  }
-}
-
-.design-process-container {
-  width: 100%;
-  max-width: 1440px;
+.design-process-inner {
+  width: calc(100% - 60px);
   margin: 0 auto;
-  padding: 0 2.5rem;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  align-items: center;
+}
+
+.process-intro { padding-right: 30px; }
+
+.services-eyebrow {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #78351e;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.services-eyebrow i {
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
   box-sizing: border-box;
 }
 
-@media (min-width: 1024px) {
-  .design-process-container {
-    padding: 0 3.5rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.design-process-wrapper {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .design-process-wrapper {
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 4.5rem;
-  }
-}
-
-/* ── Left Column ── */
-.process-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  z-index: 5;
-}
-
-.process-tag {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+.process-intro h2 {
+  width: 326px;
+  margin: 28px 0 38px;
+  font-size: 48px;
+  line-height: 60px;
+  font-weight: 300;
   text-transform: uppercase;
-  color: #732c14;
 }
 
-.process-tag-bullet {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1.5px solid #732c14;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-.process-title {
-  font-size: 2.75rem;
-  line-height: 1.1;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-
-@media (min-width: 768px) {
-  .process-title {
-    font-size: 3.5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .process-title {
-    font-size: 4rem;
-  }
-}
-
-.process-cta-wrap {
-  margin-top: 0.5rem;
-}
-
-.process-cta {
+.services-outline-button {
+  width: 207px;
+  height: 68px;
+  padding: 0 29px;
+  border: 1px solid rgba(24, 24, 24, .16);
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.95rem 2.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: transparent;
+  justify-content: space-between;
+  color: #78351e;
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  color: #732c14;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: all 0.35s ease;
+  white-space: nowrap;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
 }
 
-.process-cta:hover {
-  background-color: #732c14;
-  color: #ffffff;
-  border-color: #732c14;
-}
+.services-inline-arrow { font-size: 28px; line-height: 1; font-weight: 300; }
+.services-outline-button:hover { color: #fff; background: #78351e; border-color: #78351e; }
 
-.process-cta-arrow {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.35s ease;
-}
-
-.process-cta:hover .process-cta-arrow {
-  transform: translateX(5px);
-}
-
-/* ── Right Column (Cards Window & Track) ── */
-.process-right-window {
-  width: 100%;
-  position: relative;
-}
-
-@media (min-width: 1024px) {
-  .process-right-window {
-    height: 72vh;
-    overflow: hidden;
-  }
-}
-
-.process-right-track {
+.process-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem 2.5rem;
-  will-change: transform;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 42px;
 }
 
-@media (min-width: 640px) {
-  .process-right-track {
-    grid-template-columns: 1fr 1fr;
-    gap: 4.5rem 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .process-right-track {
-    padding: 1rem 0;
-  }
-}
-
-.process-card {
+.process-step {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 0.5rem;
+  height: 268px;
+  padding: 81px 15px 0;
+  box-sizing: border-box;
 }
 
 .process-number {
-  font-size: 6.5rem;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  color: rgba(120, 53, 30, .055);
+  font-size: 150px;
   line-height: 1;
   font-weight: 300;
-  color: rgba(180, 160, 140, 0.32);
-  margin-bottom: -2.25rem;
-  margin-left: -0.25rem;
-  pointer-events: none;
-  user-select: none;
 }
 
-@media (min-width: 768px) {
-  .process-number {
-    font-size: 7.5rem;
-    margin-bottom: -2.75rem;
-  }
-}
-
-.process-card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  margin: 0 0 0.85rem 0;
-  position: relative;
-  z-index: 2;
-}
-
-@media (min-width: 1280px) {
-  .process-card-title {
-    font-size: 1.35rem;
-  }
-}
-
-.process-card-desc {
-  font-size: 0.925rem;
-  line-height: 1.65;
-  color: #555555;
-  margin: 0;
-  position: relative;
-  z-index: 2;
+.process-step-copy { position: relative; z-index: 1; }
+.process-step h3 {
+  max-width: 320px;
+  margin: 0 0 14px;
+  font-size: 29px;
+  line-height: 39px;
   font-weight: 400;
+  text-transform: uppercase;
+}
+.process-step p {
+  max-width: 330px;
+  margin: 0;
+  color: #555;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+@media (max-width: 1024px) {
+  .design-process-section { min-height: 1013px; padding: 70px 0 40px; }
+  .design-process-inner { width: calc(100% - 30px); display: block; }
+  .process-intro { padding: 0 15px; }
+  .process-intro h2 { width: 420px; margin: 29px 0 16px; font-size: 42px; line-height: 50px; }
+  .process-intro .services-outline-button { width: 207px; height: 60px; }
+  .process-grid { margin-top: 0; row-gap: 42px; }
+  .process-step { height: 298px; padding: 79px 53px 0; }
+  .process-number { left: 0; font-size: 140px; }
+  .process-step h3 { font-size: 28px; line-height: 40px; }
+}
+
+@media (max-width: 600px) {
+  .design-process-section { height: 1216px; min-height: 1216px; padding: 70px 0 80px; }
+  .design-process-inner { width: calc(100% - 30px); }
+  .process-intro { height: 205px; padding: 0; box-sizing: border-box; }
+  .process-intro h2 { width: 100%; margin: 28px 0 25px; font-size: 28px; line-height: 35px; }
+  .process-intro .services-outline-button { width: 185px; height: 50px; padding: 0 29px; }
+  .process-grid { height: 861px; grid-template-columns: 1fr; margin-top: 0; gap: 0; }
+  .process-step { height: 188px; padding: 38px 34px 0; }
+  .process-step:nth-child(even) { height: 227px; padding-top: 48px; }
+  .process-number { top: 0; font-size: 115px; }
+  .process-step h3 { margin-bottom: 8px; font-size: 26px; line-height: 34px; }
+  .process-step p { font-size: 16px; line-height: 30px; }
 }

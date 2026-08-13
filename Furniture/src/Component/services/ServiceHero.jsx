@@ -1,36 +1,25 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import "./ServiceHero.css";
+import { Link } from 'react-router-dom';
+import heroImage from '../../assets/services-reference/services-hero.webp';
+import './ServiceHero.css';
 
-const ServiceHero = () => {
+const Arrow = () => (
+  <svg viewBox="0 0 21 12" aria-hidden="true">
+    <path d="M20.5 5.5a.63.63 0 0 1 0 .88l-5.3 5.3a.63.63 0 0 1-.88-.89l4.24-4.24H.63a.63.63 0 0 1 0-1.25h17.93l-4.24-4.23a.63.63 0 0 1 .88-.89l5.3 5.32Z" />
+  </svg>
+);
+
+export default function ServiceHero() {
   return (
-    <div
-      className="page-hero service-hero"
-      style={{
-        backgroundImage: `url('https://wgl-dsites.net/mink/wp-content/uploads/2026/02/pt-services.webp')`,
-      }}
-    >
-      <div className="service-hero-overlay" />
-
-      <main className="service-hero-container">
-        <div>
-          <h1 className="service-hero-title">
-            SERVICES
-          </h1>
-        </div>
-
-        <div className="service-hero-breadcrumb">
-          <Link to="/" className="service-hero-link">
-            HOME
-          </Link>
-          <ArrowRight className="service-hero-arrow" />
-          <span className="service-hero-current">
-            SERVICES
-          </span>
-        </div>
-      </main>
-    </div>
+    <section className="page-hero service-hero" style={{ backgroundImage: `url(${heroImage})` }}>
+      <div className="service-hero-shade" />
+      <div className="service-hero-inner">
+        <h1 className="service-hero-title">Services</h1>
+        <nav className="service-hero-breadcrumb" aria-label="Breadcrumb">
+          <Link to="/">Home</Link>
+          <Arrow />
+          <span>Services</span>
+        </nav>
+      </div>
+    </section>
   );
-};
-
-export default ServiceHero;
+}
