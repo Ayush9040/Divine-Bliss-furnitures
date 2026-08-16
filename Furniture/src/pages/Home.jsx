@@ -26,10 +26,12 @@ import team04 from '../assets/home-reference/team-04.webp';
 import architecture01 from '../assets/home-reference/architecture-01.webp';
 import architecture02 from '../assets/home-reference/architecture-02.webp';
 import architecture03 from '../assets/home-reference/architecture-03.webp';
+import benefitsTeam from '../assets/home-reference/benefits-team.webp';
 import testimonial01 from '../assets/home-reference/testimonial-01.webp';
 import testimonial02 from '../assets/home-reference/testimonial-02.webp';
 import testimonial03 from '../assets/home-reference/testimonial-03.webp';
 import testimonial04 from '../assets/home-reference/testimonial-04.webp';
+import HomeFaq from '../Component/Home/HomeFaq';
 import './Home.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -208,6 +210,46 @@ export default function Home() {
       );
 
       const media = gsap.matchMedia();
+      media.add('(prefers-reduced-motion: no-preference)', () => {
+        const benefitsSection = root.querySelector('.mink-benefits');
+        const benefitsLayout = benefitsSection?.querySelector('.mink-benefits-layout');
+        if (!benefitsSection || !benefitsLayout) return undefined;
+
+        const eyebrow = benefitsSection.querySelector('.mink-benefits-eyebrow');
+        const title = benefitsSection.querySelector('.mink-benefits-title');
+        const visual = benefitsSection.querySelector('.mink-benefits-visual');
+        const copy = benefitsSection.querySelector('.mink-benefits-copy');
+
+        gsap.set(eyebrow, { x: -70, opacity: 0 });
+        gsap.set(title, { x: 100, opacity: 0 });
+        gsap.set(visual, { x: -150, opacity: 0 });
+        gsap.set(copy, { x: 150, opacity: 0 });
+
+        const timeline = gsap.timeline({ paused: true });
+
+        timeline
+          .to(eyebrow, { x: 0, opacity: 1, duration: 0.72, ease: 'power3.out' })
+          .to(title, { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '<0.08')
+          .to(visual, { x: 0, opacity: 1, duration: 1.05, ease: 'power3.out' }, '-=0.35')
+          .to(copy, { x: 0, opacity: 1, duration: 1.05, ease: 'power3.out' }, '<0.08');
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return;
+            timeline.play();
+            observer.disconnect();
+          },
+          { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
+        );
+
+        observer.observe(benefitsLayout);
+
+        return () => {
+          observer.disconnect();
+          timeline.kill();
+        };
+      });
+
       media.add('(min-width: 901px)', () => {
         const cards = gsap.utils.toArray('.mink-service-card', serviceRef.current);
         const travel = () => Math.max(window.innerHeight, 760);
@@ -429,6 +471,42 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
         </div>
       </section>
 
+      <section className="mink-benefits" aria-labelledby="mink-benefits-title">
+        <div className="mink-benefits-shell">
+          <span className="mink-eyebrow mink-benefits-eyebrow"><i /> Benefits Beyond Aesthetics</span>
+          <h2 id="mink-benefits-title" className="mink-benefits-title">
+            Every Home Deserves Furniture That
+<br className="mink-benefits-title-break" />Feels Like It Belongs
+          </h2>
+
+          <div className="mink-benefits-layout">
+            <div className="mink-benefits-visual">
+              <svg className="mink-benefits-blueprint" viewBox="0 0 420 420" aria-hidden="true">
+                <circle cx="210" cy="210" r="206" />
+                <path d="M64 116h232v54h58v140H132v-42H64z" />
+                <path d="M92 139h172v102H92zm172 31h64v71h-64zm-132 102h92v37h-92z" />
+                <path d="M112 139v102m48-102v102m52-102v102m52-39h64M92 190h172M178 241v68" />
+                <path d="M76 96l248 248M101 73l247 247M46 144l230 230" />
+                <path d="M44 334h321M76 362h246M334 92v268" />
+                <path d="M122 156a20 20 0 0 1 20 20M224 205a23 23 0 0 0 23 23M287 273a18 18 0 0 1 18-18" />
+                <circle cx="142" cy="176" r="4" />
+                <circle cx="247" cy="228" r="4" />
+                <circle cx="305" cy="255" r="4" />
+              </svg>
+              <div className="mink-benefits-photo">
+                <img src={benefitsTeam} alt="Interior architects collaborating over detailed floor plans" />
+              </div>
+            </div>
+
+            <div className="mink-benefits-copy">
+              <p>Whether you're furnishing a single room or designing your entire home.
+              Divine Bliss is here to help you create spaces that are beautiful, comfortable, and distinctly yours.</p>
+              <a href="/services">Let's Create Your Space <InlineArrow /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="craftsmanship" className="mink-architecture">
         <div className="mink-architecture-heading" data-reveal>
           <span className="mink-eyebrow mink-architecture-eyebrow"><i /> Smth Little About Us</span>
@@ -533,6 +611,8 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
           ))}
         </div>
       </section>
+
+      <HomeFaq />
     </main>
   );
 }
