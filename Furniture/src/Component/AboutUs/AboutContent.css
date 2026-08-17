@@ -10,7 +10,6 @@
 }
 
 .about-story-heading {
-  height: 414px;
   padding: 145px 0 41px;
 }
 
@@ -44,7 +43,6 @@
 
 .about-story-heading__title {
   width: 810px;
-  min-height: 185px;
   margin: 0;
   padding: 0 0 5px;
   color: #181818;
@@ -68,12 +66,7 @@
   display: inline-block;
 }
 
-.about-story-editorial {
-  height: 930px;
-}
-
 .about-story-editorial__inner {
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 540px));
   gap: 90px;
@@ -152,7 +145,6 @@
 
 @media (max-width: 1024px) {
   .about-story-heading {
-    height: 301px;
     padding: 77px 0 41px;
   }
 
@@ -164,13 +156,8 @@
 
   .about-story-heading__title {
     width: 610px;
-    min-height: 140px;
     font-size: 36px;
     line-height: 45px;
-  }
-
-  .about-story-editorial {
-    height: 741.5px;
   }
 
   .about-story-editorial__inner {
@@ -202,7 +189,6 @@
 
 @media (max-width: 600px) {
   .about-story-heading {
-    height: 295px;
     padding: 70px 15px 37px;
   }
 
@@ -213,13 +199,8 @@
 
   .about-story-heading__title {
     width: 100%;
-    min-height: 145px;
     font-size: 29.5px;
     line-height: 35px;
-  }
-
-  .about-story-editorial {
-    height: 1286.8px;
   }
 
   .about-story-editorial__inner {
@@ -230,17 +211,8 @@
     padding: 0 15px;
   }
 
-  .about-story__column--left {
-    height: 480.9px;
-  }
-
   .about-story__column--right {
-    height: 805.9px;
     padding-top: 50px;
-  }
-
-  .about-story__lead {
-    height: 72px;
   }
 
   .about-story__left-image {

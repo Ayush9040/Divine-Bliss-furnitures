@@ -9,7 +9,7 @@ import './AboutContent.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heading = 'Interior Design That Balances Beauty, Comfort, and Purpose in Every Detail';
+const heading = 'Every Home Begins with a Story';
 
 function AnimatedHeading() {
   return heading.split(' ').map((word, wordIndex) => (
@@ -81,7 +81,7 @@ export default function AboutContent() {
         <div className="about-story-editorial__inner">
           <div className="about-story__column about-story__column--left">
             <p className="about-story__lead about-story__reveal">
-              We believe great design goes beyond aesthetics.
+              Since 2016, we've been helping homeowners create interiors that are as comfortable as they are beautiful.
             </p>
             <img
               className="about-story__image about-story__left-image"
@@ -92,7 +92,8 @@ export default function AboutContent() {
 
           <div className="about-story__column about-story__column--right">
             <p className="about-story__copy about-story__reveal">
-              It’s about how a space works, how it feels, and how it supports everyday life. By combining smart planning, high-quality materials, and a deep understanding of light, color, and form, we transform ideas into spaces that are beautiful, practical, and uniquely personal. Our goal is to create interiors that elevate experiences and stand the test of time.
+              The spaces we live in shape our everyday moments. At Divine Bliss, we believe the furniture within those spaces should be created with the same care, intention, and attention to detail.
+
             </p>
             <a className="about-story__link about-story__reveal" href="/#projects">
               View All Cases <ArrowRight aria-hidden="true" />

@@ -2,7 +2,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 229px;
+  height: 118px;
   margin-top: -26px;
   overflow: hidden;
   background: #f0ede8;
@@ -31,7 +31,7 @@
 
 @media (max-width: 1024px) {
   .about-ticker {
-    height: 132px;
+    height: 70px;
     margin-top: -16px;
   }
 
@@ -43,8 +43,8 @@
 
 @media (max-width: 600px) {
   .about-ticker {
-    height: 106px;
-    margin-top: 60px;
+    height: 58px;
+    margin-top: 30px;
   }
 
   .about-ticker__group span {
