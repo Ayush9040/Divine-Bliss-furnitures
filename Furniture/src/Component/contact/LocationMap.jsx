@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, MousePointer2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, MousePointer2 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,11 +7,20 @@ import './LocationMap.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const mapUrl = 'https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=10&output=embed&iwloc=near';
+const studioAddress = 'GROUND FLOOR, # SY NO 7, MARUTHI GARDEN, SARJAPUR ROAD, Wipro Corporate, Bengaluru, Bengaluru Urban, Bengaluru, Karnataka, 560035';
+const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(studioAddress)}&t=m&z=16&output=embed&iwloc=near`;
+const collectionOptions = [
+  { value: 'sofas', label: 'Sofas' },
+  { value: 'dining', label: 'Dining' },
+  { value: 'curtains', label: 'Curtains' },
+];
 
 export default function LocationMap() {
   const container = useRef(null);
+  const collectionField = useRef(null);
   const [mapActive, setMapActive] = useState(false);
+  const [collectionOpen, setCollectionOpen] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState('');
 
   useEffect(() => {
     if (!mapActive) return undefined;
@@ -23,6 +32,24 @@ export default function LocationMap() {
     window.addEventListener('keydown', stopMapInteraction);
     return () => window.removeEventListener('keydown', stopMapInteraction);
   }, [mapActive]);
+
+  useEffect(() => {
+    if (!collectionOpen) return undefined;
+
+    const closeCollectionMenu = (event) => {
+      if (event.key === 'Escape') setCollectionOpen(false);
+    };
+    const closeOnOutsideClick = (event) => {
+      if (!collectionField.current?.contains(event.target)) setCollectionOpen(false);
+    };
+
+    window.addEventListener('keydown', closeCollectionMenu);
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    return () => {
+      window.removeEventListener('keydown', closeCollectionMenu);
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+    };
+  }, [collectionOpen]);
 
   useGSAP(
     () => {
@@ -45,6 +72,15 @@ export default function LocationMap() {
     setMapActive(true);
   };
 
+  const selectedCollectionLabel = collectionOptions.find(
+    (option) => option.value === selectedCollection,
+  )?.label;
+
+  const selectCollection = (value) => {
+    setSelectedCollection(value);
+    setCollectionOpen(false);
+  };
+
   return (
     <section ref={container} className="contact-location" aria-label="Location and contact form">
       <div
@@ -53,7 +89,7 @@ export default function LocationMap() {
       >
         <iframe
           src={mapUrl}
-          title="Mink Studio location at the London Eye"
+          title="Divine Bliss showroom on Sarjapur Road, Bengaluru"
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
@@ -75,30 +111,70 @@ export default function LocationMap() {
 
       <div className="contact-form-section">
         <div className="contact-form-panel">
-          <div className="contact-form-eyebrow"><i /> Discuss Your Vision</div>
-          <h2>Let’s Discuss Your Project</h2>
-          <p>Your email address will not be published. Required fields are marked *</p>
+          <div className="contact-form-eyebrow"><i /> Reach Out</div>
+          <h2>Get in Touch</h2>
+          <p>We'd be happy to answer your questions and help you take the next step toward creating a home you'll love.</p>
 
           <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
             <div className="contact-form-row">
               <label>
-                <span className="sr-only">Your Name</span>
-                <input type="text" name="name" placeholder="Your Name" autoComplete="name" />
+                <span className="sr-only">Name</span>
+                <input type="text" name="name" placeholder="Name" autoComplete="name" required />
               </label>
               <label>
-                <span className="sr-only">Your Email</span>
-                <input type="email" name="email" placeholder="Your Email" autoComplete="email" />
+                <span className="sr-only">Email</span>
+                <input type="email" name="email" placeholder="Email" autoComplete="email" required />
               </label>
             </div>
+            <div className="contact-form-row">
+              <label>
+                <span className="sr-only">Phone Number</span>
+                <input type="tel" name="phone" placeholder="Ph No" autoComplete="tel" required />
+              </label>
+              <div ref={collectionField} className={`contact-select-field ${collectionOpen ? 'is-open' : ''}`}>
+                <span id="collection-label" className="sr-only">Collections</span>
+                <input type="hidden" name="collection" value={selectedCollection} />
+                <button
+                  type="button"
+                  className={`contact-select-trigger ${selectedCollection ? 'has-value' : ''}`}
+                  aria-label={`Select collection, current value ${selectedCollectionLabel || 'none'}`}
+                  aria-haspopup="listbox"
+                  aria-expanded={collectionOpen}
+                  aria-controls="collection-options"
+                  onClick={() => setCollectionOpen((open) => !open)}
+                >
+                  <span id="collection-value">{selectedCollectionLabel || 'Collections'}</span>
+                  <ChevronDown aria-hidden="true" />
+                </button>
+
+                <div
+                  id="collection-options"
+                  className="contact-select-menu"
+                  role="listbox"
+                  aria-labelledby="collection-label"
+                  hidden={!collectionOpen}
+                >
+                  {collectionOptions.map((option, index) => (
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={selectedCollection === option.value}
+                      className={selectedCollection === option.value ? 'is-selected' : ''}
+                      key={option.value}
+                      onClick={() => selectCollection(option.value)}
+                    >
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
             <label>
-              <span className="sr-only">Website</span>
-              <input type="url" name="website" placeholder="Website" autoComplete="url" />
+              <span className="sr-only">Note</span>
+              <textarea name="note" rows="3" placeholder="Note" />
             </label>
-            <label>
-              <span className="sr-only">Your Comment</span>
-              <textarea name="comment" rows="3" placeholder="Your Comment" />
-            </label>
-            <button type="submit">Leave A Comment <ArrowRight aria-hidden="true" /></button>
+            <button type="submit">Request Call Back <ArrowRight aria-hidden="true" /></button>
           </form>
         </div>
       </div>

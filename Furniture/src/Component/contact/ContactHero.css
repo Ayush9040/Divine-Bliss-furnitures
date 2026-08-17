@@ -28,14 +28,17 @@
 }
 
 .page-hero-title {
+  width: min(760px, calc(100% - 245px));
   margin: 0 0 0 -.06em;
   color: #fff;
-  font-size: 67px;
-  line-height: 80px;
+  font-size: clamp(46px, 4.25vw, 60px);
+  line-height: 1.08;
   font-weight: 300;
-  letter-spacing: -.06em;
+  letter-spacing: -.045em;
   text-transform: uppercase;
 }
+
+.page-hero-title span { display: block; }
 
 .page-hero-breadcrumb {
   display: flex;
@@ -68,16 +71,17 @@
 .page-hero-breadcrumb-link:hover { opacity: .7; }
 
 @media (max-width: 1024px) and (min-width: 768px) {
-  .page-hero { height: 184px; }
+  .page-hero { height: 260px; }
 
   .page-hero-main {
     width: calc(100% - 60px);
-    padding: 100px 0 40px;
+    padding: 100px 0 32px;
   }
 
   .page-hero-title {
-    font-size: 44px;
-    line-height: 44px;
+    width: calc(100% - 175px);
+    font-size: clamp(34px, 4.2vw, 40px);
+    line-height: 1.1;
   }
 
   .page-hero-breadcrumb { font-size: 13px; }
@@ -85,25 +89,26 @@
 
 @media (max-width: 767px) {
   .page-hero {
-    height: 226px;
+    height: 320px;
     background-position: center bottom;
   }
 
   .page-hero-main {
     width: calc(100% - 30px);
-    padding: 100px 0 40px;
+    padding: 102px 0 34px;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
   }
 
   .page-hero-title {
+    width: 100%;
     margin-left: -.06em;
-    padding-bottom: 10px;
-    font-size: 44px;
-    line-height: 44px;
+    font-size: clamp(30px, 8.8vw, 38px);
+    line-height: 1.1;
   }
 
-  .page-hero-breadcrumb { font-size: 13px; }
+  .page-hero-breadcrumb { margin-top: 20px; font-size: 13px; }
   .page-hero-breadcrumb-arrow { margin-inline: 12px; }
 }
 

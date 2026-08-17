@@ -29,7 +29,10 @@ export default function ContactHero() {
     >
       <div className="page-hero-overlay" />
       <div className="page-hero-main">
-        <h1 id="contact-page-title" className="page-hero-title">Contacts</h1>
+        <h1 id="contact-page-title" className="page-hero-title">
+          <span>Contact US</span>
+          
+        </h1>
         <nav className="page-hero-breadcrumb" aria-label="Breadcrumb">
           <Link to="/" className="page-hero-breadcrumb-link">Home</Link>
           <ArrowRight className="page-hero-breadcrumb-arrow" aria-hidden="true" />

@@ -123,11 +123,14 @@
 }
 
 .contact-email-banner h2 {
+  max-width: 100%;
   margin: 0;
   color: #843a1d;
-  font-size: min(7.045vw, 101.5px);
-  line-height: min(6.667vw, 96px);
+  font-family: 'TikTok Sans', sans-serif;
+  font-size: clamp(22px, 6.75vw, 101.5px);
+  line-height: 1;
   font-weight: 300;
+  font-style: normal;
   letter-spacing: -.06em;
   text-align: center;
   text-transform: uppercase;
@@ -169,10 +172,6 @@
     padding: 70px 30px;
   }
 
-  .contact-email-banner h2 {
-    font-size: 63px;
-    line-height: 60px;
-  }
 }
 
 @media (max-width: 767px) {
@@ -220,10 +219,6 @@
     padding: 50px 15px;
   }
 
-  .contact-email-banner h2 {
-    font-size: 31.5px;
-    line-height: 30px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

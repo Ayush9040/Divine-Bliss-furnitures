@@ -10,7 +10,7 @@ import './ContactSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const emailAddress = 'minkstudio@mail.com';
+const emailAddress = 'Divinebliss121@gmail.com';
 
 export default function ContactSection() {
   const container = useRef(null);
@@ -50,6 +50,7 @@ export default function ContactSection() {
             start: 'top 96%',
             end: 'top 58%',
             scrub: 0.65,
+            invalidateOnRefresh: true,
           },
         },
       );
@@ -62,33 +63,37 @@ export default function ContactSection() {
       <section className="contact-overview" aria-labelledby="contact-overview-title">
         <div className="contact-overview-shell">
           <div className="contact-overview-lead">
-            <div className="contact-eyebrow" data-contact-reveal><i /> Discuss Your Vision</div>
+            <div className="contact-eyebrow" data-contact-reveal><i /> We'd Love to Hear From You</div>
             <h2 id="contact-overview-title" data-contact-reveal>
-              <span>Ready to Create a</span>
-              <span>Space That Works</span>
-              <span>and Inspires</span>
+              <span>Let's Create </span>
+              <span>Something Beautiful Together</span>
+              {/* <span>and Inspires</span> */}
             </h2>
           </div>
 
           <div className="contact-overview-copy">
             <p className="contact-intro" data-contact-reveal>
-              Get in touch to discuss your employee wellbeing needs today. Please give us a call, drop us an email.
+              Whether you're furnishing a single room, designing an entire home, or looking for a bespoke solution, we're here to help bring your vision to life.
             </p>
 
             <div className="contact-details-grid">
               <div className="contact-detail" data-contact-reveal>
-                <h3>We Are Here:</h3>
-                <address>27 Division St, New York,<br />NY 10002, USA</address>
+                <h3>Showroom Address:</h3>
+                <address>
+                  GROUND FLOOR, # SY NO 7, MARUTHI GARDEN,<br />
+                  SARJAPUR ROAD, Wipro Corporate, Bengaluru,<br />
+                  Bengaluru Urban, Bengaluru, Karnataka, 560035
+                </address>
               </div>
 
               <div className="contact-detail" data-contact-reveal>
                 <h3>Call Us:</h3>
-                <a href="tel:+18004324534">+1 800 432 45 34</a>
+                <a href="tel:9743444469">9743444469</a>
               </div>
 
               <div className="contact-detail" data-contact-reveal>
                 <h3>Mail Us:</h3>
-                <a href="mailto:minkstudio@mail.com">minkstudio@mail.com</a>
+                <a href="mailto:Divinebliss121@gmail.com"> Divinebliss121@gmail.com</a>
               </div>
 
               <nav className="contact-social" aria-label="Contact social media" data-contact-reveal>
