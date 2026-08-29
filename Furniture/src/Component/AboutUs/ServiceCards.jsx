@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { ArrowRight, LampDesk, Sofa, LayoutGrid } from 'lucide-react';
+import { LampDesk, Sofa, LayoutGrid } from 'lucide-react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -59,7 +59,8 @@ export default function ServiceCards() {
               <Icon className="about-service-card__icon" aria-hidden="true" />
               <h3>{title}</h3>
               <p>Regular stretching supports better posture, prevents injuries, and improves recovery after physical activity.</p>
-              <a href="/services">Read More <ArrowRight aria-hidden="true" /></a>
+              {/* Services page CTA is intentionally disabled for now. */}
+              {/* <a href="/services">Read More <ArrowRight aria-hidden="true" /></a> */}
             </div>
           </div>
         </article>

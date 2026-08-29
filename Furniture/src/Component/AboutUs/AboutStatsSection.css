@@ -1,0 +1,130 @@
+.about-stats,
+.about-stats * {
+  box-sizing: border-box;
+}
+
+.about-stats {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 620px;
+  margin-top: clamp(82px, 7vw, 100px);
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-stats::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(16, 16, 16, .12);
+  content: '';
+  pointer-events: none;
+}
+
+.about-stats__inner {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 30px);
+  max-width: 1810px;
+  min-height: inherit;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+}
+
+.about-stats__item {
+  position: relative;
+  min-width: 0;
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+}
+
+.about-stats__circle {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 720px;
+  max-width: none;
+  display: block;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.about-stats__circle-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: none;
+}
+
+.about-stats__content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.about-stats__value {
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: #fff;
+  font-size: 96px;
+  line-height: .8;
+  font-weight: 300;
+  letter-spacing: -.055em;
+}
+
+.about-stats__suffix {
+  display: inline-block;
+}
+
+.about-stats__content h3 {
+  margin: 19px 0 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .about-stats {
+    min-height: 320px;
+  }
+
+  .about-stats__circle {
+    width: 43vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-stats {
+    min-height: 0;
+    padding: 40px 0;
+  }
+
+  .about-stats__inner {
+    width: 100%;
+    min-height: 600px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-stats__item {
+    min-height: 200px;
+  }
+
+  .about-stats__circle {
+    width: 300px;
+  }
+}

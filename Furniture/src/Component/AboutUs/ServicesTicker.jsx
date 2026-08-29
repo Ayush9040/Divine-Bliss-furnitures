@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { principles } from './BrandPrinciplesSection';
 import './ServicesTicker.css';
 
-const tickerText = 'Concept Development // Architectural Design // 3D Visualization // ';
+const tickerText = `${principles.map(({ title }) => title).join(' // ')} // `;
 
 export default function ServicesTicker() {
   const sectionRef = useRef(null);

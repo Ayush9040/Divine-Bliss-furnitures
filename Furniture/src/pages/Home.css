@@ -50,6 +50,7 @@
   line-height: 1.32;
   font-weight: 700;
 }
+.mink-hero-info p { font-weight: 400; text-transform: none; }
 
 .mink-hero-info a, .mink-text-link, .mink-service-copy a { color: var(--rust); text-decoration: none; display: inline-flex; align-items: center; justify-content: flex-end; gap: 14px; text-transform: uppercase; font-weight: 700; }
 .mink-hero-info a svg, .mink-text-link svg, .mink-service-copy a svg { transition: transform .3s ease; }
@@ -63,6 +64,7 @@
 .mink-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--rust); font-size: 13px; font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
 .mink-eyebrow i { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
 .mink-section-heading h2 { margin-top: 31px; font-size: 48px; line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-about-title-second-line { display: inline; }
 .mink-about-grid { display: grid; grid-template-columns: 500px 570px; gap: 100px; margin-top: 41px; }
 .mink-about-column { min-width: 0; }
 .mink-about-lead { width: 380px; font-size: 24px; line-height: 36px; font-weight: 400; }
@@ -110,13 +112,19 @@
 .mink-projects-title { font-size: clamp(64px, 6.7vw, 96px); line-height: 1; font-weight: 300; text-align: center; text-transform: uppercase; white-space: nowrap; letter-spacing: -.04em; }
 .mink-project-window { overflow: hidden; margin-top: 65px; }
 .mink-project-track { display: flex; gap: 42px; transform: translateX(var(--project-desktop)); transition: transform .75s cubic-bezier(.16,1,.3,1); }
-.mink-project { flex: 0 0 calc((100% - 84px) / 3); min-width: 0; }
+.mink-project-track.is-instant { transition: none; }
+.mink-project { flex: 0 0 calc((100% - 84px) / 3); min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
 .mink-project-image { height: 307px; overflow: hidden; }
 .mink-project-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); }
 .mink-project:hover img { transform: scale(1.035); }
 .mink-project h3 { margin-top: 24px; font-size: 24px; font-weight: 400; text-transform: uppercase; }
-.mink-project p { display: flex; align-items: self-start; flex-direction: column; gap: 9px; margin-top: 5px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #777; }
-.mink-project p i { width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; }
+.mink-project p { margin-top: 9px; color: #777; font-size: 12px; line-height: 1.55; font-weight: 600; text-transform: uppercase; }
+.mink-project-cta { width: 220px; max-width: 100%; height: 49px; margin-top: 18px; padding: 12px 20px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; border: 1px solid rgba(24,24,24,.2); background: transparent; color: var(--rust); font-size: 13px; line-height: 24px; font-weight: 600; white-space: nowrap; text-decoration: none; text-transform: uppercase; transition: background .25s ease, border-color .25s ease, color .25s ease; }
+.mink-project-cta svg { width: 23px; height: 23px; stroke-width: 1.25; transition: transform .25s ease; }
+.mink-project-cta:hover,
+.mink-project-cta:focus-visible { outline: 0; border-color: var(--rust); background: var(--rust); color: white; }
+.mink-project-cta:hover svg,
+.mink-project-cta:focus-visible svg { transform: translateX(5px); }
 .mink-project-controls { display: flex; justify-content: center; gap: 24px; margin-top: 50px; }
 .mink-project-controls button { width: 54px; height: 54px; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
 .mink-project-controls svg { width: 30px; height: 30px; stroke-width: 1.25; }
@@ -174,8 +182,9 @@
 .mink-testimonial-card { flex: 0 0 calc((100% - 90px) / 4); min-width: 0; min-height: 398px; padding: 32px 40px 40px; display: flex; flex-direction: column; justify-content: space-between; background: white; }
 .mink-testimonial-card blockquote { margin: 0; color: var(--ink); font-size: 18px; line-height: 1.778; font-weight: 400; letter-spacing: -.02em; }
 .mink-testimonial-author { min-height: 78px; display: flex; align-items: center; gap: 18px; }
-.mink-testimonial-author img { flex: 0 0 auto; width: 64px; height: 64px; display: block; border-radius: 50%; object-fit: cover; }
-.mink-testimonial-author h3 { font-size: 18px; line-height: 1.5; font-weight: 500; letter-spacing: -.02em; text-transform: uppercase; }
+.mink-testimonial-avatar { flex: 0 0 auto; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--rust); font-size: 15px; line-height: 1; font-weight: 600; letter-spacing: .04em; }
+.mink-testimonial-author > div { flex: 1 1 auto; min-width: 0; }
+.mink-testimonial-author h3 { max-width: 100%; overflow: hidden; color: var(--ink); font-size: 15px; line-height: 1.5; font-weight: 500; letter-spacing: -.02em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .mink-testimonial-author p { margin-top: 4px; color: rgba(24,24,24,.4); font-size: 14px; line-height: 1.25; font-weight: 500; }
 .mink-testimonial-controls { margin-top: 26px; display: flex; justify-content: center; gap: 14px; }
 .mink-testimonial-controls button { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
@@ -301,7 +310,7 @@
   .mink-testimonial-card { flex-basis: 100%; min-height: 205px; padding: 18px 20px 20px; }
   .mink-testimonial-card blockquote { font-size: 16px; line-height: 1.778; letter-spacing: -.02em; }
   .mink-testimonial-author { min-height: 64px; gap: 18px; }
-  .mink-testimonial-author h3 { font-size: 16px; line-height: 1.45; }
+  .mink-testimonial-author h3 { font-size: 14px; line-height: 1.45; }
   .mink-testimonial-author p { margin-top: 2px; font-size: 13px; }
   .mink-testimonial-controls { margin-top: 14px; gap: 14px; }
   .mink-testimonial-controls button { width: 36px; height: 36px; }
@@ -316,6 +325,9 @@
 }
 
 @media (max-width: 767px) {
+  .mink-projects-title { text-align: center; }
+  .mink-projects-title-line { display: block; }
+
   .mink-benefits { padding: 53px 0 60px; }
   .mink-benefits-shell { width: calc(100% - 30px); }
   .mink-benefits .mink-benefits-title { max-width: 100%; font-size: 28px; line-height: 35px; letter-spacing: -1.12px; }
@@ -327,14 +339,18 @@
   .mink-architecture-frame { width: calc(100% - 30px); }
   .mink-architecture-heading { padding: 70px 0 30px; }
   .mink-architecture-heading h2 { max-width: 345px; margin-top: 31px; font-size: 28px; line-height: 35px; letter-spacing: -1.12px; }
-  .mink-architecture-accordion { width: 100%; height: 700px; flex-direction: column; }
-  .mink-architecture-panel { flex-grow: 1; width: 100%; height: auto; }
+  .mink-architecture-accordion { width: 100%; height: 1100px; flex-direction: column; gap: 12px; }
+  .mink-architecture-panel { flex-grow: 1; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.2); }
   .mink-architecture-panel.is-active { flex-grow: 3; }
-  .mink-architecture-panel-inner { padding: 18px 20px 20px; }
+  .mink-architecture-panel-inner { padding: 18px 20px 28px; }
   .mink-architecture-copy { width: 305px; max-width: 100%; }
   .mink-architecture-copy h3 { font-size: 28px; line-height: 39.2px; letter-spacing: -1.12px; }
-  .mink-architecture-copy p { width: 305px; max-width: 100%; margin-top: 10px; font-size: 18px; line-height: 30.6px; letter-spacing: -.36px; }
-  .mink-architecture-copy a { width: 164px; height: 52px; margin-top: 5px; font-size: 13px; line-height: 22px; }
+  .mink-architecture-copy p { width: 305px; max-width: 100%; margin-top: 10px; font-size: 16px; line-height: 28px; letter-spacing: -.32px; }
+  .mink-architecture-copy a { width: 164px; height: 52px; margin-top: 14px; font-size: 13px; line-height: 22px; }
+}
+
+@media (min-width: 768px) {
+  .mink-about-title-second-line { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,6 @@
 /* ── Base header ── */
 .navbar-header {
+  --navbar-height: 90px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -26,18 +27,21 @@
 }
 
 .navbar-home {
+  --navbar-height: 100px;
   background-color: #f1eee9;
   border-bottom-color: transparent;
   box-shadow: none;
 }
 
 .navbar-home.navbar-scrolled {
+  --navbar-height: 80px;
   background-color: #ffffff;
   border-bottom-color: rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
 
 .navbar-transparent {
+  --navbar-height: 100px;
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: none;
@@ -122,6 +126,7 @@
   transition: color 0.35s ease;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
   font-family: inherit;
   white-space: nowrap;
@@ -143,6 +148,14 @@
 .navbar-transparent .nav-link:hover,
 .navbar-transparent .nav-link.active {
   color: #ffffff;
+}
+
+.nav-item > button.nav-link:focus {
+  outline: none;
+}
+
+.nav-item > button.nav-link:focus-visible {
+  box-shadow: inset 0 -2px currentColor;
 }
 
 /* ── Circle indicator ── */

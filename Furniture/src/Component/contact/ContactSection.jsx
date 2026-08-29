@@ -10,7 +10,7 @@ import './ContactSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const emailAddress = 'Divinebliss121@gmail.com';
+const emailAddress = 'divinebliss121@gmail.com';
 
 export default function ContactSection() {
   const container = useRef(null);
@@ -80,9 +80,9 @@ export default function ContactSection() {
               <div className="contact-detail" data-contact-reveal>
                 <h3>Showroom Address:</h3>
                 <address>
-                  GROUND FLOOR, # SY NO 7, MARUTHI GARDEN,<br />
-                  SARJAPUR ROAD, Wipro Corporate, Bengaluru,<br />
-                  Bengaluru Urban, Bengaluru, Karnataka, 560035
+                  Ground Floor, # Sy No 7, Maruthi Garden,<br />
+                  Sarjapur Road, Wipro Corporate,<br />
+                  Bengaluru, Karnataka, 560035
                 </address>
               </div>
 
@@ -93,7 +93,7 @@ export default function ContactSection() {
 
               <div className="contact-detail" data-contact-reveal>
                 <h3>Mail Us:</h3>
-                <a href="mailto:Divinebliss121@gmail.com"> Divinebliss121@gmail.com</a>
+                <a href="mailto:divinebliss121@gmail.com">divinebliss121@gmail.com</a>
               </div>
 
               <nav className="contact-social" aria-label="Contact social media" data-contact-reveal>

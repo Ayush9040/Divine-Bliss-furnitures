@@ -3,24 +3,33 @@ import { ArrowRight, ChevronDown, MousePointer2 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useContactForm from '../../hooks/useContactForm';
+import { COLLECTION_OPTIONS, getCollectionLabel } from '../../utils/contactValidation';
 import './LocationMap.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const studioAddress = 'GROUND FLOOR, # SY NO 7, MARUTHI GARDEN, SARJAPUR ROAD, Wipro Corporate, Bengaluru, Bengaluru Urban, Bengaluru, Karnataka, 560035';
+const studioAddress = 'Ground Floor, # Sy No 7, Maruthi Garden, Sarjapur Road, Wipro Corporate, Bengaluru, Karnataka, 560035';
 const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(studioAddress)}&t=m&z=16&output=embed&iwloc=near`;
-const collectionOptions = [
-  { value: 'sofas', label: 'Sofas' },
-  { value: 'dining', label: 'Dining' },
-  { value: 'curtains', label: 'Curtains' },
-];
-
 export default function LocationMap() {
   const container = useRef(null);
   const collectionField = useRef(null);
   const [mapActive, setMapActive] = useState(false);
   const [collectionOpen, setCollectionOpen] = useState(false);
-  const [selectedCollection, setSelectedCollection] = useState('');
+  const {
+    values,
+    errors,
+    status,
+    isSubmitting,
+    setFieldValue,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = useContactForm({
+    formId: 'contact-page-form',
+    requireNote: true,
+    source: 'contact-page',
+  });
 
   useEffect(() => {
     if (!mapActive) return undefined;
@@ -72,12 +81,10 @@ export default function LocationMap() {
     setMapActive(true);
   };
 
-  const selectedCollectionLabel = collectionOptions.find(
-    (option) => option.value === selectedCollection,
-  )?.label;
+  const selectedCollectionLabel = getCollectionLabel(values.collection);
 
   const selectCollection = (value) => {
-    setSelectedCollection(value);
+    setFieldValue('collection', value);
     setCollectionOpen(false);
   };
 
@@ -115,32 +122,73 @@ export default function LocationMap() {
           <h2>Get in Touch</h2>
           <p>We'd be happy to answer your questions and help you take the next step toward creating a home you'll love.</p>
 
-          <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
+          <form id="contact-page-form" className="contact-form" noValidate onSubmit={handleSubmit}>
             <div className="contact-form-row">
-              <label>
+              <label className="contact-field">
                 <span className="sr-only">Name</span>
-                <input type="text" name="name" placeholder="Name" autoComplete="name" required />
+                <input
+                  type="text"
+                  name="name"
+                  value={values.name}
+                  placeholder="Name"
+                  autoComplete="name"
+                  maxLength="80"
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? 'contact-name-error' : undefined}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.name && <span id="contact-name-error" className="contact-field-error">{errors.name}</span>}
               </label>
-              <label>
+              <label className="contact-field">
                 <span className="sr-only">Email</span>
-                <input type="email" name="email" placeholder="Email" autoComplete="email" required />
+                <input
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  placeholder="Email"
+                  autoComplete="email"
+                  maxLength="254"
+                  spellCheck="false"
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? 'contact-email-error' : undefined}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.email && <span id="contact-email-error" className="contact-field-error">{errors.email}</span>}
               </label>
             </div>
             <div className="contact-form-row">
-              <label>
+              <label className="contact-field">
                 <span className="sr-only">Phone Number</span>
-                <input type="tel" name="phone" placeholder="Ph No" autoComplete="tel" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={values.phone}
+                  placeholder="Ph No"
+                  autoComplete="tel-national"
+                  inputMode="numeric"
+                  pattern="[6-9][0-9]{9}"
+                  maxLength="10"
+                  aria-invalid={Boolean(errors.phone)}
+                  aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.phone && <span id="contact-phone-error" className="contact-field-error">{errors.phone}</span>}
               </label>
-              <div ref={collectionField} className={`contact-select-field ${collectionOpen ? 'is-open' : ''}`}>
+              <div ref={collectionField} className={`contact-select-field ${collectionOpen ? 'is-open' : ''} ${errors.collection ? 'has-error' : ''}`}>
                 <span id="collection-label" className="sr-only">Collections</span>
-                <input type="hidden" name="collection" value={selectedCollection} />
                 <button
                   type="button"
-                  className={`contact-select-trigger ${selectedCollection ? 'has-value' : ''}`}
+                  className={`contact-select-trigger ${values.collection ? 'has-value' : ''}`}
+                  data-field="collection"
                   aria-label={`Select collection, current value ${selectedCollectionLabel || 'none'}`}
                   aria-haspopup="listbox"
                   aria-expanded={collectionOpen}
                   aria-controls="collection-options"
+                  aria-invalid={Boolean(errors.collection)}
+                  aria-describedby={errors.collection ? 'contact-collection-error' : undefined}
                   onClick={() => setCollectionOpen((open) => !open)}
                 >
                   <span id="collection-value">{selectedCollectionLabel || 'Collections'}</span>
@@ -154,12 +202,12 @@ export default function LocationMap() {
                   aria-labelledby="collection-label"
                   hidden={!collectionOpen}
                 >
-                  {collectionOptions.map((option, index) => (
+                  {COLLECTION_OPTIONS.map((option, index) => (
                     <button
                       type="button"
                       role="option"
-                      aria-selected={selectedCollection === option.value}
-                      className={selectedCollection === option.value ? 'is-selected' : ''}
+                      aria-selected={values.collection === option.value}
+                      className={values.collection === option.value ? 'is-selected' : ''}
                       key={option.value}
                       onClick={() => selectCollection(option.value)}
                     >
@@ -168,13 +216,34 @@ export default function LocationMap() {
                     </button>
                   ))}
                 </div>
+                {errors.collection && <span id="contact-collection-error" className="contact-field-error">{errors.collection}</span>}
               </div>
             </div>
-            <label>
+            <label className="contact-field">
               <span className="sr-only">Note</span>
-              <textarea name="note" rows="3" placeholder="Note" />
+              <textarea
+                name="note"
+                rows="3"
+                value={values.note}
+                maxLength="1000"
+                placeholder="Note"
+                aria-invalid={Boolean(errors.note)}
+                aria-describedby={errors.note ? 'contact-note-error' : undefined}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.note && <span id="contact-note-error" className="contact-field-error">{errors.note}</span>}
             </label>
-            <button type="submit">Request Call Back <ArrowRight aria-hidden="true" /></button>
+            <div className="contact-form-actions">
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Verifying…' : 'Request Call Back'} <ArrowRight aria-hidden="true" />
+              </button>
+              {status.message && (
+                <p className={`contact-form-status is-${status.type}`} role={status.type === 'error' ? 'alert' : 'status'}>
+                  {status.message}
+                </p>
+              )}
+            </div>
           </form>
         </div>
       </div>

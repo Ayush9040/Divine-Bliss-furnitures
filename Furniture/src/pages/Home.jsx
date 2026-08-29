@@ -27,10 +27,6 @@ import architecture01 from '../assets/home-reference/architecture-01.webp';
 import architecture02 from '../assets/home-reference/architecture-02.webp';
 import architecture03 from '../assets/home-reference/architecture-03.webp';
 import benefitsTeam from '../assets/home-reference/benefits-team.webp';
-import testimonial01 from '../assets/home-reference/testimonial-01.webp';
-import testimonial02 from '../assets/home-reference/testimonial-02.webp';
-import testimonial03 from '../assets/home-reference/testimonial-03.webp';
-import testimonial04 from '../assets/home-reference/testimonial-04.webp';
 import HomeFaq from '../Component/Home/HomeFaq';
 import './Home.css';
 
@@ -39,41 +35,78 @@ gsap.registerPlugin(ScrollTrigger);
 const services = [
   {
     number: '01',
-    title: 'Residential Interior Design',
-    copy: 'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
+    title: 'Craftsmanship',
+    copy: "True craftsmanship isn't just seen, it's experienced. From the first sketch to the final finish, every Divine Bliss creation reflects our commitment to quality, attention to detail, and timeless design.",
+    ctaLabel: 'Explore Craftsmanship',
+    href: '/craftsmanship',
     image: service1,
     tone: 'rust',
   },
   {
     number: '02',
-    title: 'Space Planning & Layout',
-    copy: 'Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.',
+    title: 'Materials',
+    copy: 'Every detail matters. From the fabrics you touch to the finishes you see, the materials behind every Divine Bliss creation are carefully chosen to deliver lasting comfort, enduring quality, and timeless appeal.',
+    ctaLabel: 'Explore Materials',
+    href: '/materials',
     image: service2,
     tone: 'stone',
   },
   {
     number: '03',
-    title: 'Furniture & Material Selection',
-    copy: 'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
+    title: 'Bespoke',
+    copy: 'Your home is unlike any other, and your furniture should be too. At Divine Bliss, we offer bespoke solutions that allow you to create pieces tailored to your space, your style, and the way you live.',
+    ctaLabel: 'Explore Bespoke',
+    href: '/bespoke',
     image: service3,
     tone: 'white',
   },
 ];
 
 const projects = [
-  ['Sofas', 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.', 'Explore Sofas', project01],
-  ['Dining', 'Create memorable gatherings around dining furniture crafted with elegant proportions, lasting materials, and exceptional attention to detail.', 'Dining', project02],
-  ['Curtains', 'Complete your interiors with bespoke curtains tailored to your space, adding softness, texture, and effortless sophistication', 'Curtains', project03],
-//   ['Emerald Heights', 'Furniture', 'Interior', project04],
-//   ['Urban Apartment', 'Furniture', 'Space', project05],
-//   ['Modern Loft', 'Architecture', 'Planning', project06],
-//   ['City Penthouse', 'Furniture', 'Planning', project07],
-//   ['Downtown Loft', 'Furniture', 'Space', project08],
-//   ['Garden House', 'Interior', 'Space', project09],
-//   ['Compact Living', 'Interior', 'Space', project10],
-//   ['Open-Plan Home', 'Architecture', 'Planning', project11],
-//   ['Coastal Home', 'Architecture', 'Interior', project12],
+  {
+    id: 'sofas',
+    title: 'Sofas',
+    description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
+    ctaLabel: 'Explore Sofas',
+    href: '/collections',
+    image: project01,
+  },
+  {
+    id: 'dining',
+    title: 'Dining',
+    description: 'Create memorable gatherings around dining furniture crafted with elegant proportions, lasting materials, and exceptional attention to detail.',
+    ctaLabel: 'Explore Dining',
+    href: '/collections',
+    image: project02,
+  },
+  {
+    id: 'curtains',
+    title: 'Curtains',
+    description: 'Complete your interiors with bespoke curtains tailored to your space, adding softness, texture, and effortless sophistication.',
+    ctaLabel: 'Explore Curtains',
+    href: '/collections',
+    image: project03,
+  },
+  {
+    id: 'sofas-copy-one',
+    title: 'Recliners',
+    description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
+    ctaLabel: 'Explore Recliners',
+    href: '/collections',
+    image: project01,
+  },
+  {
+    id: 'sofas-copy-two',
+    title: 'Mattress',
+    description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
+    ctaLabel: 'Explore Mattress',
+    href: '/collections',
+    image: project01,
+  },
 ];
+
+const loopedProjects = [...projects, ...projects];
+const SHOW_TEAM_SECTION = false;
 
 const team = [
   ['Sandra Lee', 'Creative Director', team01],
@@ -105,28 +138,40 @@ const architectureSolutions = [
 
 const testimonials = [
   {
-    quote: 'We would highly recommend this agency to anyone looking for high-quality interior design.',
-    name: 'Christian Grant',
-    role: 'Company Client',
-    image: testimonial01,
+    quote: 'We just followed his advise and the outcome is at the next level. He has designed our sofa so beautifully.',
+    name: 'Shashidhar Hn',
+    role: 'Google Review · 5 Stars',
+    initials: 'SH',
   },
   {
-    quote: 'The team guided us through every decision, making the entire experience enjoyable and inspiring.',
-    name: 'Monika Morison',
-    role: 'Company Client',
-    image: testimonial02,
+    quote: "It's a wonderful company with good quality of leather sofas and better installations of products. You can afford the products without any doubts.",
+    name: 'Ramanareddy Ravana',
+    role: 'Google Review · 5 Stars',
+    initials: 'RR',
   },
   {
-    quote: 'The designers combined creativity with practicality and delivered a space that truly reflects our lifestyle.',
-    name: 'Marry Parton',
-    role: 'Company Client',
-    image: testimonial03,
+    quote: 'Excellent leather quality, unique designs at best Prices, quick delivery & Professional installation...worth the visit',
+    name: 'Tanushree Tanu',
+    role: 'Google Review · 5 Stars',
+    initials: 'TT',
   },
   {
-    quote: 'Every detail was thoughtfully considered, and the final result feels both beautiful and functional.',
-    name: 'Matey Grant',
-    role: 'Company Client',
-    image: testimonial04,
+    quote: 'Good hospitality and they actually understands your need. They don’t make the selection process complicated and show you why you need.',
+    name: 'Anurag Anand',
+    role: 'Google Review · 5 Stars',
+    initials: 'AA',
+  },
+  {
+    quote: "The Best place to get Customized sofa's with Brand leather and luxurious seating",
+    name: 'Pavankalyan Reddy',
+    role: 'Google Review · 5 Stars',
+    initials: 'PR',
+  },
+  {
+    quote: 'Very good service, fast delivery, excellent quality and Very comfortable sofas. Very happy with the overall experience.',
+    name: 'Ananya Anand',
+    role: 'Google Review · 5 Stars',
+    initials: 'AA',
   },
 ];
 
@@ -153,6 +198,7 @@ export default function Home() {
   const serviceRef = useRef(null);
   const servicePinRef = useRef(null);
   const [projectPage, setProjectPage] = useState(0);
+  const [projectInstant, setProjectInstant] = useState(false);
   const [hoveredTeam, setHoveredTeam] = useState(0);
   const [activeArchitecture, setActiveArchitecture] = useState(0);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -338,8 +384,30 @@ export default function Home() {
     };
   }, []);
 
-  const showPreviousProjects = () => setProjectPage((current) => (current + projects.length - 1) % projects.length);
-  const showNextProjects = () => setProjectPage((current) => (current + 1) % projects.length);
+  const showPreviousProjects = () => {
+    if (projectPage > 0) {
+      setProjectPage((current) => current - 1);
+      return;
+    }
+
+    setProjectInstant(true);
+    setProjectPage(projects.length);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setProjectInstant(false);
+        setProjectPage(projects.length - 1);
+      });
+    });
+  };
+
+  const showNextProjects = () => setProjectPage((current) => Math.min(current + 1, projects.length));
+
+  const resetProjectLoop = (event) => {
+    if (event.target !== event.currentTarget || event.propertyName !== 'transform' || projectPage !== projects.length) return;
+    setProjectInstant(true);
+    setProjectPage(0);
+    requestAnimationFrame(() => setProjectInstant(false));
+  };
 
   const showPreviousTestimonial = () => {
     if (testimonialIndex > 0) {
@@ -359,11 +427,18 @@ export default function Home() {
 
   const showNextTestimonial = () => setTestimonialIndex((current) => Math.min(current + 1, testimonials.length));
 
-  const resetTestimonialLoop = () => {
-    if (testimonialIndex !== testimonials.length) return;
+  const resetTestimonialLoop = (event) => {
+    if (
+      event.target !== event.currentTarget
+      || event.propertyName !== 'transform'
+      || testimonialIndex !== testimonials.length
+    ) return;
+
     setTestimonialInstant(true);
     setTestimonialIndex(0);
-    requestAnimationFrame(() => setTestimonialInstant(false));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setTestimonialInstant(false));
+    });
   };
 
   return (
@@ -376,7 +451,7 @@ export default function Home() {
             <span><SplitText>Beautiful Living</SplitText></span>
           </h1>
           <div className="mink-hero-info">
-            <p>From statement sofas to elegant dining furniture and bespoke curtains, Divine Bliss creates thoughtfully designed pieces that bring comfort, character, and timeless style into every home.</p>
+            <p>From Statement Sofas To Elegant Dining Furniture And Bespoke Curtains, Divine Bliss Creates Thoughtfully Designed Pieces That Bring Comfort, Character, And Timeless Style Into Every Home.</p>
             <a href="#about">More About Us <InlineArrow /></a>
           </div>
         </div>
@@ -389,7 +464,7 @@ export default function Home() {
       <section id="about" ref={aboutRef} className="mink-about mink-shell">
         <div className="mink-section-heading" data-reveal>
           <span className="mink-eyebrow"><i /> Brand Introduction</span>
-          <h2>Designed Around the Way You Live</h2>
+          <h2>Designed Around<span className="mink-about-title-second-line"> the Way You Live</span></h2>
         </div>
         <div className="mink-about-grid">
           <div className="mink-about-column" data-reveal>
@@ -425,7 +500,8 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
             <div className="mink-services-intro">
               <span className="mink-eyebrow mink-eyebrow-light"><i /> Design Solutions</span>
               <h2>Design Services<br />Tailored to Your<br />Space</h2>
-              <a className="mink-outline-button" href="/services">View All Services <InlineArrow /></a>
+              {/* Services page CTA is intentionally disabled for now. */}
+              {/* <a className="mink-outline-button" href="/services">View All Services <InlineArrow /></a> */}
             </div>
             <div className="mink-service-stack">
               {services.map((service, index) => (
@@ -435,7 +511,7 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
                   <div className="mink-service-copy">
                     <h3>{service.title}</h3>
                     <p>{service.copy}</p>
-                    <a href="/about">More About Us <InlineArrow /></a>
+                    <a href={service.href}>{service.ctaLabel} <InlineArrow /></a>
                   </div>
                 </article>
               ))}
@@ -445,22 +521,26 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
       </section>
 
       <section id="projects" className="mink-projects">
-        <h2 className="mink-projects-title"><SplitText>Featured Collections</SplitText></h2>
+        <h2 className="mink-projects-title">
+          <span className="mink-projects-title-line"><SplitText>Featured</SplitText></span>{' '}
+          <span className="mink-projects-title-line"><SplitText>Collections</SplitText></span>
+        </h2>
         <div className="mink-project-window">
           <div
-            className="mink-project-track"
+            className={`mink-project-track ${projectInstant ? 'is-instant' : ''}`}
             style={{
               '--project-desktop': `calc(-${projectPage * (100 / 3)}% - ${projectPage * 14}px)`,
               '--project-tablet': `calc(-${projectPage * 50}% - ${projectPage * 12}px)`,
               '--project-mobile': `calc(-${projectPage * 100}% - ${projectPage * 24}px)`,
             }}
+            onTransitionEnd={resetProjectLoop}
           >
-            {projects.map(([title, categoryA, categoryB, image]) => (
-              <article className="mink-project" key={title}>
-                <div className="mink-project-image"><img src={image} alt={`${title} interior`} /></div>
-                <h3>{title}</h3>
-                <p>{categoryA}</p>
-                <p>{categoryB}</p>
+            {loopedProjects.map((project, index) => (
+              <article className="mink-project" key={`${project.id}-${index < projects.length ? 'original' : 'loop'}`}>
+                <div className="mink-project-image"><img src={project.image} alt={`${project.title} interior`} /></div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <a className="mink-project-cta" href={project.href}>{project.ctaLabel} <InlineArrow /></a>
               </article>
             ))}
           </div>
@@ -501,7 +581,8 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
             <div className="mink-benefits-copy">
               <p>Whether you're furnishing a single room or designing your entire home.
               Divine Bliss is here to help you create spaces that are beautiful, comfortable, and distinctly yours.</p>
-              <a href="/services">Let's Create Your Space <InlineArrow /></a>
+              {/* Services page CTA is intentionally disabled for now. */}
+              {/* <a href="/services">Let's Create Your Space <InlineArrow /></a> */}
             </div>
           </div>
         </div>
@@ -569,11 +650,11 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
                 aria-label={`${(index % testimonials.length) + 1} of ${testimonials.length}`}
                 aria-hidden={index >= testimonials.length}
               >
-                <blockquote>“{testimonial.quote}”</blockquote>
+                <blockquote>&ldquo;{testimonial.quote}&rdquo;</blockquote>
                 <div className="mink-testimonial-author">
-                  <img src={testimonial.image} alt={index < testimonials.length ? `${testimonial.name} portrait` : ''} />
+                  <span className="mink-testimonial-avatar" aria-hidden="true">{testimonial.initials}</span>
                   <div>
-                    <h3>{testimonial.name}</h3>
+                    <h3 title={testimonial.name}>{testimonial.name}</h3>
                     <p>{testimonial.role}</p>
                   </div>
                 </div>
@@ -587,30 +668,33 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
         </div>
       </section>
 
-      <section className="mink-team mink-shell">
-        <div className="mink-section-heading mink-team-heading" data-reveal>
-          <span className="mink-eyebrow"><i /> The People Behind the Design</span>
-          <h2>The Minds and Hands Behind Our Signature Interiors</h2>
-        </div>
-        <div className="mink-team-list">
-          {team.map(([name, role, image], index) => (
-            <article
-              className={`mink-team-member ${hoveredTeam === index ? 'is-active' : ''}`}
-              key={name}
-              onMouseEnter={() => setHoveredTeam(index)}
-              onFocus={() => setHoveredTeam(index)}
-            >
-              <div className="mink-team-name">
-                <h3>{name}</h3>
-                <span>/</span>
-                <p>{role}</p>
-                <img src={image} alt={`${name}, ${role}`} />
-              </div>
-              <a href="/about">Read More</a>
-            </article>
-          ))}
-        </div>
-      </section>
+      {/* Temporarily hidden; change SHOW_TEAM_SECTION to true to restore this section. */}
+      {SHOW_TEAM_SECTION && (
+        <section className="mink-team mink-shell">
+          <div className="mink-section-heading mink-team-heading" data-reveal>
+            <span className="mink-eyebrow"><i /> The People Behind the Design</span>
+            <h2>The Minds and Hands Behind Our Signature Interiors</h2>
+          </div>
+          <div className="mink-team-list">
+            {team.map(([name, role, image], index) => (
+              <article
+                className={`mink-team-member ${hoveredTeam === index ? 'is-active' : ''}`}
+                key={name}
+                onMouseEnter={() => setHoveredTeam(index)}
+                onFocus={() => setHoveredTeam(index)}
+              >
+                <div className="mink-team-name">
+                  <h3>{name}</h3>
+                  <span>/</span>
+                  <p>{role}</p>
+                  <img src={image} alt={`${name}, ${role}`} />
+                </div>
+                <a href="/about">Read More</a>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <HomeFaq />
     </main>

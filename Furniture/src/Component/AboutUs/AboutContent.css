@@ -58,6 +58,8 @@
   white-space: nowrap;
 }
 
+.about-story-heading__line { display: block; }
+
 .about-story-heading__word:not(:last-child) {
   margin-right: .25em;
 }

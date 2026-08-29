@@ -1,16 +1,38 @@
-# React + Vite
+# Divine Bliss Furnitures
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite site with a server-backed callback-request workflow.
 
-Currently, two official plugins are available:
+## Contact request setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Copy `.env.example` to `.env`.
+2. Set `GMAIL_USER`, `GMAIL_APP_PASSWORD`, and `OWNER_EMAIL`. The Gmail account
+   needs 2-Step Verification and a dedicated App Password. Do not put these
+   values in any `VITE_` variable because those are exposed to browsers.
+3. Optionally set Abstract API email and phone keys for third-party
+   deliverability/line-status checks. Without them, email syntax and MX records
+   plus Indian mobile metadata are still validated.
+4. Set `CONTACT_WORKBOOK_PATH` to persistent storage in production. Successful
+   requests are appended to the `Contact Requests` sheet in that workbook.
 
-## React Compiler
+The included owner email is a temporary responsive HTML template and can be
+replaced in `server/services/ownerNotification.js` when the final template is
+provided.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Commands
 
-## Expanding the ESLint configuration
+```bash
+npm run dev       # Vite client + API server
+npm run build     # Production client build
+npm start         # API server and built client
+npm test          # Validation/API/workbook tests
+npm run lint
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Verification boundary
+
+The browser performs immediate validation and only accepts a 10-digit Indian
+mobile number. The server repeats every check. `libphonenumber-js` verifies
+that the number matches allocated numbering metadata, and MX lookup verifies
+that an email domain receives mail. These checks do not prove that a person
+owns a mailbox or phone. Ownership proof requires OTP/confirmation; stronger
+non-OTP deliverability and active-line signals require the optional paid API.

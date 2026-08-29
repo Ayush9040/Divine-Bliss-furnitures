@@ -31,7 +31,7 @@ export default function AboutHeroSection() {
       style={{ backgroundImage: `linear-gradient(rgba(20, 20, 20, .34), rgba(20, 20, 20, .34)), url(${heroImage})` }}
     >
       <div className="about-page-hero__inner">
-        <h1 className="about-page-hero__title">About Us</h1>
+        <h1 className="about-page-hero__title">Our Story</h1>
         <nav className="about-page-hero__breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a>
           <ArrowRight aria-hidden="true" />

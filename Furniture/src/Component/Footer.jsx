@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import footerBackground from '../assets/footer-bg.webp';
 import WhiteLogo from '../assets/w-logo.webp';
 import './Footer.css';
@@ -9,26 +10,32 @@ export default function Footer() {
       <div className="mink-footer-panel">
         <div className="mink-footer-brand">
           <img src={WhiteLogo} alt="Mink Studio" />
-          <p>We believe great design goes beyond aesthetics. It’s about how a space works, how it feels, and how it supports everyday life.</p>
+          <p>We believe great design goes beyond aesthetics. It's about how a space works, how it feels, and how it supports everyday life.</p>
         </div>
 
         <div className="mink-footer-contact">
           <div>
-            <p>27 Division St, New York,<br />NY 10002, USA</p>
-            <a href="tel:+1800123456789">+1 800 123 456 789</a>
-            <a href="mailto:minkstudio@mail.com">minkstudio@mail.com</a>
+            <p>Ground Floor, # Sy No 7,<br />Maruthi Garden,<br />Sarjapur Road, Wipro Corporate,<br />Bengaluru, Karnataka, 560035</p>
+            <a href="tel:9743444469">9743444469</a>
+            <a href="mailto:divinebliss121@gmail.com">divinebliss121@gmail.com</a>
           </div>
-          <p>© 2026 Mink byWebGeniusLab</p>
+          <p>&copy; 2026 Divine Bliss</p>
         </div>
 
-        <div className="mink-footer-social">
-          <nav aria-label="Social media">
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://www.behance.net/">Behance</a>
-            <a href="https://www.facebook.com/">Facebook</a>
-            <a href="https://www.pinterest.com/">Pinterest</a>
-          </nav>
-          <button type="button">Join Our Newsletter <ArrowRight size={21} /></button>
+        <div className="mink-footer-links">
+          <div>
+            <h2>Quick Links</h2>
+            <nav aria-label="Quick links">
+              <Link to="/collections">Collections</Link>
+              <Link to="/about">Our Story</Link>
+              <Link to="/craftsmanship">Craftsmanship</Link>
+              <Link to="/materials">Materials</Link>
+              <Link to="/bespoke">Bespoke</Link>
+            </nav>
+          </div>
+          <Link className="mink-footer-cta" to="/contact">
+            Get in Touch <ArrowRight size={21} />
+          </Link>
         </div>
       </div>
 

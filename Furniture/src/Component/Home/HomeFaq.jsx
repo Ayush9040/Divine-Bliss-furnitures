@@ -73,10 +73,7 @@ export default function HomeFaq() {
       <div className="mink-faq-shell">
         <div className="mink-faq-heading" data-reveal>
           <span className="mink-faq-eyebrow"><i /> Questions You May Have</span>
-          <h2 id="mink-faq-title">
-            <span>Frequently Asked Questions About</span>
-            <span>Our Design Process</span>
-          </h2>
+          <h2 id="mink-faq-title">Frequently Asked Questions</h2>
         </div>
 
         <div className="mink-faq-columns">

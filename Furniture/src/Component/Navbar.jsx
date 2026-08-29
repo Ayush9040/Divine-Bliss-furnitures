@@ -3,22 +3,23 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import Logo from '../assets/Logo.webp';
 import WhiteLogo from '../assets/w-logo.webp';
+import HeaderContactPanel from './HeaderContactPanel';
 import './Navbar.css';
 const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'OUR STORY', href: '/about' },
-  { name: 'COLLECTIONS', href: '/#projects' },
+  { name: 'COLLECTIONS', href: '/collections' },
   {
     name: 'THE ATELIER',
     href: '/about',
     hasDropdown: true,
     dropdownItems: [
-      { name: 'Craftsmanship', href: '/#craftsmanship' },
-      { name: 'Materials', href: '/services' },
-      { name: 'Bespoke', href: '/contact' },
+      { name: 'Craftsmanship', href: '/craftsmanship' },
+      { name: 'Materials', href: '/materials' },
+      { name: 'Bespoke', href: '/bespoke' },
     ],
   },
-  { name: 'CONTACT US', href: '/contact' },
+  { name: 'CONTACT US', href: '/contact', hasContactPanel: true },
 ];
 
 const Navbar = ({ variant = 'solid' }) => {
@@ -28,6 +29,8 @@ const Navbar = ({ variant = 'solid' }) => {
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const prevScrollYRef = useRef(0);
+  const contactItemRef = useRef(null);
+  const dropdownCloseTimerRef = useRef(null);
   const location = useLocation();
 
   const isOverlayPage = variant === 'transparent';
@@ -62,6 +65,11 @@ const Navbar = ({ variant = 'solid' }) => {
   }, []);
 
   useEffect(() => {
+    if (dropdownCloseTimerRef.current) {
+      window.clearTimeout(dropdownCloseTimerRef.current);
+      dropdownCloseTimerRef.current = null;
+    }
+    setActiveDropdown(null);
     setIsScrolledPastHero(false);
     setIsOpen(false);
     setMobileExpanded(null);
@@ -92,6 +100,32 @@ const Navbar = ({ variant = 'solid' }) => {
     setMobileExpanded(null);
   };
 
+  const cancelDropdownClose = () => {
+    if (dropdownCloseTimerRef.current) {
+      window.clearTimeout(dropdownCloseTimerRef.current);
+      dropdownCloseTimerRef.current = null;
+    }
+  };
+
+  const openDropdown = (name) => {
+    cancelDropdownClose();
+    setActiveDropdown(name);
+  };
+
+  const scheduleDropdownClose = (link, preserveFocusedContent = false) => {
+    cancelDropdownClose();
+    dropdownCloseTimerRef.current = window.setTimeout(() => {
+      const contactItem = link.hasContactPanel ? contactItemRef.current : null;
+      const cursorIsInside = contactItem?.matches(':hover');
+      const focusIsInside = preserveFocusedContent && contactItem?.contains(document.activeElement);
+
+      if (!cursorIsInside && !focusIsInside) setActiveDropdown(null);
+      dropdownCloseTimerRef.current = null;
+    }, 180);
+  };
+
+  useEffect(() => () => cancelDropdownClose(), []);
+
   return (
     <header
       className={`navbar-header ${showSolid ? 'navbar-solid' : 'navbar-transparent'}${variant === 'home' ? ' navbar-home' : ''}${isScrolledPastHero ? ' navbar-scrolled' : ''}${
@@ -110,23 +144,52 @@ const Navbar = ({ variant = 'solid' }) => {
                 <li
                   key={link.name}
                   className="nav-item"
-                  onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.name)}
+                  ref={link.hasContactPanel ? contactItemRef : undefined}
+                  onMouseEnter={() => {
+                    if (link.hasDropdown || link.hasContactPanel) openDropdown(link.name);
+                  }}
                   onMouseLeave={() => {
-                    if (link.hasDropdown) {
-                      setActiveDropdown(null);
+                    if (link.hasDropdown || link.hasContactPanel) {
+                      scheduleDropdownClose(link, false);
                     }
                   }}
-                  onFocus={() => link.hasDropdown && setActiveDropdown(link.name)}
+                  onFocus={() => {
+                    if (link.hasDropdown || link.hasContactPanel) openDropdown(link.name);
+                  }}
                   onBlur={(event) => {
-                    if (link.hasDropdown && !event.currentTarget.contains(event.relatedTarget)) {
-                      setActiveDropdown(null);
+                    if ((link.hasDropdown || link.hasContactPanel) && !event.currentTarget.contains(event.relatedTarget)) {
+                      scheduleDropdownClose(link, true);
                     }
                   }}
                 >
-                  {link.href.startsWith('/') ? (
+                  {link.hasDropdown ? (
+                    <button
+                      type="button"
+                      className="nav-link"
+                      aria-haspopup="menu"
+                      aria-expanded={activeDropdown === link.name}
+                      aria-controls="atelier-dropdown"
+                      onClick={() => openDropdown(link.name)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Escape') {
+                          setActiveDropdown(null);
+                          event.currentTarget.blur();
+                        }
+                      }}
+                    >
+                      <span className="circle-icon" />
+                      {link.name}
+                    </button>
+                  ) : link.href.startsWith('/') ? (
                     <Link
                       to={link.href}
-                      className={`nav-link ${!link.hasDropdown && isActive(link.href) ? 'active' : ''}`}
+                      className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+                      aria-haspopup={link.hasContactPanel ? 'dialog' : undefined}
+                      aria-expanded={link.hasContactPanel ? activeDropdown === link.name : undefined}
+                      onClick={link.hasContactPanel ? () => {
+                        cancelDropdownClose();
+                        setActiveDropdown(null);
+                      } : undefined}
                     >
                       <span className="circle-icon" />
                       {link.name}
@@ -139,18 +202,23 @@ const Navbar = ({ variant = 'solid' }) => {
                   )}
 
                   {link.hasDropdown && activeDropdown === link.name && (
-                    <div className="dropdown-menu">
+                    <div id="atelier-dropdown" className="dropdown-menu" role="menu">
                       {link.dropdownItems.map((item) => (
                         <Link
                           key={item.name}
                           to={item.href}
                           className="dropdown-item"
+                          role="menuitem"
                           onClick={() => setActiveDropdown(null)}
                         >
                           {item.name}
                         </Link>
                       ))}
                     </div>
+                  )}
+
+                  {link.hasContactPanel && activeDropdown === link.name && (
+                    <HeaderContactPanel />
                   )}
                 </li>
               ))}

@@ -1,6 +1,7 @@
+import AboutStatsSection from './AboutStatsSection';
 import './BrandPrinciplesSection.css';
 
-const principles = [
+export const principles = [
   {
     title: 'More Than Furniture',
     paragraphs: [
@@ -64,6 +65,12 @@ export default function BrandPrinciplesSection() {
           </article>
         ))}
       </div>
+
+      <AboutStatsSection />
+
+      <blockquote className="about-principles__quote">
+        "Beautiful spaces aren&apos;t created by chance. They&apos;re shaped by thoughtful design, exceptional craftsmanship, and furniture made to last"
+      </blockquote>
     </section>
   );
 }

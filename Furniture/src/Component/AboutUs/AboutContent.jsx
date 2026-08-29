@@ -9,17 +9,24 @@ import './AboutContent.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heading = 'Every Home Begins with a Story';
+const headingLines = [
+  ['Every', 'Home', 'Begins'],
+  ['with', 'a', 'Story'],
+];
 
 function AnimatedHeading() {
-  return heading.split(' ').map((word, wordIndex) => (
-    <span className="about-story-heading__word" key={`${word}-${wordIndex}`}>
-      {word.split('').map((letter, letterIndex) => (
-        <span className="about-story-heading__letter" key={`${letter}-${letterIndex}`}>
-          {letter}
+  return headingLines.map((line, lineIndex) => (
+    <span className="about-story-heading__line" key={line.join('-')}>
+      {line.map((word, wordIndex) => (
+        <span className="about-story-heading__word" key={`${word}-${lineIndex}-${wordIndex}`}>
+          {word.split('').map((letter, letterIndex) => (
+            <span className="about-story-heading__letter" key={`${letter}-${letterIndex}`}>
+              {letter}
+            </span>
+          ))}
+          {wordIndex < line.length - 1 && ' '}
         </span>
       ))}
-      {wordIndex < heading.split(' ').length - 1 && ' '}
     </span>
   ));
 }
