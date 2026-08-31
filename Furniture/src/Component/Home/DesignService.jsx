@@ -7,7 +7,7 @@ import './DesignService.css';
 const services = [
   {
     id: '01',
-    title: 'RESIDENTIAL INTERIOR DESIGN',
+    title: 'Residential Interior Design',
     description: 'We create comfortable, stylish homes that reflect your personality and lifestyle. From concept to completion, every detail is thoughtfully designed to feel personal and functional.',
     bgColor: '#732c14',
     textColor: '#ffffff',
@@ -15,7 +15,7 @@ const services = [
   },
   {
     id: '02',
-    title: 'SPACE PLANNING & LAYOUT',
+    title: 'Space Planning & Layout',
     description: 'Smart planning is the foundation of great design. We optimize layouts to maximize space, improve functionality, and create seamless movement throughout the interior.',
     bgColor: '#e2dad0',
     textColor: '#1c1c1c',
@@ -23,7 +23,7 @@ const services = [
   },
   {
     id: '03',
-    title: 'FURNITURE & MATERIAL SELECTION',
+    title: 'Furniture & Material Selection',
     description: 'We curate high-end furniture, textures, and finishes that harmonize with your architectural vision, ensuring enduring elegance and absolute comfort.',
     bgColor: '#ffffff',
     textColor: '#1c1c1c',
@@ -83,9 +83,9 @@ export default function DesignServicesSection() {
             <span className="badge-dot" />
             <span className="badge-label">Design Solutions</span>
           </div>
-          <h2 className="services-title">DESIGN SERVICES<br /> TAILORED TO YOUR<br /> SPACE</h2>
+          <h2 className="services-title">Design Services<br /> Tailored To Your<br /> Space</h2>
           <a href="#all-services" className="services-cta">
-            <span>VIEW ALL SERVICES</span>
+            <span>View All Services</span>
             <ArrowRight size={18} />
           </a>
         </div>
@@ -109,7 +109,7 @@ export default function DesignServicesSection() {
                   <h3 className="service-card-title">{service.title}</h3>
                   <p className="service-card-desc">{service.description}</p>
                   <a className="service-card-link" href="#more-about">
-                    <span>MORE ABOUT US</span>
+                    <span>More About Us</span>
                     <ArrowRight size={16} />
                   </a>
                 </div>

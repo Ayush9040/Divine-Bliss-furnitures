@@ -46,7 +46,7 @@ const Aboutus = () => {
     <section className="about-section">
       <div className="about-top">
         <span className="about-tagline">
-          <Circle size={10} className="about-tagline-icon" /> SMTH LITTLE ABOUT US
+          <Circle size={10} className="about-tagline-icon" /> Smth Little About Us
         </span>
         <h2 className="about-title">
           Interior Design That Balances Beauty, Comfort, and Purpose in Every Detail
@@ -69,7 +69,7 @@ const Aboutus = () => {
           </p>
 
           <a href="#cases" className="about-link">
-            VIEW ALL CASES <MoveRight className="about-link-icon" />
+            View All Cases <MoveRight className="about-link-icon" />
           </a>
 
           <div className="about-image-side">

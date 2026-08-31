@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import contactHero from '../../assets/home-reference/contact-hero.webp';
+import contactHero from '../../assets/contact_us_banner.webp';
 import './ContactHero.css';
 
 export default function ContactHero() {
@@ -30,7 +30,7 @@ export default function ContactHero() {
       <div className="page-hero-overlay" />
       <div className="page-hero-main">
         <h1 id="contact-page-title" className="page-hero-title">
-          <span>Contact US</span>
+          <span>Contact Us</span>
           
         </h1>
         <nav className="page-hero-breadcrumb" aria-label="Breadcrumb">

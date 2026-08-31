@@ -9,9 +9,9 @@ import './AboutStatsSection.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { start: 100, end: 340, suffix: '+', label: 'Years of Service' },
-  { start: 10, end: 67, suffix: 'K', label: 'Happy Customers' },
-  { start: 10, end: 25, suffix: '', label: 'Unique Furniture Built' },
+  { start: 0, end: 10, suffix: '+', label: 'Years of Service' },
+  { start: 0, end: 100, suffix: '+', label: 'Happy Customers' },
+  { start: 0, end: 150, suffix: '+', label: 'Unique Furniture Built' },
 ];
 
 export default function AboutStatsSection() {

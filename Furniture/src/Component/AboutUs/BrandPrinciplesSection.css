@@ -62,20 +62,20 @@
 .about-principle h3 {
   position: relative;
   z-index: 1;
-  min-height: 76px;
+  min-height: 0;
   margin: 0;
   color: #181818;
   font-size: 29px;
   line-height: 38px;
   font-weight: 500;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-principle__copy {
   position: relative;
   z-index: 1;
-  padding-top: 6px;
+  padding-top: 14px;
   color: #444;
   font-size: 16px;
   line-height: 28px;

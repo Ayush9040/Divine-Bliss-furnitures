@@ -80,7 +80,7 @@
   line-height: 38.4px;
   font-weight: 400;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-service-card p {
@@ -101,7 +101,7 @@
   line-height: 24px;
   font-weight: 700;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-service-card a svg {

@@ -30,7 +30,7 @@
   font-size: 14px;
   line-height: 17.5px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-story-heading__eyebrow i {
@@ -50,7 +50,7 @@
   line-height: 60px;
   font-weight: 400;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-story-heading__word {
@@ -66,6 +66,7 @@
 
 .about-story-heading__letter {
   display: inline-block;
+  text-transform: none;
 }
 
 .about-story-editorial__inner {
@@ -127,7 +128,7 @@
   line-height: 24px;
   font-weight: 700;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-story__link svg {

@@ -27,7 +27,7 @@
   font-size: 48px;
   line-height: 60px;
   font-weight: 300;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .services-outline-button-light { width: 245px; height: 60px; color: #fff; border-color: rgba(255,255,255,.3); }
 .services-outline-button-light:hover { color: #732c14; background: #fff; border-color: #fff; }
@@ -58,7 +58,7 @@
   font-size: 28px;
   line-height: 38px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .services-design-copy p {
   margin: 0 0 25px;
@@ -74,7 +74,7 @@
   line-height: 20px;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .is-stone, .is-white { color: #181818; }
 .is-stone .services-design-copy a, .is-white .services-design-copy a { color: #78351e; }

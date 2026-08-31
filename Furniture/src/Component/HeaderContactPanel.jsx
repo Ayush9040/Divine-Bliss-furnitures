@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import xLogo from '../assets/xLogo.svg';
 import facebookLogo from '../assets/facebookLogo.svg';
 import instagramLogo from '../assets/instagramLogo.svg';
-import linkedinLogo from '../assets/LinkdinLogo.svg';
 import useContactForm from '../hooks/useContactForm';
 import { COLLECTION_OPTIONS, getCollectionLabel } from '../utils/contactValidation';
+import ShowroomMap from './ShowroomMap';
 import './HeaderContactPanel.css';
-
-const studioAddress = 'Ground Floor, # Sy No 7, Maruthi Garden, Sarjapur Road, Wipro Corporate, Bengaluru, Karnataka, 560035';
-const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(studioAddress)}&t=m&z=16&output=embed&iwloc=near`;
 
 export default function HeaderContactPanel() {
   const collectionField = useRef(null);
@@ -79,10 +75,8 @@ export default function HeaderContactPanel() {
         </div>
 
         <nav className="header-contact-panel__social" aria-label="Contact social media">
-          <a href="https://x.com/" aria-label="X"><img src={xLogo} alt="" /></a>
-          <a href="https://www.facebook.com/" aria-label="Facebook"><img src={facebookLogo} alt="" /></a>
-          <a href="https://www.instagram.com/" aria-label="Instagram"><img src={instagramLogo} alt="" /></a>
-          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><img src={linkedinLogo} alt="" /></a>
+          <a href="https://www.facebook.com/DivineBlissOfficial" target="_blank" rel="noreferrer" aria-label="Facebook"><img src={facebookLogo} alt="" /></a>
+          <a href="https://www.instagram.com/divine_bliss_official/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src={instagramLogo} alt="" /></a>
         </nav>
       </section>
 
@@ -199,13 +193,7 @@ export default function HeaderContactPanel() {
       </section>
 
       <div className="header-contact-panel__map">
-        <iframe
-          src={mapUrl}
-          title="Divine Bliss showroom on Sarjapur Road, Bengaluru"
-          loading="lazy"
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+        <ShowroomMap />
       </div>
     </div>
   );

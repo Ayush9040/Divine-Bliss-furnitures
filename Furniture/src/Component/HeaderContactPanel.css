@@ -55,7 +55,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .header-contact-panel__detail address,
@@ -82,12 +82,12 @@
   margin-top: 22px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
 }
 
 .header-contact-panel__social a {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -295,7 +295,7 @@
   font-size: 13px;
   line-height: 24px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
   cursor: pointer;
   transition: background-color .2s ease, color .2s ease;
@@ -341,13 +341,9 @@
   background: #d5d2cd;
 }
 
-.header-contact-panel__map iframe {
+.header-contact-panel__map .showroom-map {
   width: 100%;
   height: 100%;
-  display: block;
-  border: 0;
-  filter: grayscale(1);
-  pointer-events: none;
 }
 
 @keyframes headerContactPanelIn {

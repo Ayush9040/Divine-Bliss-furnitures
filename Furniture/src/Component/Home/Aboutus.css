@@ -14,7 +14,7 @@
 }
 
 .about-tagline {
-   font-family: "TikTok Sans", sans-serif;
+   font-family: var(--font-body);
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
@@ -22,7 +22,7 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-tagline-icon {
@@ -30,12 +30,12 @@
 }
 
 .about-title {
-   font-family: "TikTok Sans", sans-serif;
+   font-family: var(--font-heading);
   margin-top: 1.5rem;
   font-size: 48px;
   line-height: 60px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #111111;
   max-width: 810px;
 }
@@ -60,7 +60,7 @@
 }
 
 .about-intro {
-  font-family: "TikTok Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: 24px;
   font-weight: 300;
   color: #2d2d2d;
@@ -95,7 +95,7 @@
 }
 
 .about-copy {
-   font-family: "TikTok Sans", sans-serif;
+   font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.8;
   letter-spacing: 0.01em;
@@ -110,7 +110,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }

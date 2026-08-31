@@ -82,13 +82,21 @@
 }
 
 .navbar-logo img {
-  width: 100px;
-  height: 40px;
+  width: clamp(100px, 6.75vw, 136px);
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-.navbar-home .navbar-logo img { width: 100px; height: 40px; }
+.navbar-logo img.navbar-logo-light {
+  filter: brightness(0) invert(1);
+}
+
+.navbar-home .navbar-logo img {
+  width: clamp(100px, 6.75vw, 136px);
+  height: auto;
+}
 
 /* ── Desktop nav (centered) ── */
 .navbar-nav {
@@ -515,7 +523,11 @@
 
   .navbar-logo { position: relative; z-index: 121; }
 
-  .navbar-home .navbar-logo img { width: 100px; height: 40px; }
+  .navbar-logo img,
+  .navbar-home .navbar-logo img {
+    width: clamp(92px, 25vw, 100px);
+    height: auto;
+  }
 
   .navbar-home .mobile-menu { top: 0; height: 100vh; }
 

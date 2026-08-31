@@ -1,9 +1,10 @@
 import Materials from './Materials';
-import timelineOne from '../assets/craftsmanship-reference/timeline-1.webp';
-import timelineTwo from '../assets/craftsmanship-reference/timeline-2.webp';
-import timelineThree from '../assets/craftsmanship-reference/timeline-3.webp';
-import timelineFour from '../assets/craftsmanship-reference/timeline-4.webp';
-import timelineFive from '../assets/about-reference/about-left.webp';
+import bespokeHeroImage from '../assets/bespoke_banner.webp';
+import timelineOne from '../assets/the_consultation.png';
+import timelineTwo from '../assets/personalise_every_detail.jpg';
+import timelineThree from '../assets/designed_to_fit_your_space.png';
+import timelineFour from '../assets/from_design_to_delivery.png';
+import timelineFive from '../assets/why_choose_bespoke.png';
 
 const bespokeTimelineItems = [
   {
@@ -62,9 +63,10 @@ const bespokeTimelineItems = [
 export default function Bespoke() {
   return (
     <Materials
+      heroImage={bespokeHeroImage}
       pageTitle="Bespoke"
-      introTitle="Designed for You"
-      introTitleSecondLine="Crafted Around Your Home"
+      introTitle="Designed for You."
+      introTitleSecondLine="Crafted Around Your Home."
       introDescription="Your home is unlike any other, and your furniture should be too. At Divine Bliss, we offer bespoke solutions that allow you to create pieces tailored to your space, your style, and the way you live."
       manifestoEyebrow="The Art of Bespoke"
       manifestoTitle="Because Every Home Deserves Something Unique"
@@ -79,7 +81,7 @@ export default function Bespoke() {
       closingDescription="Whether you're furnishing a single room or designing your entire home, our bespoke service helps bring your ideas to life with thoughtful design, premium craftsmanship, and personalised attention."
       closingDescriptionSecondLine=""
       closingButtonLabel="Book a Design Consultation"
-      closingButtonTo="/contact"
+      closingButtonTo="/contact#contact-form"
     />
   );
 }

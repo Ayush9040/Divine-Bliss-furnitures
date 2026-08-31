@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronDown, MousePointer2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, MapPin, MousePointer2 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -103,6 +103,11 @@ export default function LocationMap() {
           tabIndex={mapActive ? 0 : -1}
         />
 
+        <div className="contact-map-highlight" aria-label="Divine Bliss showroom location">
+          <span className="contact-map-highlight__label">Divine Bliss Showroom</span>
+          <span className="contact-map-highlight__pin"><MapPin aria-hidden="true" /></span>
+        </div>
+
         {!mapActive && (
           <button type="button" className="contact-map-guard" onClick={activateMap} aria-label="Activate interactive map">
             <span><MousePointer2 aria-hidden="true" /> Click to explore map</span>
@@ -116,7 +121,7 @@ export default function LocationMap() {
         )}
       </div>
 
-      <div className="contact-form-section">
+      <div id="contact-form" className="contact-form-section">
         <div className="contact-form-panel">
           <div className="contact-form-eyebrow"><i /> Reach Out</div>
           <h2>Get in Touch</h2>

@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import footerBackground from '../assets/footer-bg.webp';
-import WhiteLogo from '../assets/w-logo.webp';
+import footerBackground from '../assets/footer.png';
+import BrandLogo from '../assets/divine_bliss.svg';
 import './Footer.css';
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="mink-footer" style={{ backgroundImage: `url(${footerBackground})` }}>
       <div className="mink-footer-panel">
         <div className="mink-footer-brand">
-          <img src={WhiteLogo} alt="Mink Studio" />
+          <img src={BrandLogo} alt="Divine Bliss" />
           <p>We believe great design goes beyond aesthetics. It's about how a space works, how it feels, and how it supports everyday life.</p>
         </div>
 
@@ -24,7 +24,6 @@ export default function Footer() {
 
         <div className="mink-footer-links">
           <div>
-            <h2>Quick Links</h2>
             <nav aria-label="Quick links">
               <Link to="/collections">Collections</Link>
               <Link to="/about">Our Story</Link>

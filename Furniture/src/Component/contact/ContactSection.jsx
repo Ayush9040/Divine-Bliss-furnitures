@@ -2,10 +2,8 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import xLogo from '../../assets/xLogo.svg';
 import facebookLogo from '../../assets/facebookLogo.svg';
 import instagramLogo from '../../assets/instagramLogo.svg';
-import linkedinLogo from '../../assets/LinkdinLogo.svg';
 import './ContactSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -97,10 +95,8 @@ export default function ContactSection() {
               </div>
 
               <nav className="contact-social" aria-label="Contact social media" data-contact-reveal>
-                <a href="https://x.com/" aria-label="X"><img src={xLogo} alt="" /></a>
-                <a href="https://www.facebook.com/" aria-label="Facebook"><img src={facebookLogo} alt="" /></a>
-                <a href="https://www.instagram.com/" aria-label="Instagram"><img src={instagramLogo} alt="" /></a>
-                <a href="https://www.linkedin.com/" aria-label="LinkedIn"><img src={linkedinLogo} alt="" /></a>
+                <a href="https://www.facebook.com/DivineBlissOfficial" target="_blank" rel="noreferrer" aria-label="Facebook"><img src={facebookLogo} alt="" /></a>
+                <a href="https://www.instagram.com/divine_bliss_official/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src={instagramLogo} alt="" /></a>
               </nav>
             </div>
           </div>

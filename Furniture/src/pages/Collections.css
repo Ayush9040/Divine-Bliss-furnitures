@@ -35,7 +35,7 @@
   line-height: 80px;
   font-weight: 300;
   letter-spacing: -.06em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collections-hero__breadcrumbs {
@@ -47,7 +47,7 @@
   font-size: 14px;
   line-height: 30px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collections-hero__breadcrumbs a,
@@ -85,7 +85,7 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collections-showcase__eyebrow i {
@@ -104,11 +104,15 @@
   line-height: 60px;
   font-weight: 400;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
+}
+
+.collections-showcase__shell > h2 span {
+  display: block;
 }
 
 .collections-showcase__intro {
-  max-width: 720px;
+  max-width: 900px;
   margin-top: 31px;
 }
 
@@ -152,7 +156,7 @@
   font-size: 15px;
   line-height: 22px;
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
   transition: color .25s ease;
 }
@@ -199,7 +203,7 @@
   font-size: 12px;
   line-height: 18px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collections-panel__description h3 {
@@ -207,7 +211,7 @@
   font-size: 28px;
   line-height: 36px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collections-panel__description p {
@@ -251,7 +255,7 @@
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .collection-card > p {
@@ -260,7 +264,7 @@
   font-size: 12px;
   line-height: 20px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 @keyframes collectionsPanelIn {
@@ -312,7 +316,7 @@
   }
 
   .collections-showcase__intro {
-    max-width: 650px;
+    max-width: 900px;
     margin-top: 24px;
   }
 
@@ -377,7 +381,7 @@
   }
 
   .collections-tabs {
-    width: calc(100vw - 15px);
+    width: calc(100% + 15px);
     margin-top: 35px;
     gap: 28px;
     padding-right: 20px;

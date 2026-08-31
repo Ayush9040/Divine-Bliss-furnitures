@@ -24,7 +24,7 @@ const PAGE_TITLES = {
 };
 
 const Layout = () => {
-  const { pathname, key: locationKey } = useLocation();
+  const { pathname, hash, key: locationKey } = useLocation();
   const normalizedPath = pathname !== '/' ? pathname.replace(/\/$/, '') : pathname;
   const variant = normalizedPath === '/'
     ? 'home'
@@ -33,7 +33,7 @@ const Layout = () => {
       : 'solid';
 
   useLayoutEffect(() => {
-    const scrollToPageTop = () => {
+    const scrollToPagePosition = () => {
       const root = document.documentElement;
       const body = document.body;
       const previousRootBehavior = root.style.scrollBehavior;
@@ -41,19 +41,26 @@ const Layout = () => {
 
       root.style.scrollBehavior = 'auto';
       body.style.scrollBehavior = 'auto';
-      root.scrollTop = 0;
-      body.scrollTop = 0;
-      window.scrollTo(0, 0);
+
+      const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+
+      if (target) {
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      } else {
+        root.scrollTop = 0;
+        body.scrollTop = 0;
+        window.scrollTo(0, 0);
+      }
 
       root.style.scrollBehavior = previousRootBehavior;
       body.style.scrollBehavior = previousBodyBehavior;
     };
 
-    scrollToPageTop();
-    const frame = window.requestAnimationFrame(scrollToPageTop);
+    scrollToPagePosition();
+    const frame = window.requestAnimationFrame(scrollToPagePosition);
 
     return () => window.cancelAnimationFrame(frame);
-  }, [normalizedPath, locationKey]);
+  }, [normalizedPath, hash, locationKey]);
 
   useEffect(() => {
     if (!('scrollRestoration' in window.history)) return undefined;

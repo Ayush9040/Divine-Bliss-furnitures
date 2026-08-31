@@ -32,10 +32,16 @@
 }
 
 .mink-hero-copy { position: relative; z-index: 1; padding-top: 154px; }
-.mink-hero-title { font-size: clamp(74px, 7.82vw, 112.5px); font-weight: 300; line-height: 1; letter-spacing: -.047em; text-transform: uppercase; }
+.mink-hero-title { font-size: clamp(74px, 7.82vw, 112.5px); font-weight: 300; line-height: 1; letter-spacing: -.047em; text-transform: capitalize; }
 .mink-hero-title > span { display: block; white-space: nowrap; }
-.mink-letter-mask { display: inline-block; overflow: hidden; vertical-align: bottom; }
-.mink-letter { display: inline-block; will-change: transform; }
+.mink-letter-mask {
+  display: inline-block;
+  margin-bottom: -.12em;
+  padding-bottom: .12em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.mink-letter { display: inline-block; text-transform: none; will-change: transform; }
 
 .mink-hero-info {
   height: 72px;
@@ -45,14 +51,15 @@
   grid-template-columns: 3.15fr 1fr;
   align-items: center;
   background: #e1ddd7;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 13px;
   line-height: 1.32;
   font-weight: 700;
 }
 .mink-hero-info p { font-weight: 400; text-transform: none; }
+.mink-hero-info-second-line { display: block; }
 
-.mink-hero-info a, .mink-text-link, .mink-service-copy a { color: var(--rust); text-decoration: none; display: inline-flex; align-items: center; justify-content: flex-end; gap: 14px; text-transform: uppercase; font-weight: 700; }
+.mink-hero-info a, .mink-text-link, .mink-service-copy a { color: var(--rust); text-decoration: none; display: inline-flex; align-items: center; justify-content: flex-end; gap: 14px; text-transform: capitalize; font-weight: 700; }
 .mink-hero-info a svg, .mink-text-link svg, .mink-service-copy a svg { transition: transform .3s ease; }
 .mink-hero-info a:hover svg, .mink-text-link:hover svg, .mink-service-copy a:hover svg { transform: translateX(6px); }
 
@@ -61,9 +68,9 @@
 
 .mink-about { padding: 139px 0 154px; }
 .mink-section-heading { max-width: 810px; }
-.mink-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--rust); font-size: 13px; font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
+.mink-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--rust); font-size: 13px; font-weight: 700; letter-spacing: .01em; text-transform: capitalize; }
 .mink-eyebrow i { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
-.mink-section-heading h2 { margin-top: 31px; font-size: 48px; line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-section-heading h2 { margin-top: 31px; font-size: 48px; line-height: 1.25; font-weight: 400; text-transform: capitalize; }
 .mink-about-title-second-line { display: inline; }
 .mink-about-grid { display: grid; grid-template-columns: 500px 570px; gap: 100px; margin-top: 41px; }
 .mink-about-column { min-width: 0; }
@@ -92,8 +99,8 @@
 .mink-services-layout { height: 100%; display: grid; grid-template-columns: 40% 60%; gap: 28px; align-items: center; }
 .mink-services-intro { color: white; align-self: center; }
 .mink-eyebrow-light { color: white; }
-.mink-services-intro h2 { margin: 31px 0 42px; font-size: clamp(42px, 3.35vw, 48px); line-height: 1.25; font-weight: 400; text-transform: uppercase; }
-.mink-outline-button { width: 245px; height: 61px; border: 1px solid rgba(255,255,255,.35); color: white; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; font-weight: 700; text-decoration: none; text-transform: uppercase; transition: background .25s,color .25s; }
+.mink-services-intro h2 { margin: 31px 0 42px; font-size: clamp(42px, 3.35vw, 48px); line-height: 1.25; font-weight: 400; text-transform: capitalize; }
+.mink-outline-button { width: 245px; height: 61px; border: 1px solid rgba(255,255,255,.35); color: white; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; font-weight: 700; text-decoration: none; text-transform: capitalize; transition: background .25s,color .25s; }
 .mink-outline-button:hover { background: white; color: var(--rust); }
 .mink-service-stack { position: relative; height: 500px; }
 .mink-service-card { position: absolute; inset: 0; overflow: hidden; padding: 38px; box-shadow: 0 8px 25px rgba(50,10,0,.08); }
@@ -104,22 +111,22 @@
 .mink-service-number, .mink-service-copy { position: relative; z-index: 1; }
 .mink-service-number { font-size: 20px; line-height: 1; }
 .mink-service-copy { max-width: 570px; margin-top: 145px; }
-.mink-service-copy h3 { font-size: 31px; line-height: 1.25; font-weight: 400; text-transform: uppercase; }
+.mink-service-copy h3 { font-size: 31px; line-height: 1.25; font-weight: 400; text-transform: capitalize; }
 .mink-service-copy p { margin-top: 23px; font-size: 16px; line-height: 1.85; font-weight: 500; }
 .mink-service-copy a { justify-content: flex-start; margin-top: 26px; color: inherit; font-size: 13px; }
 
 .mink-projects { padding: 130px 30px 100px; }
-.mink-projects-title { font-size: clamp(64px, 6.7vw, 96px); line-height: 1; font-weight: 300; text-align: center; text-transform: uppercase; white-space: nowrap; letter-spacing: -.04em; }
+.mink-projects-title { font-size: clamp(64px, 6.7vw, 96px); line-height: 1; font-weight: 300; text-align: center; text-transform: capitalize; white-space: nowrap; letter-spacing: -.04em; }
 .mink-project-window { overflow: hidden; margin-top: 65px; }
 .mink-project-track { display: flex; gap: 42px; transform: translateX(var(--project-desktop)); transition: transform .75s cubic-bezier(.16,1,.3,1); }
 .mink-project-track.is-instant { transition: none; }
 .mink-project { flex: 0 0 calc((100% - 84px) / 3); min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
-.mink-project-image { height: 307px; overflow: hidden; }
+.mink-project-image { width: 100%; height: 307px; overflow: hidden; }
 .mink-project-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); }
 .mink-project:hover img { transform: scale(1.035); }
-.mink-project h3 { margin-top: 24px; font-size: 24px; font-weight: 400; text-transform: uppercase; }
-.mink-project p { margin-top: 9px; color: #777; font-size: 12px; line-height: 1.55; font-weight: 600; text-transform: uppercase; }
-.mink-project-cta { width: 220px; max-width: 100%; height: 49px; margin-top: 18px; padding: 12px 20px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; border: 1px solid rgba(24,24,24,.2); background: transparent; color: var(--rust); font-size: 13px; line-height: 24px; font-weight: 600; white-space: nowrap; text-decoration: none; text-transform: uppercase; transition: background .25s ease, border-color .25s ease, color .25s ease; }
+.mink-project h3 { margin-top: 24px; font-size: 24px; font-weight: 400; text-transform: capitalize; }
+.mink-project p { margin-top: 9px; color: #777; font-size: 12px; line-height: 1.55; font-weight: 600; text-transform: capitalize; }
+.mink-project-cta { width: 220px; max-width: 100%; height: 49px; margin-top: 18px; padding: 12px 20px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; border: 1px solid rgba(24,24,24,.2); background: transparent; color: var(--rust); font-size: 13px; line-height: 24px; font-weight: 600; white-space: nowrap; text-decoration: none; text-transform: capitalize; transition: background .25s ease, border-color .25s ease, color .25s ease; }
 .mink-project-cta svg { width: 23px; height: 23px; stroke-width: 1.25; transition: transform .25s ease; }
 .mink-project-cta:hover,
 .mink-project-cta:focus-visible { outline: 0; border-color: var(--rust); background: var(--rust); color: white; }
@@ -137,16 +144,19 @@
 }
 .mink-benefits-shell { width: min(1170px, calc(100% - 60px)); margin-inline: auto; }
 .mink-benefits-eyebrow { color: white; font-size: 14px; line-height: 17.5px; font-weight: 600; letter-spacing: normal; }
-.mink-benefits .mink-benefits-title { max-width: 1040px; margin-top: 23px; padding-bottom: 5px; font-size: 48px; line-height: 60px; font-weight: 400; letter-spacing: -1.92px; text-transform: uppercase; }
+.mink-benefits .mink-benefits-title { max-width: 1040px; margin-top: 23px; padding-bottom: 5px; font-size: 48px; line-height: 60px; font-weight: 400; letter-spacing: -1.92px; text-transform: capitalize; }
 .mink-benefits-layout { margin-top: 63px; display: grid; grid-template-columns: 570px minmax(0, 1fr); gap: 80px; align-items: center; }
 .mink-benefits-visual { position: relative; width: 100%; aspect-ratio: 1140 / 740; }
-.mink-benefits-blueprint { position: absolute; z-index: 1; top: 0; left: 35.088%; width: 64.912%; height: auto; aspect-ratio: 1; fill: none; stroke: rgba(255,255,255,.16); stroke-width: 1.15; transform: rotate(-2deg); }
-.mink-benefits-photo { position: relative; z-index: 2; width: 64.912%; height: auto; aspect-ratio: 1; overflow: hidden; border-radius: 50%; background: #d9d3ca; }
-.mink-benefits-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; transform: scale(1.03); }
+.mink-benefits-photo { position: absolute; aspect-ratio: 1; overflow: hidden; border-radius: 50%; background: #d9d3ca; }
+.mink-benefits-photo-primary { z-index: 1; top: 0; left: 0; width: 64.912%; }
+.mink-benefits-photo-secondary { z-index: 2; right: 0; bottom: 0; width: 52%; border: clamp(3px, .45vw, 6px) solid var(--rust); }
+.mink-benefits-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mink-benefits-photo-primary img { object-position: 36% 52%; }
+.mink-benefits-photo-secondary img { object-position: 50% 54%; }
 .mink-benefits-copy { position: relative; top: -4px; align-self: center; max-width: 535px; padding: 0; }
 .mink-benefits-copy p { margin: 0 0 16px; font-size: 16px; line-height: 30px; font-weight: 400; letter-spacing: normal; }
 .mink-benefits-copy p + p { margin-top: 0; }
-.mink-benefits-copy a { display: inline-flex; align-items: center; gap: 14px; margin: 0; padding-top: 15px; color: white; font-size: 13px; line-height: 22px; font-weight: 600; letter-spacing: normal; text-decoration: none; text-transform: uppercase; }
+.mink-benefits-copy a { display: inline-flex; align-items: center; gap: 14px; margin: 0; padding-top: 15px; color: white; font-size: 13px; line-height: 22px; font-weight: 600; letter-spacing: normal; text-decoration: none; text-transform: capitalize; }
 .mink-benefits-copy a svg { transition: transform .3s ease; }
 .mink-benefits-copy a:hover svg { transform: translateX(6px); }
 
@@ -154,39 +164,39 @@
 .mink-architecture-frame { width: min(1170px, calc(100% - 60px)); margin-inline: auto; }
 .mink-architecture-heading { padding: 140px 0 40px; }
 .mink-architecture-eyebrow { font-size: 14px; line-height: 17.5px; font-weight: 600; }
-.mink-architecture-heading h2 { max-width: 700px; margin-top: 31px; font-size: 48px; line-height: 60px; font-weight: 400; letter-spacing: -1.92px; text-transform: uppercase; }
+.mink-architecture-heading h2 { max-width: none; margin-top: 31px; font-size: 48px; line-height: 60px; font-weight: 400; letter-spacing: -1.92px; text-transform: capitalize; white-space: nowrap; }
 .mink-architecture-accordion { display: flex; width: calc(50vw + 585px); height: 700px; }
 .mink-architecture-panel { position: relative; flex: 1 1 0; min-width: 0; height: 100%; overflow: hidden; color: white; cursor: pointer; outline: none; transition: flex-grow .5s ease; }
 .mink-architecture-panel.is-active { flex-grow: 2.21; }
 .mink-architecture-image,
 .mink-architecture-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
-.mink-architecture-image { display: block; object-fit: cover; object-position: left center; }
+.mink-architecture-image { display: block; object-fit: cover; object-position: center; }
 .mink-architecture-overlay { background: rgba(24,24,24,.7); pointer-events: none; transition: background-color .5s ease; }
 .mink-architecture-panel:first-child.is-active .mink-architecture-overlay { background: rgba(24,24,24,.5); }
 .mink-architecture-panel-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; padding: 36px 90px 40px 40px; overflow: hidden; }
 .mink-architecture-number { flex: 0 0 auto; font-size: 20px; line-height: 25px; font-weight: 400; letter-spacing: -.4px; }
 .mink-architecture-copy { width: 520px; margin-top: auto; opacity: 0; transition: opacity .5s ease; }
 .mink-architecture-panel.is-active .mink-architecture-copy { opacity: 1; transition-delay: .12s; }
-.mink-architecture-copy h3 { font-size: 40px; line-height: 56px; font-weight: 400; letter-spacing: -1.6px; text-transform: uppercase; }
-.mink-architecture-copy p { width: 450px; margin-top: 21px; padding-bottom: 16px; font-size: 20px; line-height: 34px; font-weight: 400; letter-spacing: -.4px; }
-.mink-architecture-copy a { width: 181px; height: 60px; margin-top: 26px; display: inline-flex; align-items: center; justify-content: center; background: white; color: var(--rust); font-size: 14px; line-height: 24px; font-weight: 600; text-decoration: none; text-transform: uppercase; transition: background .25s ease,color .25s ease; }
+.mink-architecture-copy h3 { font-size: 40px; line-height: 56px; font-weight: 400; letter-spacing: -1.6px; text-transform: capitalize; }
+.mink-architecture-copy p { width: 450px; margin-top: 21px; padding-bottom: 16px; font-size: 18px; line-height: 30px; font-weight: 400; letter-spacing: -.36px; }
+.mink-architecture-copy a { width: 181px; height: 60px; margin-top: 26px; display: inline-flex; align-items: center; justify-content: center; background: white; color: var(--rust); font-size: 14px; line-height: 24px; font-weight: 600; text-decoration: none; text-transform: capitalize; transition: background .25s ease,color .25s ease; }
 .mink-architecture-copy a:hover { background: var(--rust); color: white; }
 .mink-architecture-panel:focus-visible { box-shadow: inset 0 0 0 2px white; }
 
-.mink-testimonials { padding: 130px 0 125px; }
+.mink-testimonials { padding: 104px 0 108px; }
 .mink-testimonials-heading { text-align: center; }
-.mink-testimonials-heading h2 { margin-top: 18px; font-size: clamp(52px, 6.7vw, 96px); line-height: 1; font-weight: 300; letter-spacing: -.06em; text-transform: uppercase; }
-.mink-testimonials-window { width: min(1235px, 100%); margin: 70px auto 0; padding: 0 15px; overflow: hidden; }
-.mink-testimonials-track { display: flex; gap: 30px; transform: translate3d(var(--testimonial-desktop), 0, 0); transition: transform .72s cubic-bezier(.16,1,.3,1); will-change: transform; }
+.mink-testimonials-heading h2 { margin-top: 14px; font-size: clamp(52px, 6vw, 82px); line-height: 1; font-weight: 300; letter-spacing: -.05em; text-transform: capitalize; }
+.mink-testimonials-window { width: min(1200px, calc(100% - 48px)); margin: 40px auto 0; overflow: hidden; }
+.mink-testimonials-track { display: flex; gap: 24px; transform: translate3d(var(--testimonial-desktop), 0, 0); transition: transform .72s cubic-bezier(.16,1,.3,1); will-change: transform; }
 .mink-testimonials-track.is-instant { transition: none; }
-.mink-testimonial-card { flex: 0 0 calc((100% - 90px) / 4); min-width: 0; min-height: 398px; padding: 32px 40px 40px; display: flex; flex-direction: column; justify-content: space-between; background: white; }
-.mink-testimonial-card blockquote { margin: 0; color: var(--ink); font-size: 18px; line-height: 1.778; font-weight: 400; letter-spacing: -.02em; }
-.mink-testimonial-author { min-height: 78px; display: flex; align-items: center; gap: 18px; }
-.mink-testimonial-avatar { flex: 0 0 auto; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--rust); font-size: 15px; line-height: 1; font-weight: 600; letter-spacing: .04em; }
+.mink-testimonial-card { flex: 0 0 calc((100% - 48px) / 3); min-width: 0; min-height: 250px; padding: 30px 32px 32px; display: flex; flex-direction: column; justify-content: flex-start; background: white; }
+.mink-testimonial-card blockquote { min-height: calc(4 * 1.72em); margin: 0; color: var(--ink); font-size: 16px; line-height: 1.72; font-weight: 400; letter-spacing: -.015em; }
+.mink-testimonial-author { min-height: 58px; margin-top: 20px; display: flex; align-items: center; gap: 15px; }
+.mink-testimonial-avatar { flex: 0 0 auto; width: 50px; height: 50px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--rust); font-size: 13px; line-height: 1; font-weight: 600; letter-spacing: .04em; }
 .mink-testimonial-author > div { flex: 1 1 auto; min-width: 0; }
-.mink-testimonial-author h3 { max-width: 100%; overflow: hidden; color: var(--ink); font-size: 15px; line-height: 1.5; font-weight: 500; letter-spacing: -.02em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
-.mink-testimonial-author p { margin-top: 4px; color: rgba(24,24,24,.4); font-size: 14px; line-height: 1.25; font-weight: 500; }
-.mink-testimonial-controls { margin-top: 26px; display: flex; justify-content: center; gap: 14px; }
+.mink-testimonial-author h3 { max-width: 100%; overflow: hidden; color: var(--ink); font-size: 15px; line-height: 1.4; font-weight: 500; letter-spacing: -.015em; text-overflow: ellipsis; text-transform: capitalize; white-space: nowrap; }
+.mink-testimonial-author p { margin-top: 3px; color: rgba(24,24,24,.45); font-size: 12px; line-height: 1.3; font-weight: 500; }
+.mink-testimonial-controls { margin-top: 20px; display: flex; justify-content: center; gap: 8px; }
 .mink-testimonial-controls button { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border: 0; background: transparent; color: var(--rust); cursor: pointer; }
 .mink-testimonial-controls svg { width: 25px; height: 25px; stroke-width: 1.25; transition: transform .25s ease; }
 .mink-testimonial-controls button:first-child:hover svg { transform: translateX(-4px); }
@@ -198,13 +208,13 @@
 .mink-team-list { margin-top: 70px; border-top: 1px solid #d4cfc8; }
 .mink-team-member { position: relative; min-height: 137px; border-bottom: 1px solid #d4cfc8; display: flex; align-items: center; justify-content: space-between; }
 .mink-team-name { position: relative; display: flex; align-items: center; gap: 22px; min-width: 0; }
-.mink-team-name h3 { font-size: clamp(42px, 4.45vw, 64px); line-height: 1.2; font-weight: 300; color: rgba(115,44,20,.2); text-transform: uppercase; transition: color .3s ease,transform .3s ease; white-space: nowrap; }
+.mink-team-name h3 { font-size: clamp(42px, 4.45vw, 64px); line-height: 1.2; font-weight: 300; color: rgba(115,44,20,.2); text-transform: capitalize; transition: color .3s ease,transform .3s ease; white-space: nowrap; }
 .mink-team-member.is-active h3 { color: var(--rust); transform: translateX(2px); }
 .mink-team-name > span { font-size: 17px; }
-.mink-team-name p { font-size: 13px; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+.mink-team-name p { font-size: 13px; font-weight: 600; text-transform: capitalize; white-space: nowrap; }
 .mink-team-name img { position: absolute; z-index: 3; left: min(41vw, 500px); width: 216px; height: 278px; object-fit: cover; opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; transition: opacity .3s ease,transform .45s cubic-bezier(.16,1,.3,1); }
 .mink-team-member.is-active .mink-team-name img { opacity: 1; transform: translateY(0) scale(1); }
-.mink-team-member > a { width: 155px; height: 61px; display: grid; place-items: center; border: 1px solid #d4cfc8; color: var(--rust); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; background: transparent; transition: background .25s,color .25s,border-color .25s; }
+.mink-team-member > a { width: 155px; height: 61px; display: grid; place-items: center; border: 1px solid #d4cfc8; color: var(--rust); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: capitalize; background: transparent; transition: background .25s,color .25s,border-color .25s; }
 .mink-team-member.is-active > a { background: white; border-color: white; }
 
 @media (max-width: 1100px) {
@@ -212,6 +222,13 @@
   .mink-wide-shell { width: calc(100% - 48px); }
   .mink-service-copy { margin-top: 120px; }
   .mink-service-copy h3 { font-size: 27px; }
+  .mink-project-track { gap: 24px; transform: translateX(var(--project-tablet)); }
+  .mink-project { flex-basis: calc((100% - 24px) / 2); }
+  .mink-project-image { height: 300px; }
+  .mink-testimonials-window { width: calc(100% - 40px); margin-top: 36px; }
+  .mink-testimonials-track { gap: 20px; transform: translate3d(var(--testimonial-tablet), 0, 0); }
+  .mink-testimonial-card { flex-basis: calc((100% - 20px) / 2); min-height: 245px; padding: 28px 30px 30px; }
+  .mink-testimonial-card blockquote { font-size: 15.5px; line-height: 1.7; }
   .mink-team-name img { left: 45vw; }
 }
 
@@ -229,9 +246,9 @@
   .mink-architecture-heading h2 { font-size: 36px; line-height: 45px; letter-spacing: -1.44px; }
   .mink-architecture-accordion { width: calc(100% + 103px); height: 500px; }
   .mink-architecture-panel-inner { padding: 27px 80px 30px 30px; }
-  .mink-architecture-copy { width: 480px; }
+  .mink-architecture-copy { width: auto; min-width: 0; max-width: 100%; align-self: stretch; }
   .mink-architecture-copy h3 { font-size: 32px; line-height: 44.8px; letter-spacing: -1.28px; }
-  .mink-architecture-copy p { width: 480px; }
+  .mink-architecture-copy p { width: auto; max-width: 100%; overflow-wrap: break-word; }
   .mink-architecture-copy a { width: 164px; height: 52px; font-size: 13px; line-height: 22px; }
 }
 
@@ -239,6 +256,7 @@
   .mink-architecture-heading,
   .mink-architecture-frame { width: calc(100% - 60px); }
   .mink-architecture-accordion { width: calc(100% + 37.5px); }
+  .mink-architecture-panel.is-active { flex-grow: 4; }
 }
 
 @media (max-width: 1023px) {
@@ -280,19 +298,25 @@
   .mink-service-copy h3 { font-size: 26px; }
   .mink-projects { padding: 85px 15px 65px; }
   .mink-projects-title { font-size: clamp(43px, 10vw, 72px); white-space: normal; }
-  .mink-project-track { gap: 24px; transform: translateX(var(--project-tablet)); }
-  .mink-project { flex-basis: calc((100% - 24px) / 2); }
-  .mink-project-image { height: 300px; }
-  .mink-testimonials { padding: 90px 0 95px; }
-  .mink-testimonials-window { margin-top: 58px; }
-  .mink-testimonials-track { transform: translate3d(var(--testimonial-tablet), 0, 0); }
-  .mink-testimonial-card { flex-basis: calc((100% - 30px) / 2); min-height: 300px; padding: 28px 30px 30px; }
-  .mink-testimonial-card blockquote { font-size: 17px; line-height: 1.7; }
+  .mink-testimonials { padding: 82px 0 88px; }
   .mink-team { padding: 70px 0 100px; }
   .mink-team-member { min-height: 118px; }
   .mink-team-name { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
   .mink-team-name h3 { grid-column: 1 / -1; font-size: clamp(32px, 6.5vw, 52px); }
   .mink-team-name img { display: none; }
+
+  .mink-architecture-heading,
+  .mink-architecture-frame { width: calc(100% - 30px); }
+  .mink-architecture-heading { padding: 70px 0 30px; }
+  .mink-architecture-heading h2 { max-width: none; margin-top: 31px; font-size: clamp(16px, 5.8vw, 28px); line-height: 1.25; letter-spacing: -.04em; }
+  .mink-architecture-accordion { width: 100%; height: 1100px; flex-direction: column; gap: 12px; }
+  .mink-architecture-panel { flex-grow: 1; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.2); }
+  .mink-architecture-panel.is-active { flex-grow: 3; }
+  .mink-architecture-panel-inner { padding: 18px 20px 28px; }
+  .mink-architecture-copy { width: 305px; max-width: 100%; }
+  .mink-architecture-copy h3 { font-size: 28px; line-height: 39.2px; letter-spacing: -1.12px; }
+  .mink-architecture-copy p { width: 305px; max-width: 100%; margin-top: 10px; font-size: 14px; line-height: 24px; letter-spacing: -.28px; }
+  .mink-architecture-copy a { width: 164px; height: 52px; margin-top: 14px; font-size: 13px; line-height: 22px; }
 }
 
 @media (max-width: 600px) {
@@ -302,17 +326,18 @@
   .mink-project-track { transform: translateX(var(--project-mobile)); }
   .mink-project { flex-basis: 100%; }
   .mink-project-image { height: 265px; }
-  .mink-testimonials { padding: 72px 0 80px; }
+  .mink-testimonials { padding: 64px 0 70px; }
   .mink-testimonials-heading { width: calc(100% - 30px); }
-  .mink-testimonials-heading h2 { margin-top: 18px; font-size: 40px; line-height: 1; letter-spacing: -.06em; white-space: nowrap; }
-  .mink-testimonials-window { width: 100%; margin: 48px 0 0; padding: 0 15px; }
-  .mink-testimonials-track { transform: translate3d(var(--testimonial-mobile), 0, 0); }
-  .mink-testimonial-card { flex-basis: 100%; min-height: 205px; padding: 18px 20px 20px; }
-  .mink-testimonial-card blockquote { font-size: 16px; line-height: 1.778; letter-spacing: -.02em; }
-  .mink-testimonial-author { min-height: 64px; gap: 18px; }
+  .mink-testimonials-heading h2 { margin-top: 14px; font-size: 40px; line-height: 1; letter-spacing: -.05em; white-space: nowrap; }
+  .mink-testimonials-window { width: calc(100% - 30px); margin: 30px auto 0; }
+  .mink-testimonials-track { gap: 16px; transform: translate3d(var(--testimonial-mobile), 0, 0); }
+  .mink-testimonial-card { flex-basis: 100%; min-height: 235px; padding: 24px; }
+  .mink-testimonial-card blockquote { font-size: 15.5px; line-height: 1.7; letter-spacing: -.015em; }
+  .mink-testimonial-author { min-height: 50px; margin-top: 18px; gap: 14px; }
+  .mink-testimonial-avatar { width: 46px; height: 46px; font-size: 12px; }
   .mink-testimonial-author h3 { font-size: 14px; line-height: 1.45; }
-  .mink-testimonial-author p { margin-top: 2px; font-size: 13px; }
-  .mink-testimonial-controls { margin-top: 14px; gap: 14px; }
+  .mink-testimonial-author p { margin-top: 2px; font-size: 11.5px; }
+  .mink-testimonial-controls { margin-top: 18px; gap: 6px; }
   .mink-testimonial-controls button { width: 36px; height: 36px; }
   .mink-testimonial-controls svg { width: 23px; height: 23px; }
   .mink-team-list { margin-top: 45px; }
@@ -335,18 +360,6 @@
   .mink-benefits-layout { margin-top: 50px; grid-template-columns: 1fr; gap: 50px; }
   .mink-benefits-copy { top: 0; max-width: none; }
 
-  .mink-architecture-heading,
-  .mink-architecture-frame { width: calc(100% - 30px); }
-  .mink-architecture-heading { padding: 70px 0 30px; }
-  .mink-architecture-heading h2 { max-width: 345px; margin-top: 31px; font-size: 28px; line-height: 35px; letter-spacing: -1.12px; }
-  .mink-architecture-accordion { width: 100%; height: 1100px; flex-direction: column; gap: 12px; }
-  .mink-architecture-panel { flex-grow: 1; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.2); }
-  .mink-architecture-panel.is-active { flex-grow: 3; }
-  .mink-architecture-panel-inner { padding: 18px 20px 28px; }
-  .mink-architecture-copy { width: 305px; max-width: 100%; }
-  .mink-architecture-copy h3 { font-size: 28px; line-height: 39.2px; letter-spacing: -1.12px; }
-  .mink-architecture-copy p { width: 305px; max-width: 100%; margin-top: 10px; font-size: 16px; line-height: 28px; letter-spacing: -.32px; }
-  .mink-architecture-copy a { width: 164px; height: 52px; margin-top: 14px; font-size: 13px; line-height: 22px; }
 }
 
 @media (min-width: 768px) {

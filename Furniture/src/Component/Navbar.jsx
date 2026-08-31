@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronRight } from 'lucide-react';
-import Logo from '../assets/Logo.webp';
-import WhiteLogo from '../assets/w-logo.webp';
+import BrandLogo from '../assets/divine_bliss.svg';
 import HeaderContactPanel from './HeaderContactPanel';
 import './Navbar.css';
 const navLinks = [
-  { name: 'HOME', href: '/' },
-  { name: 'OUR STORY', href: '/about' },
-  { name: 'COLLECTIONS', href: '/collections' },
+  { name: 'Home', href: '/' },
+  { name: 'Our Story', href: '/about' },
+  { name: 'Collections', href: '/collections' },
   {
-    name: 'THE ATELIER',
+    name: 'The Atelier',
     href: '/about',
     hasDropdown: true,
     dropdownItems: [
@@ -19,7 +18,7 @@ const navLinks = [
       { name: 'Bespoke', href: '/bespoke' },
     ],
   },
-  { name: 'CONTACT US', href: '/contact', hasContactPanel: true },
+  { name: 'Contact Us', href: '/contact', hasContactPanel: true },
 ];
 
 const Navbar = ({ variant = 'solid' }) => {
@@ -135,7 +134,11 @@ const Navbar = ({ variant = 'solid' }) => {
       <div className="navbar-container">
         <div className="navbar-wrapper">
           <Link to="/" className="navbar-logo" onClick={closeMobile}>
-            <img src={isOpen ? WhiteLogo : showSolid ? Logo : WhiteLogo} alt="Mink Studio Logo" />
+            <img
+              className={!showSolid || isOpen ? 'navbar-logo-light' : undefined}
+              src={BrandLogo}
+              alt="Divine Bliss"
+            />
           </Link>
 
           <nav className="navbar-nav">
@@ -227,7 +230,7 @@ const Navbar = ({ variant = 'solid' }) => {
 
           <div className="navbar-actions">
             <Link to="/contact" className="cta-button">
-              GET IN TOUCH
+              Get In Touch
             </Link>
           </div>
 
@@ -297,7 +300,7 @@ const Navbar = ({ variant = 'solid' }) => {
           </div>
         ))}
         <Link to="/contact" className="cta-button mobile-cta" onClick={closeMobile}>
-          GET IN TOUCH
+          Get In Touch
         </Link>
       </div>
     </header>

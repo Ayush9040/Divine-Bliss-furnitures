@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import heroImage from '../assets/sofa.webp';
-import sofaOne from '../assets/home-reference/project-01.webp';
-import sofaTwo from '../assets/home-reference/project-07.webp';
-import diningOne from '../assets/home-reference/project-10.webp';
-import diningTwo from '../assets/about-reference/service-03.webp';
-import curtainOne from '../assets/home-reference/project-08.webp';
+import heroImage from '../assets/collections_banner.webp';
+import sofaOne from '../assets/sofa_1.png';
+import sofaTwo from '../assets/sofa_2.png';
+import diningOne from '../assets/dining_1.png';
+import diningTwo from '../assets/dining_2.png';
+import curtainOne from '../assets/curtain_1.png';
 import curtainTwo from '../assets/home-reference/project-04.webp';
-import mattressOne from '../assets/home-reference/project-02.webp';
-import mattressTwo from '../assets/servicebg.webp';
-import reclinerOne from '../assets/sofa.webp';
-import reclinerTwo from '../assets/home-reference/project-03.webp';
+import mattressOne from '../assets/mattress_1.png';
+import mattressTwo from '../assets/mattress_2.png';
+import reclinerOne from '../assets/recliner_1.png';
+import reclinerTwo from '../assets/recliner_2.png';
+import sofaThree from '../assets/sofa_3.png';
+import sofaFour from '../assets/sofa_4.png';
+import diningThree from '../assets/dining_3.png';
+import diningFour from '../assets/dining_4.png';
+import curtainThree from '../assets/craftsmanship-reference/timeline-4.webp';
+import curtainFour from '../assets/about-reference/service-01.webp';
+import mattressThree from '../assets/mattress_3.png';
+import mattressFour from '../assets/matterss_4.png';
+import reclinerThree from '../assets/recliner_3.png';
+import reclinerFour from '../assets/recliner_4.png';
 import './Collections.css';
 
 const collections = [
@@ -24,6 +34,8 @@ const collections = [
     items: [
       { title: 'Harmony Sectional', meta: 'Modular / Custom Upholstery', image: sofaOne },
       { title: 'Everyday Comfort', meta: 'Contemporary / Tailored Finish', image: sofaTwo },
+      { title: 'Refined Living', meta: 'Statement Form / Textured Upholstery', image: sofaThree },
+      { title: 'Soft Geometry', meta: 'Generous Seating / Sculpted Comfort', image: sofaFour },
     ],
   },
   {
@@ -36,6 +48,8 @@ const collections = [
     items: [
       { title: 'Statement Dining', meta: 'Stone Finish / Six Seater', image: diningOne },
       { title: 'Sculpted Gathering', meta: 'Round Table / Upholstered Chairs', image: diningTwo },
+      { title: 'Gathered Elegance', meta: 'Round Dining / Curved Seating', image: diningThree },
+      { title: 'Intimate Dining', meta: 'Four Seater / Contemporary Finish', image: diningFour },
     ],
   },
   {
@@ -47,7 +61,9 @@ const collections = [
     ],
     items: [
       { title: 'Layered Light', meta: 'Sheer / Full-Height Drapery', image: curtainOne },
-      { title: 'Quiet Elegance', meta: 'Blackout / Tailored Finish', image: curtainTwo },
+      { title: 'Quiet Elegance', meta: 'Blackout / Tailored Finish', image: curtainOne },
+      { title: 'Framed Light', meta: 'Sheer Layering / Full Height', image: curtainOne },
+      { title: 'Tailored Privacy', meta: 'Textured Drapery / Custom Fit', image: curtainOne },
     ],
   },
   {
@@ -60,6 +76,8 @@ const collections = [
     items: [
       { title: 'Restful Comfort', meta: 'Responsive Support / Premium Feel', image: mattressOne },
       { title: 'Nightfall Suite', meta: 'Layered Comfort / Lasting Support', image: mattressTwo },
+      { title: 'Serene Sleep', meta: 'Plush Comfort / Upholstered Bed', image: mattressThree },
+      { title: 'Restorative Retreat', meta: 'Supportive Layers / Calm Finish', image: mattressFour },
     ],
   },
   {
@@ -72,6 +90,8 @@ const collections = [
     items: [
       { title: 'Sculptural Recliner', meta: 'Ergonomic / Statement Form', image: reclinerOne },
       { title: 'Relaxed Lounge', meta: 'Deep Comfort / Refined Finish', image: reclinerTwo },
+      { title: 'Luxe Relaxation', meta: 'Accent Recliner / Sculpted Support', image: reclinerThree },
+      { title: 'Contoured Ease', meta: 'Curved Seat / Ergonomic Comfort', image: reclinerFour },
     ],
   },
 ];
@@ -100,7 +120,8 @@ export default function Collections() {
         <div className="collections-showcase__shell">
           <div className="collections-showcase__eyebrow"><i /> Our Collections</div>
           <h2 id="collections-showcase-title">
-            A Curated Selection of Our Architectural and Interior Projects
+            <span>A Curated Selection Of</span>
+            <span>Our Architectural And Interior Projects</span>
           </h2>
 
           <div className="collections-showcase__intro">

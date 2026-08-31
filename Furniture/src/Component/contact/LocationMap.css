@@ -27,6 +27,54 @@
 
 .contact-map.is-active iframe { pointer-events: auto; }
 
+.contact-map-highlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  transition: opacity .2s ease;
+}
+
+.contact-map-highlight__label {
+  margin-bottom: 9px;
+  padding: 7px 11px;
+  border-radius: 3px;
+  background: rgba(24, 24, 24, .92);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .25);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.contact-map-highlight__pin {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  background: #732c14;
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .32);
+  transform: rotate(-45deg);
+}
+
+.contact-map-highlight__pin svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 2;
+  transform: rotate(45deg);
+}
+
+.contact-map.is-active .contact-map-highlight { opacity: 0; }
+
 .contact-map-guard {
   position: absolute;
   inset: 0;
@@ -50,7 +98,7 @@
   box-shadow: 0 5px 20px rgba(0,0,0,.12);
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   opacity: 0;
   transform: translate(-50%, 8px);
   transition: opacity .25s ease, transform .25s ease;
@@ -81,6 +129,7 @@
 }
 
 .contact-form-section {
+  scroll-margin-top: 96px;
   position: relative;
   z-index: 4;
   width: min(1170px, calc(100% - 60px));
@@ -107,7 +156,7 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .contact-form-eyebrow i {
@@ -124,7 +173,7 @@
   line-height: 45px;
   font-weight: 400;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .contact-form-panel > p {
@@ -325,13 +374,13 @@
   border: 1px solid rgba(24,24,24,.2);
   background: transparent;
   color: #843a1d;
-  font-family: 'TikTok Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   line-height: 24px;
   font-weight: 600;
   font-style: normal;
   white-space: nowrap;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
   transition: background .25s ease, border-color .25s ease, color .25s ease;
 }

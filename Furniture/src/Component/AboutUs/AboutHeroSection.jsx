@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import heroImage from '../../assets/about-reference/about-hero.webp';
+import heroImage from '../../assets/our_story_banner.webp';
 import './AboutHero.css';
 
 export default function AboutHeroSection() {

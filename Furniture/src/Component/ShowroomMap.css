@@ -1,0 +1,99 @@
+.showroom-map,
+.showroom-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.showroom-map .leaflet-container {
+  z-index: 0;
+  background: #d5d2cd;
+  color: #181818;
+  font-family: var(--font-body);
+}
+
+.showroom-map .leaflet-tile-pane {
+  filter: grayscale(1);
+}
+
+.showroom-map .leaflet-control-zoom {
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 3px 14px rgba(24, 24, 24, .18);
+}
+
+.showroom-map .leaflet-control-zoom a {
+  width: 32px;
+  height: 32px;
+  border-color: rgba(24, 24, 24, .12);
+  color: #732c14;
+  font: 400 21px/32px var(--font-body);
+}
+
+.showroom-map .leaflet-control-zoom a:hover,
+.showroom-map .leaflet-control-zoom a:focus-visible {
+  background: #843a1d;
+  color: #fff;
+}
+
+.showroom-map .leaflet-control-attribution {
+  padding: 2px 5px;
+  background: rgba(255, 255, 255, .88);
+  font-size: 9px;
+}
+
+.showroom-map .leaflet-tooltip.showroom-map__tooltip {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 2px;
+  background: #843a1d;
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(24, 24, 24, .24);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.showroom-map .leaflet-tooltip-top.showroom-map__tooltip::before {
+  border-top-color: #843a1d;
+}
+
+.showroom-map .leaflet-popup-content-wrapper,
+.showroom-map .leaflet-popup-tip {
+  border-radius: 2px;
+  background: #fff;
+  color: #181818;
+}
+
+.showroom-map .leaflet-popup-content {
+  width: 205px;
+  margin: 17px 20px 18px;
+  display: grid;
+  gap: 7px;
+  font-family: var(--font-body);
+  line-height: 1.45;
+}
+
+.showroom-map .leaflet-popup-content strong {
+  color: #732c14;
+  font-size: 15px;
+}
+
+.showroom-map .leaflet-popup-content span {
+  font-size: 12px;
+}
+
+.showroom-map .leaflet-popup-content a {
+  width: fit-content;
+  color: #843a1d;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.showroom-map .leaflet-container:focus-visible {
+  outline: 2px solid #843a1d;
+  outline-offset: -2px;
+}

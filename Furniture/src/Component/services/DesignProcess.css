@@ -24,7 +24,7 @@
   font-size: 13px;
   line-height: 20px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .services-eyebrow i {
@@ -41,7 +41,7 @@
   font-size: 48px;
   line-height: 60px;
   font-weight: 300;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .services-outline-button {
@@ -57,7 +57,7 @@
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
   transition: background .3s ease, color .3s ease, border-color .3s ease;
 }
@@ -95,7 +95,7 @@
   font-size: 29px;
   line-height: 39px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .process-step p {
   max-width: 330px;

@@ -25,7 +25,7 @@
   line-height: 16.8px;
   font-weight: 600;
   letter-spacing: -.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-services-banner__row {
@@ -43,7 +43,7 @@
   line-height: 140.8px;
   font-weight: 300;
   letter-spacing: -.055em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .about-services-banner__letter {

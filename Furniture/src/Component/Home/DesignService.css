@@ -37,7 +37,7 @@
   font-size: .85rem;
   font-weight: 700;
   letter-spacing: .12em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   opacity: .9;
 }
 .services-title {
@@ -47,7 +47,7 @@
   line-height: 1.12;
   font-weight: 400;
   letter-spacing: .02em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .services-cta {
   width: fit-content;
@@ -61,7 +61,7 @@
   font-weight: 700;
   letter-spacing: .08em;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
   transition: all .35s ease;
 }
@@ -108,7 +108,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.service-card-title { margin: 0 0 1rem; font-size: 1.5rem; line-height: 1.25; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+.service-card-title { margin: 0 0 1rem; font-size: 1.5rem; line-height: 1.25; font-weight: 700; letter-spacing: .03em; text-transform: capitalize; }
 .service-card-desc { margin: 0 0 1.5rem; font-size: .95rem; line-height: 1.65; opacity: .9; }
 .service-card-link {
   display: inline-flex;
@@ -120,7 +120,7 @@
   font-weight: 700;
   letter-spacing: .08em;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   transition: transform .25s ease;
 }
 .service-card-link:hover { transform: translateX(4px); }

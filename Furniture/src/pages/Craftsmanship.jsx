@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import heroImage from '../assets/craftsmanship-reference/craftsmanship-hero.webp';
-import timelineOne from '../assets/craftsmanship-reference/timeline-1.webp';
-import timelineTwo from '../assets/craftsmanship-reference/timeline-2.webp';
-import timelineThree from '../assets/craftsmanship-reference/timeline-3.webp';
-import timelineFour from '../assets/craftsmanship-reference/timeline-4.webp';
-import timelineFive from '../assets/about-reference/about-left.webp';
+import heroImage from '../assets/craftsmenship_banner.webp';
+import timelineOne from '../assets/from_concept_to_creation.png';
+import timelineTwo from '../assets/precision_manufacturing.png';
+import timelineThree from '../assets/attention_to_every_detail.png';
+import timelineFour from '../assets/comfort_without_compromise.png';
+import timelineFive from '../assets/our_commitment.png';
 import craftsmanshipLights from '../assets/craftsmanship-reference/craftsmanship-lights.webp';
 import './Craftsmanship.css';
 
@@ -183,8 +183,8 @@ export default function Craftsmanship() {
       <section className="craft-intro craft-reveal" aria-labelledby="craft-intro-title">
         <p className="craft-kicker">Introduction</p>
         <h2 id="craft-intro-title">
-          Crafted with Precision
-          <span> Designed to Endure</span>
+          Crafted with Precision.
+          <span> Designed to Endure.</span>
         </h2>
         <p className="craft-intro__description">
           True craftsmanship isn&apos;t just seen, it&apos;s experienced. From the first sketch to the final finish,
@@ -241,9 +241,9 @@ export default function Craftsmanship() {
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="craft-timeline__content">
+                <p className="craft-timeline__subtitle">{item.subtitle}</p>
                 <span className="craft-timeline__number" aria-hidden="true">{item.step}</span>
                 <h3>{item.title}</h3>
-                <p className="craft-timeline__subtitle">{item.subtitle}</p>
                 <p className="craft-timeline__lead">{item.lead}</p>
                 <div className="craft-timeline__body">
                   {item.paragraphs.map((paragraph) => (
@@ -259,15 +259,15 @@ export default function Craftsmanship() {
       <section className="craft-closing craft-reveal" aria-labelledby="craft-closing-title">
         <div className="craft-closing__inner">
           <h2 id="craft-closing-title">
-            Crafted for Today
-            <span>Designed for Tomorrow</span>
+            Crafted for Today.
+            <span>Designed for Tomorrow.</span>
           </h2>
           <p>
             Every Divine Bliss creation reflects our belief that exceptional furniture should offer lasting beauty,
             enduring comfort, and uncompromising quality, today, tomorrow, and for years to come.
           </p>
-          <Link className="craft-closing__button" to="/collections">
-            Discover Our Collections
+          <Link className="craft-closing__button" to="/contact#contact-form">
+            Discuss Your Project
             <ArrowRight aria-hidden="true" />
           </Link>
         </div>

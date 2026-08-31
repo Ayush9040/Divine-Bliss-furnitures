@@ -1,4 +1,5 @@
 import AboutStatsSection from './AboutStatsSection';
+import AboutFeatureCards from './AboutFeatureCards';
 import './BrandPrinciplesSection.css';
 
 export const principles = [
@@ -29,8 +30,7 @@ export const principles = [
   {
     title: 'Built Around Your Vision',
     paragraphs: [
-      'No two homes are alike.',
-      "That's why customization is at the heart of what we do.",
+      "No two homes are alike. That's why customization is at the heart of what we do.",
       "Whether it's selecting fabrics, finishes, dimensions, or configurations, we work with you to create furniture that feels like it was always meant to belong in your space.",
       "Because the best interiors aren't copied, they're created.",
     ],
@@ -67,6 +67,8 @@ export default function BrandPrinciplesSection() {
       </div>
 
       <AboutStatsSection />
+
+      <AboutFeatureCards />
 
       <blockquote className="about-principles__quote">
         "Beautiful spaces aren&apos;t created by chance. They&apos;re shaped by thoughtful design, exceptional craftsmanship, and furniture made to last"

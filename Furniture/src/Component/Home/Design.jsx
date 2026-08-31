@@ -67,9 +67,9 @@ const Design = () => {
             />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">HARMONY RESIDENCE</h2>
+            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">Harmony Residence</h2>
             <span className="flex items-center justify-start gap-3 font-semibold text-xs sm:text-sm text-neutral-500 tracking-wider mt-1">
-              ARCHITECTURE <Circle size={8} className="fill-current" /> PLANNING
+              Architecture <Circle size={8} className="fill-current" /> Planning
             </span>
           </div>
         </div>
@@ -84,9 +84,9 @@ const Design = () => {
             />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">GROVE APARTMENTS</h2>
+            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">Grove Apartments</h2>
             <span className="flex items-center justify-start gap-3 font-semibold text-xs sm:text-sm text-neutral-500 tracking-wider mt-1">
-              ARCHITECTURE <Circle size={8} className="fill-current" /> PLANNING
+              Architecture <Circle size={8} className="fill-current" /> Planning
             </span>
           </div>
         </div>
@@ -101,9 +101,9 @@ const Design = () => {
             />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">LUXE HEIGHTS</h2>
+            <h2 className="text-xl sm:text-2xl font-normal text-neutral-900">Luxe Heights</h2>
             <span className="flex items-center justify-start gap-3 font-semibold text-xs sm:text-sm text-neutral-500 tracking-wider mt-1">
-              ARCHITECTURE <Circle size={8} className="fill-current" /> PLANNING
+              Architecture <Circle size={8} className="fill-current" /> Planning
             </span>
           </div>
         </div>

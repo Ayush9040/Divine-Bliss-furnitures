@@ -94,7 +94,7 @@
   line-height: 21px;
   font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
 }
 

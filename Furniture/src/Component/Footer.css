@@ -5,7 +5,7 @@
   background-position: center;
   background-size: cover;
   color: #fff;
-  font-family: 'TikTok Sans', sans-serif;
+  font-family: var(--font-body);
   line-height: 30px;
 }
 
@@ -47,7 +47,13 @@
 .mink-footer-contact { min-height: 320px; padding-top: 20px; padding-bottom: 20px; }
 .mink-footer-links { padding-top: 22px; padding-bottom: 23px; }
 
-.mink-footer-brand img { width: 100px; height: 40px; object-fit: contain; }
+.mink-footer-brand img {
+  width: clamp(100px, 7vw, 140px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
 .mink-footer-brand > p { max-width: 356px; font-size: 16px; line-height: 30px; font-weight: 400; }
 
 .mink-footer-contact > div {
@@ -67,14 +73,6 @@
   line-height: 30px;
   font-weight: 400;
   text-decoration: none;
-}
-
-.mink-footer-links h2 {
-  margin: 0 0 12px;
-  color: white;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
 }
 
 .mink-footer-links nav {
@@ -133,6 +131,7 @@
   .mink-footer-panel { min-height: 0; padding: 30px 15px 82px; display: block; }
   .mink-footer-brand, .mink-footer-contact, .mink-footer-links { min-height: 0; }
   .mink-footer-brand { height: 200px; padding: 0; }
+  .mink-footer-brand img { width: clamp(92px, 27vw, 110px); }
   .mink-footer-brand > p { max-width: 315px; margin-top: 40px; line-height: 30px; }
   .mink-footer-contact { height: auto; min-height: 320px; margin-top: 61px; padding: 0; border: 0; }
   .mink-footer-contact > p { margin-top: 30px; }

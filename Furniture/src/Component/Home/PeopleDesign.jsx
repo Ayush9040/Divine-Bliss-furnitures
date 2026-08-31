@@ -256,23 +256,23 @@ import React, { useState } from 'react';
 
 const teamMembers = [
   {
-    name: "SANDRA LEE",
-    role: "CREATIVE DIRECTOR",
+    name: "Sandra Lee",
+    role: "Creative Director",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "CHRISTINA GRANT",
-    role: "LEAD INTERIOR DESIGNER",
+    name: "Christina Grant",
+    role: "Lead Interior Designer",
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "MATEY BLACK",
-    role: "SPACE PLANNER",
+    name: "Matey Black",
+    role: "Space Planner",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "MARY PETTERSON",
-    role: "3D VISUALIZER / CGI ARTIST",
+    name: "Mary Petterson",
+    role: "3D Visualizer / CGI Artist",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
   },
 ];
@@ -288,13 +288,13 @@ export default function TeamSection() {
       <div className="max-w-7xl mx-auto w-full mb-16">
         <div className="flex items-center space-x-2 mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-[#732c14]"></span>
-          <span className="text-xs uppercase tracking-[0.25em] text-neutral-500 font-medium">
+          <span className="text-xs capitalize tracking-[0.25em] text-neutral-500 font-medium">
             The People Behind The Design
           </span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-neutral-900">
-          THE MINDS AND HANDS BEHIND <br />
-          <span className="font-normal">OUR SIGNATURE INTERIORS</span>
+          The Minds And Hands Behind <br />
+          <span className="font-normal">Our Signature Interiors</span>
         </h2>
       </div>
 
@@ -320,7 +320,7 @@ export default function TeamSection() {
                   {member.name}
                 </h3>
                 
-                <span className={`text-xs sm:text-sm tracking-widest uppercase transition-colors duration-300 ${
+                <span className={`text-xs sm:text-sm tracking-widest capitalize transition-colors duration-300 ${
                   isHovered ? 'text-neutral-700 font-medium' : 'text-neutral-400'
                 }`}>
                   / {member.role}
@@ -344,7 +344,7 @@ export default function TeamSection() {
               <div className="mt-4 md:mt-0 z-10">
                 <a
                   href="#read-more"
-                  className={`inline-flex items-center justify-center px-6 py-3 text-xs uppercase tracking-widest font-medium transition-all duration-300 border ${
+                  className={`inline-flex items-center justify-center px-6 py-3 text-xs capitalize tracking-widest font-medium transition-all duration-300 border ${
                     isHovered 
                       ? 'bg-[#732c14] text-white border-[#732c14] shadow-md' 
                       : 'bg-transparent text-neutral-800 border-neutral-400 hover:border-neutral-800'

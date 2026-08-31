@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import heroImage from '../assets/craftsmanship-reference/craftsmanship-hero.webp';
-import timelineOne from '../assets/craftsmanship-reference/timeline-1.webp';
-import timelineTwo from '../assets/craftsmanship-reference/timeline-2.webp';
-import timelineThree from '../assets/craftsmanship-reference/timeline-3.webp';
-import timelineFour from '../assets/craftsmanship-reference/timeline-4.webp';
-import timelineFive from '../assets/about-reference/about-left.webp';
-import timelineSix from '../assets/sofaImage.webp';
+import defaultHeroImage from '../assets/materials_banner.webp';
+import timelineOne from '../assets/upholstery_fabrics.jpg';
+import timelineTwo from '../assets/wood_and_structural_materials.jpg';
+import timelineThree from '../assets/finishes.jpg';
+import timelineFour from '../assets/curtain_fabrics.jpg';
+import timelineFive from '../assets/colours_and_customisation.jpg';
+import timelineSix from '../assets/care_and_longevity.png';
 import craftsmanshipLights from '../assets/craftsmanship-reference/craftsmanship-lights.webp';
 import './Craftsmanship.css';
 
@@ -85,6 +85,7 @@ const defaultManifestoParagraphs = [
 ];
 
 export default function Materials({
+  heroImage = defaultHeroImage,
   pageTitle = 'Materials',
   introTitle = 'Exceptional Furniture Begins',
   introTitleSecondLine = 'Exceptional Materials',
@@ -94,12 +95,12 @@ export default function Materials({
   manifestoParagraphs = defaultManifestoParagraphs,
   timelineAriaLabel = 'Materials process',
   timelineItems = defaultTimelineItems,
-  closingTitle = 'Quality You Can See',
-  closingTitleSecondLine = 'Comfort You Can Feel',
+  closingTitle = 'Quality You Can See.',
+  closingTitleSecondLine = 'Comfort You Can Feel.',
   closingDescription = 'Every material we select contributes to a singular goal: creating furniture',
   closingDescriptionSecondLine = 'that looks exceptional, feels inviting, and stands the test of time.',
-  closingButtonLabel = 'Discover Our Collections',
-  closingButtonTo = '/collections',
+  closingButtonLabel = 'Request Material Guidance',
+  closingButtonTo = '/contact#contact-form',
 }) {
   const pageRef = useRef(null);
   const manifestoRef = useRef(null);
@@ -263,9 +264,9 @@ export default function Materials({
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="craft-timeline__content">
+                <p className="craft-timeline__subtitle">{item.subtitle}</p>
                 <span className="craft-timeline__number" aria-hidden="true">{item.step}</span>
                 <h3>{item.title}</h3>
-                <p className="craft-timeline__subtitle">{item.subtitle}</p>
                 <p className="craft-timeline__lead">{item.lead}</p>
                 <div className="craft-timeline__body">
                   {item.paragraphs.map((paragraph) => (

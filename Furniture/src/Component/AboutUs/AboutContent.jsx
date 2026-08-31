@@ -3,15 +3,15 @@ import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import leftImage from '../../assets/about-reference/about-left.webp';
-import rightImage from '../../assets/about-reference/about-right.webp';
+import leftImage from '../../assets/our_story_1.png';
+import rightImage from '../../assets/our_story_2.png';
 import './AboutContent.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const headingLines = [
   ['Every', 'Home', 'Begins'],
-  ['with', 'a', 'Story'],
+  ['With', 'A', 'Story'],
 ];
 
 function AnimatedHeading() {

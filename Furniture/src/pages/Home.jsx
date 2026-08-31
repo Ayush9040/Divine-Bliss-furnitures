@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import heroSofa from '../assets/sofaImage.webp';
+import heroSofa from '../assets/home_page_hero_banner_1.png';
 import buildingSketch from '../assets/building.webp';
-import aboutChair from '../assets/sofa.webp';
-import aboutBasin from '../assets/basin.webp';
+import aboutChair from '../assets/intro_recliner.png';
+import aboutBasin from '../assets/intro_curtain.png';
 import aboutLight from '../assets/flowerDesign.webp';
 import client1 from '../assets/clients-1.webp';
 import client2 from '../assets/clients-2.webp';
@@ -16,17 +17,20 @@ import client6 from '../assets/clients-6.webp';
 import service1 from '../assets/home-reference/service-blueprint-1.webp';
 import service2 from '../assets/home-reference/service-blueprint-2.webp';
 import service3 from '../assets/home-reference/service-blueprint-3.webp';
-import project01 from '../assets/home-reference/project-01.webp';
-import project02 from '../assets/home-reference/project-02.webp';
 import project03 from '../assets/home-reference/project-03.webp';
+import featuredSofa from '../assets/fc_sofa.png';
+import featuredDining from '../assets/fc_dining.png';
+import featuredRecliner from '../assets/fc_recliner.png';
+import featuredMattress from '../assets/fc_mattress.png';
 import team01 from '../assets/home-reference/team-01.webp';
 import team02 from '../assets/home-reference/team-02.webp';
 import team03 from '../assets/home-reference/team-03.webp';
 import team04 from '../assets/home-reference/team-04.webp';
-import architecture01 from '../assets/home-reference/architecture-01.webp';
-import architecture02 from '../assets/home-reference/architecture-02.webp';
-import architecture03 from '../assets/home-reference/architecture-03.webp';
-import benefitsTeam from '../assets/home-reference/benefits-team.webp';
+import architecture01 from '../assets/why_divine_bliss.webp';
+import architecture02 from '../assets/bespoke_exp.webp';
+import architecture03 from '../assets/visit_showroom.webp';
+import benefitsCraftsmanship from '../assets/1.webp';
+import benefitsSofa from '../assets/2.webp';
 import HomeFaq from '../Component/Home/HomeFaq';
 import './Home.css';
 
@@ -69,7 +73,7 @@ const projects = [
     description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
     ctaLabel: 'Explore Sofas',
     href: '/collections',
-    image: project01,
+    image: featuredSofa,
   },
   {
     id: 'dining',
@@ -77,7 +81,7 @@ const projects = [
     description: 'Create memorable gatherings around dining furniture crafted with elegant proportions, lasting materials, and exceptional attention to detail.',
     ctaLabel: 'Explore Dining',
     href: '/collections',
-    image: project02,
+    image: featuredDining,
   },
   {
     id: 'curtains',
@@ -93,7 +97,7 @@ const projects = [
     description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
     ctaLabel: 'Explore Recliners',
     href: '/collections',
-    image: project01,
+    image: featuredRecliner,
   },
   {
     id: 'sofas-copy-two',
@@ -101,7 +105,7 @@ const projects = [
     description: 'Designed to be the heart of your living space, our sofas combine inviting comfort with timeless design and customizable finishes.',
     ctaLabel: 'Explore Mattress',
     href: '/collections',
-    image: project01,
+    image: featuredMattress,
   },
 ];
 
@@ -406,7 +410,9 @@ export default function Home() {
     if (event.target !== event.currentTarget || event.propertyName !== 'transform' || projectPage !== projects.length) return;
     setProjectInstant(true);
     setProjectPage(0);
-    requestAnimationFrame(() => setProjectInstant(false));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setProjectInstant(false));
+    });
   };
 
   const showPreviousTestimonial = () => {
@@ -447,18 +453,23 @@ export default function Home() {
         <div className="mink-hero-sketch" ref={sketchRef} style={{ backgroundImage: `url(${buildingSketch})` }} />
         <div className="mink-wide-shell mink-hero-copy">
           <h1 id="home-hero-title" className="mink-hero-title">
-            <span><SplitText>Crafted for</SplitText></span>
+            <span><SplitText>Crafted For</SplitText></span>
             <span><SplitText>Beautiful Living</SplitText></span>
           </h1>
           <div className="mink-hero-info">
-            <p>From Statement Sofas To Elegant Dining Furniture And Bespoke Curtains, Divine Bliss Creates Thoughtfully Designed Pieces That Bring Comfort, Character, And Timeless Style Into Every Home.</p>
-            <a href="#about">More About Us <InlineArrow /></a>
+            <p>
+              From Statement Sofas To Elegant Dining Furniture And Bespoke Curtains, Divine Bliss Creates Thoughtfully
+              <span className="mink-hero-info-second-line">
+                Designed Pieces That Bring Comfort, Character, And Timeless Style Into Every Home.
+              </span>
+            </p>
+            <Link to="/about">More About Us <InlineArrow /></Link>
           </div>
         </div>
       </section>
 
       <div className="mink-hero-image">
-        <img src={heroSofa} alt="Warm modern living room with a sculptural cream sofa" />
+        <img src={heroSofa} alt="Contemporary taupe sectional sofa in a warm neutral living room" />
       </div>
 
       <section id="about" ref={aboutRef} className="mink-about mink-shell">
@@ -561,20 +572,11 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
 
           <div className="mink-benefits-layout">
             <div className="mink-benefits-visual">
-              <svg className="mink-benefits-blueprint" viewBox="0 0 420 420" aria-hidden="true">
-                <circle cx="210" cy="210" r="206" />
-                <path d="M64 116h232v54h58v140H132v-42H64z" />
-                <path d="M92 139h172v102H92zm172 31h64v71h-64zm-132 102h92v37h-92z" />
-                <path d="M112 139v102m48-102v102m52-102v102m52-39h64M92 190h172M178 241v68" />
-                <path d="M76 96l248 248M101 73l247 247M46 144l230 230" />
-                <path d="M44 334h321M76 362h246M334 92v268" />
-                <path d="M122 156a20 20 0 0 1 20 20M224 205a23 23 0 0 0 23 23M287 273a18 18 0 0 1 18-18" />
-                <circle cx="142" cy="176" r="4" />
-                <circle cx="247" cy="228" r="4" />
-                <circle cx="305" cy="255" r="4" />
-              </svg>
-              <div className="mink-benefits-photo">
-                <img src={benefitsTeam} alt="Interior architects collaborating over detailed floor plans" />
+              <div className="mink-benefits-photo mink-benefits-photo-primary">
+                <img src={benefitsCraftsmanship} alt="Furniture designer selecting leather for a sofa" />
+              </div>
+              <div className="mink-benefits-photo mink-benefits-photo-secondary">
+                <img src={benefitsSofa} alt="Finished brown leather Chesterfield sofa" />
               </div>
             </div>
 
@@ -637,9 +639,9 @@ Every sofa, dining set, and curtain is thoughtfully designed with a balance of c
             className={`mink-testimonials-track ${testimonialInstant ? 'is-instant' : ''}`}
             onTransitionEnd={resetTestimonialLoop}
             style={{
-              '--testimonial-desktop': `calc(-${testimonialIndex * 25}% - ${testimonialIndex * 7.5}px)`,
-              '--testimonial-tablet': `calc(-${testimonialIndex * 50}% - ${testimonialIndex * 15}px)`,
-              '--testimonial-mobile': `calc(-${testimonialIndex * 100}% - ${testimonialIndex * 30}px)`,
+              '--testimonial-desktop': `calc(-${testimonialIndex * (100 / 3)}% - ${testimonialIndex * 8}px)`,
+              '--testimonial-tablet': `calc(-${testimonialIndex * 50}% - ${testimonialIndex * 10}px)`,
+              '--testimonial-mobile': `calc(-${testimonialIndex * 100}% - ${testimonialIndex * 16}px)`,
             }}
           >
             {[...testimonials, ...testimonials].map((testimonial, index) => (

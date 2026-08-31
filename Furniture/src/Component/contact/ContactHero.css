@@ -35,7 +35,7 @@
   line-height: 1.08;
   font-weight: 300;
   letter-spacing: -.045em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .page-hero-title span { display: block; }
@@ -47,7 +47,7 @@
   font-size: 14px;
   line-height: 30px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .page-hero-breadcrumb-link,
