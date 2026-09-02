@@ -6,7 +6,7 @@ import sofaTwo from '../assets/sofa_2.png';
 import diningOne from '../assets/dining_1.png';
 import diningTwo from '../assets/dining_2.png';
 import curtainOne from '../assets/curtain_1.png';
-import curtainTwo from '../assets/home-reference/project-04.webp';
+import curtainTwo from '../assets/curtain_2.png';
 import mattressOne from '../assets/mattress_1.png';
 import mattressTwo from '../assets/mattress_2.png';
 import reclinerOne from '../assets/recliner_1.png';
@@ -15,8 +15,8 @@ import sofaThree from '../assets/sofa_3.png';
 import sofaFour from '../assets/sofa_4.png';
 import diningThree from '../assets/dining_3.png';
 import diningFour from '../assets/dining_4.png';
-import curtainThree from '../assets/craftsmanship-reference/timeline-4.webp';
-import curtainFour from '../assets/about-reference/service-01.webp';
+import curtainThree from '../assets/curtain_3.png';
+import curtainFour from '../assets/curtain_4.png';
 import mattressThree from '../assets/mattress_3.png';
 import mattressFour from '../assets/matterss_4.png';
 import reclinerThree from '../assets/recliner_3.png';
@@ -61,9 +61,9 @@ const collections = [
     ],
     items: [
       { title: 'Layered Light', meta: 'Sheer / Full-Height Drapery', image: curtainOne },
-      { title: 'Quiet Elegance', meta: 'Blackout / Tailored Finish', image: curtainOne },
-      { title: 'Framed Light', meta: 'Sheer Layering / Full Height', image: curtainOne },
-      { title: 'Tailored Privacy', meta: 'Textured Drapery / Custom Fit', image: curtainOne },
+      { title: 'Quiet Elegance', meta: 'Blackout / Tailored Finish', image: curtainTwo },
+      { title: 'Framed Light', meta: 'Sheer Layering / Full Height', image: curtainThree },
+      { title: 'Tailored Privacy', meta: 'Textured Drapery / Custom Fit', image: curtainFour },
     ],
   },
   {
