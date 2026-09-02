@@ -250,6 +250,48 @@
   display: block;
 }
 
+.craft-manifesto__art--sofa {
+  top: 50%;
+  width: 540px;
+  height: auto;
+  aspect-ratio: 527 / 713;
+  transform: translate3d(0, -50%, 0);
+  transition: none;
+  will-change: auto;
+}
+
+.craft-manifesto__art--sofa img {
+  object-fit: contain;
+}
+
+.craft-manifesto__art--materials {
+  top: 50%;
+  width: 560px;
+  height: auto;
+  aspect-ratio: 527 / 713;
+  transform: translate3d(0, -50%, 0);
+  transition: none;
+  will-change: auto;
+}
+
+.craft-manifesto__art--materials img {
+  object-fit: contain;
+}
+
+.craft-manifesto__art--bespoke {
+  top: 50%;
+  width: 600px;
+  height: auto;
+  aspect-ratio: 527 / 713;
+  transform: translate3d(0, -50%, 0);
+  transition: none;
+  will-change: auto;
+}
+
+.craft-manifesto__art--bespoke img {
+  object-fit: contain;
+}
+
 .craft-timeline-section {
   width: 100%;
   max-width: 1230px;
@@ -342,7 +384,7 @@
 }
 
 .craft-timeline__content {
-  width: min(100%, 480px);
+  width: min(100%, 440px);
   align-self: center;
   justify-self: start;
   display: flex;
@@ -350,54 +392,44 @@
   align-items: stretch;
 }
 
-.craft-timeline__number {
-  display: block;
-  margin-bottom: -94px;
-  color: rgba(115, 44, 20, .07);
-  font-size: 128px;
-  line-height: 1;
-  font-weight: 300;
-  letter-spacing: -.06em;
-}
-
 .craft-timeline__content h3 {
-  position: relative;
-  font-size: 32px;
-  line-height: 1.25;
+  font-family: var(--font-heading);
+  font-size: 29px;
+  line-height: 1.22;
   font-weight: 400;
-  letter-spacing: -.035em;
+  letter-spacing: -.03em;
   text-transform: capitalize;
 }
 
 .craft-timeline__subtitle {
-  margin-top: 12px !important;
+  margin-top: 20px !important;
   color: var(--craft-accent);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.45;
   font-weight: 600;
-  letter-spacing: .045em;
+  letter-spacing: 0;
   text-transform: capitalize;
 }
 
 .craft-timeline__lead {
-  margin-top: 16px !important;
+  margin-top: 15px !important;
   color: var(--craft-ink);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
   font-weight: 600;
 }
 
 .craft-timeline__body {
-  margin-top: 12px;
+  margin-top: 17px;
   display: grid;
-  gap: 8px;
+  gap: 15px;
 }
 
 .craft-timeline__body p {
   margin: 0;
-  color: #686764;
-  font-size: 15.5px;
-  line-height: 1.7;
+  color: #454440;
+  font-size: 14px;
+  line-height: 1.52;
 }
 
 .craft-timeline__entry:nth-child(even) .craft-timeline__image-shell {
@@ -604,6 +636,33 @@
     aspect-ratio: 527 / 713;
   }
 
+  .craft-manifesto__art--sofa {
+    top: 50%;
+    right: -10px;
+    width: 480px;
+    height: auto;
+    aspect-ratio: 527 / 713;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .craft-manifesto__art--materials {
+    top: 50%;
+    right: -10px;
+    width: 500px;
+    height: auto;
+    aspect-ratio: 527 / 713;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .craft-manifesto__art--bespoke {
+    top: 50%;
+    right: -10px;
+    width: 520px;
+    height: auto;
+    aspect-ratio: 527 / 713;
+    transform: translate3d(0, -50%, 0);
+  }
+
   .craft-timeline-section {
     margin-top: 70px;
     margin-bottom: 0;
@@ -624,11 +683,6 @@
 
   .craft-timeline__entry:nth-child(even) .craft-timeline__image-shell::after {
     transform: translate(15px, 15px);
-  }
-
-  .craft-timeline__number {
-    font-size: 110px;
-    margin-bottom: -80px;
   }
 
   .craft-closing {
@@ -691,6 +745,134 @@
     top: -105px;
     right: -72px;
     width: 420px;
+  }
+
+  .craft-manifesto__art--sofa {
+    top: 50%;
+    right: -15px;
+    width: 360px;
+    height: auto;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .craft-manifesto--sofa .craft-manifesto__content,
+  .craft-manifesto--sofa .craft-manifesto__title {
+    max-width: 540px;
+  }
+
+  .craft-manifesto--sofa .craft-manifesto__description {
+    width: min(100%, 500px);
+  }
+
+  .craft-manifesto__art--materials {
+    top: 50%;
+    right: -15px;
+    width: 380px;
+    height: auto;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .craft-manifesto--materials .craft-manifesto__content,
+  .craft-manifesto--materials .craft-manifesto__title {
+    max-width: 540px;
+  }
+
+  .craft-manifesto--materials .craft-manifesto__description {
+    width: min(100%, 500px);
+  }
+
+  .craft-manifesto__art--bespoke {
+    top: 50%;
+    right: -15px;
+    width: 420px;
+    height: auto;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .craft-manifesto--bespoke .craft-manifesto__content,
+  .craft-manifesto--bespoke .craft-manifesto__title {
+    max-width: 540px;
+  }
+
+  .craft-manifesto--bespoke .craft-manifesto__description {
+    width: min(100%, 500px);
+  }
+}
+
+@media (max-width: 900px) {
+  .craft-manifesto--sofa .craft-manifesto__inner {
+    padding-bottom: 390px;
+  }
+
+  .craft-manifesto--materials .craft-manifesto__inner {
+    padding-bottom: 390px;
+  }
+
+  .craft-manifesto--bespoke .craft-manifesto__inner {
+    padding-bottom: 390px;
+  }
+
+  .craft-manifesto__art--sofa {
+    top: auto;
+    right: auto;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--sofa img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(500px, 70vw);
+    height: auto;
+    transform: translate(-50%, -24%);
+  }
+
+  .craft-manifesto__art--materials {
+    top: auto;
+    right: auto;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--materials img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(430px, 105vw);
+    height: auto;
+    transform: translate(-50%, -23%);
+  }
+
+  .craft-manifesto__art--bespoke {
+    top: auto;
+    right: auto;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--bespoke img {
+    position: absolute;
+    top: 0;
+    left: 37%;
+    width: min(430px, 105vw);
+    height: auto;
+    transform: translate(-50%, -24%);
   }
 }
 
@@ -787,6 +969,81 @@
     will-change: auto;
   }
 
+  .craft-manifesto--sofa .craft-manifesto__inner {
+    padding-bottom: 360px;
+  }
+
+  .craft-manifesto--materials .craft-manifesto__inner {
+    padding-bottom: 360px;
+  }
+
+  .craft-manifesto--bespoke .craft-manifesto__inner {
+    padding-bottom: 360px;
+  }
+
+  .craft-manifesto__art--sofa {
+    top: auto;
+    right: auto;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    height: 290px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--sofa img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(430px, 118vw);
+    height: auto;
+    transform: translate(-50%, -24%);
+  }
+
+  .craft-manifesto__art--materials {
+    top: auto;
+    right: auto;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    height: 290px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--materials img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(430px, 105vw);
+    height: auto;
+    transform: translate(-50%, -23%);
+  }
+
+  .craft-manifesto__art--bespoke {
+    top: auto;
+    right: auto;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    height: 290px;
+    aspect-ratio: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .craft-manifesto__art--bespoke img {
+    position: absolute;
+    top: 0;
+    left: 37%;
+    width: min(430px, 105vw);
+    height: auto;
+    transform: translate(-50%, -24%);
+  }
+
   .craft-timeline-section {
     margin: 20px auto 0;
     padding: 0 15px;
@@ -842,36 +1099,30 @@
     --timeline-reveal-y: 34px;
   }
 
-  .craft-timeline__number {
-    margin: 0 0 -76px;
-    font-size: 104px;
-  }
-
   .craft-timeline__content h3 {
-    margin-top: 8px;
-    font-size: clamp(27px, 8.2vw, 32px);
+    font-size: clamp(25px, 7.2vw, 29px);
     line-height: 1.22;
   }
 
   .craft-timeline__subtitle {
-    margin-top: 0 !important;
-    font-size: 13px;
+    margin-top: 18px !important;
+    font-size: 12.5px;
   }
 
   .craft-timeline__lead {
-    margin-top: 14px !important;
-    font-size: 16px;
-    line-height: 1.6;
+    margin-top: 13px !important;
+    font-size: 14.5px;
+    line-height: 1.5;
   }
 
   .craft-timeline__body {
-    margin-top: 12px;
-    gap: 8px;
+    margin-top: 15px;
+    gap: 13px;
   }
 
   .craft-timeline__body p {
-    font-size: 15px;
-    line-height: 1.68;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .craft-closing {
@@ -909,7 +1160,7 @@
     font-size: 40px;
   }
 
-  .craft-timeline__content h3 { font-size: 27px; }
+  .craft-timeline__content h3 { font-size: 25px; }
 
   .craft-closing h2 { font-size: 28px; }
 

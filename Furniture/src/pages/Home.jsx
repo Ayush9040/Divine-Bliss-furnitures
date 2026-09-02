@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroSofa from '../assets/home_page_hero_banner_1.png';
-import buildingSketch from '../assets/building.webp';
+import heroSketch from '../assets/hero_sketch.webp';
 import aboutChair from '../assets/intro_recliner.png';
 import aboutBasin from '../assets/intro_curtain.png';
 import aboutLight from '../assets/flowerDesign.webp';
@@ -14,9 +14,9 @@ import client3 from '../assets/clients-3.webp';
 import client4 from '../assets/clients-4.webp';
 import client5 from '../assets/clients-5.webp';
 import client6 from '../assets/clients-6.webp';
-import service1 from '../assets/home-reference/service-blueprint-1.webp';
-import service2 from '../assets/home-reference/service-blueprint-2.webp';
-import service3 from '../assets/home-reference/service-blueprint-3.webp';
+import service1 from '../assets/card_1.webp';
+import service2 from '../assets/card_2.webp';
+import service3 from '../assets/card_3.webp';
 import project03 from '../assets/home-reference/project-03.webp';
 import featuredSofa from '../assets/fc_sofa.png';
 import featuredDining from '../assets/fc_dining.png';
@@ -450,7 +450,12 @@ export default function Home() {
   return (
     <main ref={pageRef} className="mink-home">
       <section ref={heroRef} className="mink-hero" aria-labelledby="home-hero-title">
-        <div className="mink-hero-sketch" ref={sketchRef} style={{ backgroundImage: `url(${buildingSketch})` }} />
+        <div
+          className="mink-hero-sketch"
+          ref={sketchRef}
+          style={{ backgroundImage: `url(${heroSketch})` }}
+          aria-hidden="true"
+        />
         <div className="mink-wide-shell mink-hero-copy">
           <h1 id="home-hero-title" className="mink-hero-title">
             <span><SplitText>Crafted For</SplitText></span>

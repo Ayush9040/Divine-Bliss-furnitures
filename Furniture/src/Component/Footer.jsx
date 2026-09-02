@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUp } from 'lucide-react';
+import { ArrowRight, ArrowUp, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import footerBackground from '../assets/footer.png';
 import BrandLogo from '../assets/divine_bliss.svg';
@@ -14,10 +14,19 @@ export default function Footer() {
         </div>
 
         <div className="mink-footer-contact">
-          <div>
-            <p>Ground Floor, # Sy No 7,<br />Maruthi Garden,<br />Sarjapur Road, Wipro Corporate,<br />Bengaluru, Karnataka, 560035</p>
-            <a href="tel:9743444469">9743444469</a>
-            <a href="mailto:divinebliss121@gmail.com">divinebliss121@gmail.com</a>
+          <div className="mink-footer-contact-list">
+            <div className="mink-footer-contact-item mink-footer-contact-address">
+              <MapPin aria-hidden="true" />
+              <address>Ground Floor, # Sy No 7,<br />Maruthi Garden,<br />Sarjapur Road, Wipro Corporate,<br />Bengaluru, Karnataka, 560035</address>
+            </div>
+            <a className="mink-footer-contact-item" href="tel:9743444469">
+              <Phone aria-hidden="true" />
+              <span>9743444469</span>
+            </a>
+            <a className="mink-footer-contact-item" href="mailto:divinebliss121@gmail.com">
+              <Mail aria-hidden="true" />
+              <span>divinebliss121@gmail.com</span>
+            </a>
           </div>
           <p>&copy; 2026 Divine Bliss</p>
         </div>

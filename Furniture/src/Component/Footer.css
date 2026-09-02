@@ -56,14 +56,37 @@
 }
 .mink-footer-brand > p { max-width: 356px; font-size: 16px; line-height: 30px; font-weight: 400; }
 
-.mink-footer-contact > div {
+.mink-footer-contact-list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
 }
 
-.mink-footer-contact > div > p:first-child { width: 100%; max-width: 300px; line-height: 30px; }
+.mink-footer-contact-item {
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.mink-footer-contact-item svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 6px;
+  stroke-width: 1.6;
+}
+
+.mink-footer-contact-item address,
+.mink-footer-contact-item span {
+  min-width: 0;
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.mink-footer-contact-address { line-height: 30px; }
 
 .mink-footer-contact p,
 .mink-footer-contact a,
@@ -117,7 +140,7 @@
 
 @media (max-width: 900px) and (min-width: 601px) {
   .mink-footer { min-height: 569px; padding: 20px 15px; }
-  .mink-footer-panel { min-height: 529px; padding: 80px 22px; grid-template-columns: 43% 34% 23%; gap: 0; }
+  .mink-footer-panel { min-height: 529px; padding: 80px 22px; grid-template-columns: 35% 42% 23%; gap: 0; }
   .mink-footer-brand, .mink-footer-contact, .mink-footer-links { min-height: 369px; }
   .mink-footer-brand { padding: 25px 22px 25px 0; }
   .mink-footer-brand > p { max-width: 250px; }

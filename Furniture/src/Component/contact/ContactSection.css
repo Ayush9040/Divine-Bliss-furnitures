@@ -69,6 +69,7 @@
   margin-top: 33px;
   display: grid;
   grid-template-columns: 267.89px 1fr;
+  column-gap: 40px;
   row-gap: 28px;
 }
 
@@ -165,7 +166,10 @@
   .contact-overview-lead h2 span:not(:last-child)::after { content: ' '; }
 
   .contact-intro { width: 100%; margin-top: 0 !important; }
-  .contact-details-grid { grid-template-columns: 50% 50%; }
+  .contact-details-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+  }
 
   .contact-email-banner {
     height: 200px;

@@ -1,9 +1,7 @@
 import { CircleMarker, MapContainer, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { SHOWROOM_GOOGLE_MAPS_URL, SHOWROOM_POSITION } from '../constants/showroomLocation';
 import './ShowroomMap.css';
-
-const SHOWROOM_POSITION = [12.9083755, 77.6846212];
-const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Divine+Bliss/@12.9083755,77.6846212,17z';
 
 export default function ShowroomMap() {
   return (
@@ -36,7 +34,7 @@ export default function ShowroomMap() {
           <Popup className="showroom-map__popup" closeButton>
             <strong>Divine Bliss</strong>
             <span>Sy No 07, Garden, Junnasandra, Sarjapur Main Road, Bengaluru, Karnataka 560035</span>
-            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noreferrer">Open in Google Maps</a>
+            <a href={SHOWROOM_GOOGLE_MAPS_URL} target="_blank" rel="noreferrer">Open in Google Maps</a>
           </Popup>
         </CircleMarker>
       </MapContainer>

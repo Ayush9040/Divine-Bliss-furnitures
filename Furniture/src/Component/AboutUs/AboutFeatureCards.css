@@ -1,6 +1,6 @@
 .about-feature-cards {
   width: 100%;
-  margin-top: clamp(82px, 7vw, 100px);
+  margin-top: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   background: #dfdcd6;
@@ -95,10 +95,6 @@
 }
 
 @media (max-width: 1024px) {
-  .about-feature-cards {
-    margin-top: 70px;
-  }
-
   .about-feature-card {
     min-height: 310px;
     padding: 30px 24px 26px;
@@ -143,12 +139,6 @@
 
   .about-feature-card__link {
     margin-top: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  .about-feature-cards {
-    margin-top: 54px;
   }
 }
 

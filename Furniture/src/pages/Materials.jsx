@@ -10,7 +10,7 @@ import timelineThree from '../assets/finishes.jpg';
 import timelineFour from '../assets/curtain_fabrics.jpg';
 import timelineFive from '../assets/colours_and_customisation.jpg';
 import timelineSix from '../assets/care_and_longevity.png';
-import craftsmanshipLights from '../assets/craftsmanship-reference/craftsmanship-lights.webp';
+import materialsCutout from '../assets/materials.png';
 import './Craftsmanship.css';
 
 const defaultTimelineItems = [
@@ -88,11 +88,13 @@ export default function Materials({
   heroImage = defaultHeroImage,
   pageTitle = 'Materials',
   introTitle = 'Exceptional Furniture Begins',
-  introTitleSecondLine = 'Exceptional Materials',
+  introTitleSecondLine = 'With Exceptional Materials.',
   introDescription = 'Every detail matters. From the fabrics you touch to the finishes you see, the materials behind every Divine Bliss creation are carefully chosen to deliver lasting comfort, enduring quality, and timeless appeal.',
   manifestoEyebrow = 'Our Materials',
   manifestoTitle = defaultManifestoTitle,
   manifestoParagraphs = defaultManifestoParagraphs,
+  manifestoImage = materialsCutout,
+  manifestoVariant = 'materials',
   timelineAriaLabel = 'Materials process',
   timelineItems = defaultTimelineItems,
   closingTitle = 'Quality You Can See.',
@@ -215,7 +217,7 @@ export default function Materials({
         <p className="craft-intro__description">{introDescription}</p>
       </section>
 
-      <section ref={manifestoRef} className="craft-manifesto" aria-labelledby="craft-manifesto-title">
+      <section ref={manifestoRef} className={`craft-manifesto craft-manifesto--${manifestoVariant}`} aria-labelledby="craft-manifesto-title">
         <div className="craft-manifesto__inner">
           <div className="craft-manifesto__content">
             <p className="craft-manifesto__eyebrow">
@@ -250,8 +252,8 @@ export default function Materials({
             </div>
           </div>
         </div>
-        <div className="craft-manifesto__art" aria-hidden="true">
-          <img src={craftsmanshipLights} alt="" />
+        <div className={`craft-manifesto__art craft-manifesto__art--${manifestoVariant}`} aria-hidden="true">
+          <img src={manifestoImage} alt="" />
         </div>
       </section>
 
@@ -264,8 +266,6 @@ export default function Materials({
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="craft-timeline__content">
-                <p className="craft-timeline__subtitle">{item.subtitle}</p>
-                <span className="craft-timeline__number" aria-hidden="true">{item.step}</span>
                 <h3>{item.title}</h3>
                 <p className="craft-timeline__lead">{item.lead}</p>
                 <div className="craft-timeline__body">
@@ -273,6 +273,7 @@ export default function Materials({
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
+                <p className="craft-timeline__subtitle">{item.subtitle}</p>
               </div>
             </article>
           ))}

@@ -4,13 +4,12 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useContactForm from '../../hooks/useContactForm';
+import { SHOWROOM_EMBED_URL } from '../../constants/showroomLocation';
 import { COLLECTION_OPTIONS, getCollectionLabel } from '../../utils/contactValidation';
 import './LocationMap.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const studioAddress = 'Ground Floor, # Sy No 7, Maruthi Garden, Sarjapur Road, Wipro Corporate, Bengaluru, Karnataka, 560035';
-const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(studioAddress)}&t=m&z=16&output=embed&iwloc=near`;
 export default function LocationMap() {
   const container = useRef(null);
   const collectionField = useRef(null);
@@ -95,7 +94,7 @@ export default function LocationMap() {
         onPointerLeave={() => setMapActive(false)}
       >
         <iframe
-          src={mapUrl}
+          src={SHOWROOM_EMBED_URL}
           title="Divine Bliss showroom on Sarjapur Road, Bengaluru"
           loading="lazy"
           allowFullScreen

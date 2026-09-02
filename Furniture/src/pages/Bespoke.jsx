@@ -5,6 +5,7 @@ import timelineTwo from '../assets/personalise_every_detail.jpg';
 import timelineThree from '../assets/designed_to_fit_your_space.png';
 import timelineFour from '../assets/from_design_to_delivery.png';
 import timelineFive from '../assets/why_choose_bespoke.png';
+import bespokeCutout from '../assets/bespoke.png';
 
 const bespokeTimelineItems = [
   {
@@ -74,6 +75,8 @@ export default function Bespoke() {
         'Furniture should feel as though it was always meant to be part of your home.',
         "Our bespoke service gives you the freedom to personalise every detail, from dimensions and layouts to fabrics, finishes, and colours. Whether you're furnishing a compact apartment or a spacious villa, we help create furniture that fits beautifully into your lifestyle.",
       ]}
+      manifestoImage={bespokeCutout}
+      manifestoVariant="bespoke"
       timelineAriaLabel="Bespoke process"
       timelineItems={bespokeTimelineItems}
       closingTitle="Let's Create Something Beautiful Together"

@@ -2,7 +2,7 @@
   --paper: #f1eee9;
   --ink: #181818;
   --rust: #7f2e13;
-  --card-rust: #a3482b;
+  --card-rust: #a0472f;
   background: var(--paper);
   color: var(--ink);
   overflow: clip;
@@ -105,9 +105,9 @@
 .mink-service-stack { position: relative; height: 500px; }
 .mink-service-card { position: absolute; inset: 0; overflow: hidden; padding: 38px; box-shadow: 0 8px 25px rgba(50,10,0,.08); }
 .mink-service-card--rust { color: white; background: var(--card-rust); }
-.mink-service-card--stone { color: var(--ink); background: #e4e1db; }
+.mink-service-card--stone { color: var(--ink); background: #e5e2dc; }
 .mink-service-card--white { color: var(--ink); background: white; }
-.mink-service-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mink-service-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .mink-service-number, .mink-service-copy { position: relative; z-index: 1; }
 .mink-service-number { font-size: 20px; line-height: 1; }
 .mink-service-copy { max-width: 570px; margin-top: 145px; }
@@ -277,7 +277,7 @@
   .mink-hero-title { font-size: clamp(39px, 10.4vw, 64px); line-height: 1.05; letter-spacing: -.045em; }
   .mink-hero-title > span { white-space: normal; }
   .mink-hero-title > span:first-child { display: inline; }
-  .mink-hero-info { position: absolute; top: 217px; left: 0; right: 0; height: 163px; margin: 0; padding: 20px; grid-template-columns: 1fr; gap: 14px; font-size: 12px; }
+  .mink-hero-info { position: absolute; top: 240px; left: 0; right: 0; height: 163px; margin: 0; padding: 20px; grid-template-columns: 1fr; gap: 14px; font-size: 12px; }
   .mink-hero-info a { justify-content: flex-start; }
   .mink-hero-image { height: 253px; }
   .mink-about { padding: 72px 0 40px; }
@@ -359,6 +359,36 @@
   .mink-benefits-title-break { display: none; }
   .mink-benefits-layout { margin-top: 50px; grid-template-columns: 1fr; gap: 50px; }
   .mink-benefits-copy { top: 0; max-width: none; }
+
+  .mink-architecture-accordion {
+    height: auto;
+  }
+
+  .mink-architecture-accordion[data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mink-architecture-panel,
+  .mink-architecture-panel.is-active {
+    flex: none;
+    height: clamp(520px, 145vw, 580px);
+    min-height: 520px;
+    cursor: default;
+    transition: none;
+  }
+
+  .mink-architecture-overlay,
+  .mink-architecture-panel:first-child.is-active .mink-architecture-overlay {
+    background: rgba(24,24,24,.5);
+    transition: none;
+  }
+
+  .mink-architecture-copy,
+  .mink-architecture-panel.is-active .mink-architecture-copy {
+    opacity: 1;
+    transition: none;
+  }
 
 }
 

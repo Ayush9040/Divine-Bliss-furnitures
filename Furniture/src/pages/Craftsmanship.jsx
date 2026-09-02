@@ -9,7 +9,7 @@ import timelineTwo from '../assets/precision_manufacturing.png';
 import timelineThree from '../assets/attention_to_every_detail.png';
 import timelineFour from '../assets/comfort_without_compromise.png';
 import timelineFive from '../assets/our_commitment.png';
-import craftsmanshipLights from '../assets/craftsmanship-reference/craftsmanship-lights.webp';
+import craftsmanshipSofa from '../assets/craftsmanship.png';
 import './Craftsmanship.css';
 
 const timelineItems = [
@@ -192,7 +192,7 @@ export default function Craftsmanship() {
         </p>
       </section>
 
-      <section ref={manifestoRef} className="craft-manifesto" aria-labelledby="craft-manifesto-title">
+      <section ref={manifestoRef} className="craft-manifesto craft-manifesto--sofa" aria-labelledby="craft-manifesto-title">
         <div className="craft-manifesto__inner">
           <div className="craft-manifesto__content">
             <p className="craft-manifesto__eyebrow">
@@ -227,8 +227,8 @@ export default function Craftsmanship() {
             </div>
           </div>
         </div>
-        <div className="craft-manifesto__art" aria-hidden="true">
-          <img src={craftsmanshipLights} alt="" />
+        <div className="craft-manifesto__art craft-manifesto__art--sofa" aria-hidden="true">
+          <img src={craftsmanshipSofa} alt="" />
         </div>
       </section>
 
@@ -241,8 +241,6 @@ export default function Craftsmanship() {
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="craft-timeline__content">
-                <p className="craft-timeline__subtitle">{item.subtitle}</p>
-                <span className="craft-timeline__number" aria-hidden="true">{item.step}</span>
                 <h3>{item.title}</h3>
                 <p className="craft-timeline__lead">{item.lead}</p>
                 <div className="craft-timeline__body">
@@ -250,6 +248,7 @@ export default function Craftsmanship() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
+                <p className="craft-timeline__subtitle">{item.subtitle}</p>
               </div>
             </article>
           ))}
